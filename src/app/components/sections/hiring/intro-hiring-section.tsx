@@ -82,7 +82,7 @@ const IntroHiringSection: React.FC = () => {
 
       {/* VideoSection — No padding here (as requested) */}
       <VideoSection
-        videoSrc="/origins-showreel-2025.mp4"
+        videoSrc="/video/origins-showreel-2025.mp4"
         thumbnailSrc={"/origins-thumbnail.png"}
         id="intro"
         showControls={true}

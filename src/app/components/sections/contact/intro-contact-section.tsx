@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import VideoSection from '../video-section';
-import { motion } from 'framer-motion';
-import FloatingShape from '../../ui/floating-shape';
-import { FaTelegramPlane, FaFacebookF, FaInstagram } from 'react-icons/fa';
+import React from "react";
+import Link from "next/link";
+import VideoSection from "../video-section";
+import { motion } from "framer-motion";
+import FloatingShape from "../../ui/floating-shape";
+import { FaTelegramPlane, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
   return (
@@ -13,17 +13,29 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
       <div className="text-center mb-4 pt-32 pb-24">
         <h2
           className="text-6xl md:text-9xl font-serif mb-6 text-black"
-          style={{ fontFamily: 'DM Serif Text' }}
+          style={{ fontFamily: "DM Serif Text" }}
         >
           Contact Us
         </h2>
       </div>
 
-              {/* Background shapes */}
+      {/* Background shapes */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <FloatingShape delay={0} duration={12} className="top-1/4 left-1/4 md:w-30 md:h-30 w-15 h-15 rounded-full bg-orange-400" />
-        <FloatingShape delay={4} duration={18} className="top-3/4 right-1/4 md:w-32 md:h-32 w-12 h-12 rounded-full bg-gray-400" />
-        <FloatingShape delay={8} duration={20} className="top-1/2 right-1/3 md:w-20 md:h-20 w-10 h-10 rounded-2xl bg-orange-400" />
+        <FloatingShape
+          delay={0}
+          duration={12}
+          className="top-1/4 left-1/4 md:w-30 md:h-30 w-15 h-15 rounded-full bg-orange-400"
+        />
+        <FloatingShape
+          delay={4}
+          duration={18}
+          className="top-3/4 right-1/4 md:w-32 md:h-32 w-12 h-12 rounded-full bg-gray-400"
+        />
+        <FloatingShape
+          delay={8}
+          duration={20}
+          className="top-1/2 right-1/3 md:w-20 md:h-20 w-10 h-10 rounded-2xl bg-orange-400"
+        />
 
         <div className="absolute inset-0 opacity-5">
           <div
@@ -61,7 +73,9 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
             rel="noopener noreferrer"
             className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base"
           >
-            <span className="inline md:hidden"><FaTelegramPlane size={18} /></span>
+            <span className="inline md:hidden">
+              <FaTelegramPlane size={18} />
+            </span>
             <span className="hidden md:inline">Telegram</span>
             <motion.div
               className="ml-3 hidden md:block"
@@ -78,7 +92,9 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
             rel="noopener noreferrer"
             className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base"
           >
-            <span className="inline md:hidden"><FaFacebookF size={18} /></span>
+            <span className="inline md:hidden">
+              <FaFacebookF size={18} />
+            </span>
             <span className="hidden md:inline">Facebook</span>
             <motion.div
               className="ml-3 hidden md:block"
@@ -95,7 +111,9 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
             rel="noopener noreferrer"
             className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base"
           >
-            <span className="inline md:hidden"><FaInstagram size={18} /></span>
+            <span className="inline md:hidden">
+              <FaInstagram size={18} />
+            </span>
             <span className="hidden md:inline">Instagram</span>
             <motion.div
               className="ml-3 hidden md:block"
@@ -109,7 +127,7 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
 
         {/* Video Section */}
         <VideoSection
-          videoSrc="/origins-showreel-2025.mp4"
+          videoSrc="/video/origins-showreel-2025.mp4"
           thumbnailSrc="/origins-thumbnail.png"
           id="intro"
           showControls={true}
@@ -120,12 +138,13 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
 
         {/* Address */}
         <div className="flex flex-col justify-center px-12">
-          <h3 className="text-2xl font-bold mb-4">
-            Phnom Penh, Cambodia
-          </h3>
+          <h3 className="text-2xl font-bold mb-4">Phnom Penh, Cambodia</h3>
 
           <div className="flex flex-col space-y-2 text-base text-gray-800 mb-4">
-            <p>No. 109E0 Street 494, Sangkat Phsar Daeum Thkov, Khan Chamkar Mon, Phnom Penh 120112, Cambodia.</p>
+            <p>
+              No. 109E0 Street 494, Sangkat Phsar Daeum Thkov, Khan Chamkar Mon,
+              Phnom Penh 120112, Cambodia.
+            </p>
             <p>(+855) 98 880 312</p>
           </div>
 
@@ -142,6 +161,6 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
   );
 });
 
-IntroContactSection.displayName = 'IntroContactSection';
+IntroContactSection.displayName = "IntroContactSection";
 
 export default IntroContactSection;
