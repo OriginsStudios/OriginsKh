@@ -23,7 +23,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       title: "O’riginality.",
       description:
         "We lead with boldness and bring fresh, inventive energy into everything we create.",
-      image: "https://f004.backblazeb2.com/file/Originskh/o2v2.png",
+      image: "/o2v2.png",
       imageAlt: "O’riginality.",
     },
     {
@@ -31,7 +31,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       title: "O’thenticity.",
       description:
         "We keep it real with our creation reflecting depth and emotional resonance.",
-      image: "https://f004.backblazeb2.com/file/Originskh/o3v2.png",
+      image: "/o3v2.png",
       imageAlt: "O’thenticity.",
     },
     {
@@ -39,7 +39,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       title: "O’wesomeness.",
       description:
         "Our standard is excellence. We aim to “wow” through wonder, quality and impact.",
-      image: "https://f004.backblazeb2.com/file/Originskh/o1v2.png",
+      image: "/o1v2.png",
       imageAlt: "O’wesomeness.",
     },
   ];
@@ -81,7 +81,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
                     className="w-full py-4 flex items-center justify-between text-left transition-colors duration-200 group bg-transparent focus:outline-none"
                   >
                     <span
-                      className={`text-lg sm:text-xl lg:text-2xl transition-colors duration-200 ${
+                      className={`text-xl sm:text-2xl lg:text-4xl transition-colors duration-200 ${
                         expandedValue === value.id
                           ? "text-black font-medium"
                           : "text-gray-600 group-hover:text-black"
@@ -110,8 +110,8 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
                       expandedValue === value.id ? "max-h-40 pb-6" : "max-h-0"
                     }`}
                   >
-                    <p className="text-gray-600 text-base leading-relaxed">
-                      {value.description}
+                    <p className="text-gray-600 leading-relaxed text-md sm:text-lg lg:text-xl">
+                      {value.description} 
                     </p>
                   </div>
                 </div>

@@ -98,11 +98,75 @@ const FindUrJobSection: React.FC = () => {
 
 
         {/* Hiring Journey Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start pt-32 ">
-          <div className="lg:sticky lg:top-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start pt-32">
+          {/* First Image - Left Side */}
+          <div className="space-y-12">
+            <div className="lg:sticky lg:top-8">
+              <div className="relative rounded-2xl overflow-hidden aspect-square">
+                <Image
+                  src="/ORS_WEB-HIRING1.jpg"
+                  alt="A person working at a desk"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority
+                  rel="preload"
+                />
+              </div>
+            </div>
+
+            {/* Call to Action Section - Under First Image */}
+            <div className="w-full">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+                <div className="w-full text-left">
+                  <h3 className="text-2xl md:text-3xl text-black mb-8">
+                    To craft exceptional brand experiences, we embrace a multidisciplinary approach—blending strategy, creativity, and technology—while working hand-in-hand with our clients every step of the way.
+                  </h3>
+                  <Link href="/studios">
+                    <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
+                      View Our Services 
+                      <motion.div
+                      className="ml-3"
+                      animate={{ x: [0, 6, 0] }}
+                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+                    >
+                      →
+                    </motion.div>
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Text and Second Image */}
+          <div className="space-y-12">
+            {/* Text Content */}
+            <div className="space-y-8">
+              <h2 className="text-4xl lg:text-5xl font-normal leading-tight">
+                Inside the Hiring Journey
+              </h2>
+
+              <div className="space-y-6">
+                <p className="text-lg">
+                  <span className="font-bold">01</span> Once we&apos;ve checked out your application, a recruiter will reach out to guide you through the next steps.
+                </p>
+                <p className="text-lg">
+                  <span className="font-bold">02</span> You&apos;ll have a friendly chat with a recruiter to learn more about the role—and to tell us all about your superpowers.
+                </p>
+                <p className="text-lg">
+                  <span className="font-bold">03</span> Next, two virtual interviews with key team members—think of it as a friendly showdown where we find out if you&apos;re the perfect fit.
+                </p>
+                <p className="text-lg">
+                  <span className="font-bold">04</span> If you&apos;re the chosen one, you&apos;ll get a formal offer letter with your start date and all the exciting details. Spoiler: we&apos;ll be thrilled to have you!
+                </p>
+              </div>
+            </div>
+
+            {/* Second Image - Below Text */}
             <div className="relative rounded-2xl overflow-hidden aspect-square">
               <Image
-                src="/hiring.jpeg"
+                src="/ORS_WEB-HIRING2.jpg"
                 alt="A person working at a desk"
                 fill
                 className="object-cover"
@@ -110,50 +174,6 @@ const FindUrJobSection: React.FC = () => {
                 priority
                 rel="preload"
               />
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-normal leading-tight">
-              Inside the Hiring Journey
-            </h2>
-
-            <div className="space-y-6">
-              <p className="text-lg">
-                <span className="font-bold">01</span> Once we&apos;ve checked out your application, a recruiter will reach out to guide you through the next steps.
-              </p>
-              <p className="text-lg">
-                <span className="font-bold">02</span> You&apos;ll have a friendly chat with a recruiter to learn more about the role—and to tell us all about your superpowers.
-              </p>
-              <p className="text-lg">
-                <span className="font-bold">03</span> Next, two virtual interviews with key team members—think of it as a friendly showdown where we find out if you&apos;re the perfect fit.
-              </p>
-              <p className="text-lg">
-                <span className="font-bold">04</span> If you&apos;re the chosen one, you&apos;ll get a formal offer letter with your start date and all the exciting details. Spoiler: we&apos;ll be thrilled to have you!
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action Section */}
-        <div className="w-full pt-32">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 translate-x-5">
-            <div className="w-full md:w-[75%] text-left">
-              <h3 className="text-2xl md:text-3xl text-black mb-8">
-                To craft exceptional brand experiences, we embrace a multidisciplinary approach—blending strategy, creativity, and technology—while working hand-in-hand with our clients every step of the way.
-              </h3>
-              <Link href="/studios">
-                <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
-                  View Our Services 
-                  <motion.div
-                  className="ml-3"
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-                >
-                  →
-                </motion.div>
-                </button>
-              </Link>
             </div>
           </div>
         </div>

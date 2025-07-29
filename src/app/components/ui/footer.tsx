@@ -122,7 +122,7 @@ export default function Footer() {
                   <li key={link.id}>
                     <Link
                       href={link.href}
-                      className="text-xs md:text-sm hover:text-gray-800 transition-colors block py-1"
+                      className="text-xs md:text-sm hover:text-white transition-colors block py-1"
                     >
                       {link.name}
                     </Link>
@@ -140,7 +140,7 @@ export default function Footer() {
                   <li key={link.id}>
                     <Link
                       href={link.href}
-                      className="text-xs md:text-sm hover:text-gray-800 transition-colors block py-1"
+                      className="text-xs md:text-sm hover:text-white transition-colors block py-1"
                     >
                       {link.name}
                     </Link>
@@ -160,7 +160,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs md:text-sm hover:text-gray-800 transition-colors block py-1"
+                      className="text-xs md:text-sm hover:text-white transition-colors block py-1"
                       aria-label={`Visit our ${link.name} page`}
                     >
                       {link.name}
@@ -176,10 +176,10 @@ export default function Footer() {
         <div className="border-t border-gray-200 mt-8 md:mt-16 pt-6 md:pt-8 w-full">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-xs md:text-sm space-y-4 md:space-y-0 w-full">
             <div className="flex flex-row flex-wrap gap-x-6 gap-y-2">
-              <Link href="/sitemap" className="hover:text-gray-800 transition-colors">
+              <Link href="/sitemap" className="hover:text-white transition-colors">
                 Sitemap
               </Link>
-              <Link href="/privacypolicy" className="hover:text-gray-800 transition-colors">
+              <Link href="/privacypolicy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
             </div>
