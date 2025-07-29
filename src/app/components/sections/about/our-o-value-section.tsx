@@ -1,5 +1,3 @@
-
-
 "use client";
 import React, { useState, forwardRef } from "react";
 import { Plus, Minus } from "lucide-react";
@@ -25,7 +23,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       title: "O’riginality.",
       description:
         "We lead with boldness and bring fresh, inventive energy into everything we create.",
-      image: "/o2v2.png",
+      image: "https://f004.backblazeb2.com/file/Originskh/o2v2.png",
       imageAlt: "O’riginality.",
     },
     {
@@ -33,7 +31,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       title: "O’thenticity.",
       description:
         "We keep it real with our creation reflecting depth and emotional resonance.",
-      image: "/o3v2.png",
+      image: "https://f004.backblazeb2.com/file/Originskh/o3v2.png",
       imageAlt: "O’thenticity.",
     },
     {
@@ -41,7 +39,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       title: "O’wesomeness.",
       description:
         "Our standard is excellence. We aim to “wow” through wonder, quality and impact.",
-      image: "/o1v2.png",
+      image: "https://f004.backblazeb2.com/file/Originskh/o1v2.png",
       imageAlt: "O’wesomeness.",
     },
   ];
@@ -77,11 +75,10 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
 
             <div className="space-y-0">
               {valuesData.map((value) => (
-                <div key={value.id} >
+                <div key={value.id}>
                   <button
                     onClick={() => toggleExpanded(value.id)}
-                      className="w-full py-4 flex items-center justify-between text-left transition-colors duration-200 group bg-transparent focus:outline-none"
-
+                    className="w-full py-4 flex items-center justify-between text-left transition-colors duration-200 group bg-transparent focus:outline-none"
                   >
                     <span
                       className={`text-lg sm:text-xl lg:text-2xl transition-colors duration-200 ${
