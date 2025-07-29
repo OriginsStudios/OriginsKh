@@ -193,8 +193,9 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
             muted={isMuted}
             playsInline={playsInline}
             onClick={togglePlay}
-            preload="auto"
+            preload="metadata"
             controlsList="nodownload noplaybackrate nofullscreen"
+            crossOrigin="anonymous"
           >
             <source src={videoSrc} type={videoType} />
             Your browser does not support the video tag.
