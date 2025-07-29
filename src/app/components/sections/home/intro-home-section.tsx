@@ -43,7 +43,7 @@ export default function IntroHomeSection() {
       <LogoOriginsSection />
 
       <VideoSection
-        videoSrc="/video/origins-showreel-2025.mp4"
+        videoSrc="https://f004.backblazeb2.com/file/Originskh/origins-showreel-2025.mp4"
         thumbnailSrc={"/origins-thumbnail.png"}
         id=""
         showControls={true}

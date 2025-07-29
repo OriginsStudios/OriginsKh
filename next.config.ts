@@ -10,16 +10,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  
+
   // Optimize video handling and other experimental features
   experimental: {
-    optimizePackageImports: ['lucide-react'],
-    serverComponentsExternalPackages: [],
+    optimizePackageImports: ["lucide-react"],
   },
-  
+
   // Optimize images and static assets
   images: {
-    formats: ['image/webp', 'image/avif'],
+    formats: ["image/webp", "image/avif"],
     minimumCacheTTL: 31536000, // 1 year
   },
 };
