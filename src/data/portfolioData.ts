@@ -134,7 +134,7 @@ export const allImages: ImageData[] = [
   },
   {
     images: [
-      { src: '/SMART.png', width: 800, height: 800 },
+      { src: '/smart.png', width: 800, height: 800 },
       { src: '/maxxx-009.png', width: 800, height: 800 },
       { src: '/tunsai5.jpg', width: 800, height: 800 },
       { src: '/mid-year.jpg', width: 800, height: 800 },
