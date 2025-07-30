@@ -42,15 +42,15 @@ export default function OurStudiosSection() {
   return (
     <section id="journey" className="py-16 md:py-24 bg-transparent relative overflow-hidden px-8">
       <div className="w-full">
-        <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-12">
-          <p className="text-gray-600">OUR STUDIOS</p>
+        <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-10">
+          <p className="text-gray-600 text-xl mt-2">OUR STUDIOS </p>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           {/* Text Section */}
           <div className="w-full md:w-1/2 text-left">
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">We&rsquo;re A Creative Powerhouse.</h3>
-            <p className="text-gray-600 mb-6 text-sm md:text-base">
+            <p className="text-gray-600 mb-6 text-md  md:text-lg">
               As a dynamic and multi-disciplinary Creative Powerhouse, ORIGINS STUDIOS operates across three distinct
               sectors: ORIGINS Creative, ORIGINS Production & ORIGINS Concept. Each sector designed to bring visionary
               projects to life through bold ideas and innovative execution.
@@ -99,8 +99,8 @@ export default function OurStudiosSection() {
                     priority
                     rel="preload"
                   />
-                  <div className="absolute bottom-4 left-4 right-4 text-black">
-                    <div className="text-lg md:text-xl font-bold bg-transparent/80 backdrop-blur-sm px-3 py-1 rounded-lg inline-block">
+                  <div className="absolute bottom-4 left-4 right-4 text-orange-400">
+                    <div className="text-lg md:text-xl font-bold bg-transparent/80 backdrop-blur-[2px] px-3 py-1 rounded-lg inline-block">
                       {slides[activeIndex].title}
                     </div>
                   </div>

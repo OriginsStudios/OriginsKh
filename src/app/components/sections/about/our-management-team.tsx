@@ -33,7 +33,7 @@ const TeamSection = React.forwardRef<HTMLElement>((props, ref) => {
       <div className="w-full">
         {/* Header */}
         <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-12">
-          <p className="text-gray-600 font-medium">MANAGEMENT TEAM</p>
+          <p className="text-gray-600 text-xl mt-2 font-medium">MANAGEMENT TEAM</p>
         </div>
 
         {/* Team Grid */}

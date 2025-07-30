@@ -42,14 +42,14 @@ export default function OurWorkSection() {
         {/* Filter Controls */}
         <div className="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
           <div className="flex flex-wrap items-center gap-2 pb-32">
-            <span className="px-4 py-2 rounded-full text-sm font-medium text-black">RECENT WORK:</span>
+            <span className="px-4 py-2 rounded-full text-lg font-medium text-black">RECENT WORK:</span>
             {navItems.map((item) => {
               const active = activeCategory === item.label;
               return (
                 <button
                   key={item.label}
                   onClick={() => handleCategoryChange(item.label)}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  className={`px-3 py-1 rounded-full text-md font-medium transition-colors ${
                     active
                       ? 'bg-black text-white'
                       : 'bg-gray-200 text-black hover:bg-gray-300'

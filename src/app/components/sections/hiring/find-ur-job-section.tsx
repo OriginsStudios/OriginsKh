@@ -32,13 +32,13 @@ const FindUrJobSection: React.FC = () => {
   };
 
   return (
-    <section id="findUrJob" className="bg-transparent relative overflow-hidden w-full m-0 px-8 py-32">
+    <section id="findUrJob" className="bg-transparent relative overflow-hidden w-full m-0 px-8 py-24">
       {/* Full-width container with no left/right padding */}
       <div className="w-full mx-auto">
         {/* Title Section */}
         <div className="text-center mb-4">
           <h2
-            className="text-4xl md:text-7xl font-serif mb-6 text-black"
+            className="text-4xl md:text-7xl font-serif mb-12  text-black"
             style={{ fontFamily: 'DM Serif Text' }}
           >
             Find Your Dream Job
@@ -48,7 +48,7 @@ const FindUrJobSection: React.FC = () => {
         <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 mb-8"></div>
 
           <div className="flex flex-wrap items-center gap-2 pb-32">
-            <span className="px-4 py-2 rounded-full text-sm font-medium text-black">POSITION:</span>
+            <span className="px-4 py-2 rounded-full text-lg font-medium text-black">POSITION:</span>
             
             {/* Show nav items based on screen size */}
             {navItems.map((item) => {
@@ -57,7 +57,7 @@ const FindUrJobSection: React.FC = () => {
                 <button
                   key={item.label}
                   onClick={() => handleCategoryChange(item.label)}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                     active
                       ? "bg-black text-white"
                       : "bg-gray-200 text-black hover:bg-gray-300"

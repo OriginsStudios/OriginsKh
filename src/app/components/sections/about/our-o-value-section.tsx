@@ -62,7 +62,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       <div className="relative z-10 mx-auto w-full">
         {/* Header */}
         <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-start text-sm space-y-4 md:space-y-0 mb-12">
-          <p className="text-gray-600 font-medium">OUR &quot;O&quot; VALUES</p>
+          <p className="text-gray-600 text-xl mt-2 font-medium">OUR &quot;O&quot; VALUES</p>
         </div>
 
         {/* Content Grid */}

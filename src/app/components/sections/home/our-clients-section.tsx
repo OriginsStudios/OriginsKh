@@ -25,7 +25,7 @@ export default function OurClientsSection() {
     <section id="" className="py-16 bg-transparent px-8">
       <div className="w-full">
         <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-12">
-          <p className="text-gray-600 font-medium">OUR CLIENTS</p>
+          <p className="text-gray-600 text-xl mt-2">OUR CLIENTS</p>
         </div>
 
         {/* Scroll Container */}
@@ -34,7 +34,7 @@ export default function OurClientsSection() {
             {doubledClients.map((client, idx) => (
               <div
                 key={`${client.name}-${idx}`}
-                className="inline-block flex-shrink-0 w-40 h-40 flex items-center justify-center bg-white rounded-lg shadow-sm p-4 border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                className=" flex-shrink-0 w-40 h-40 flex items-center justify-center bg-white rounded-lg shadow-sm p-4 border border-gray-100 hover:shadow-md transition-shadow duration-300"
               >
                 <div className="relative w-full h-full">
                   <Image

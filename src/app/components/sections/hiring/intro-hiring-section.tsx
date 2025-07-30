@@ -44,7 +44,7 @@ const IntroHiringSection: React.FC = () => {
         {/* Text section with responsive padding */}
         <div className="text-center mb-4 px-6 md:px-12 md:pt-48 pt-24">
           <h2
-            className="text-3xl md:text-7xl font-serif mb-6 text-black"
+            className="text-4xl md:text-8xl font-serif mb-6 text-black"
             style={{ fontFamily: "DM Serif Text" }}
           >
             Ready to turn dreams into reality?
@@ -92,17 +92,17 @@ const IntroHiringSection: React.FC = () => {
       />
 
       {/* Section with px-8 */}
-      <div className="bg-white py-8 pb-24 md:py-16 md:pb-48  w-full px-8">
+      <div className="bg-white py-8 pb-10 md:py-16 md:pb-12  w-full px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
           <h3 className="text-xl sm:text-4xl font-semi-bold text-black leading-tight text-justify">
             Dream wildly. Design fearlessly. Join Origins Studios where bold
             visions ignite and magic happens.{" "}
           </h3>
-          <div className="text-l md:text-lg text-black leading-relaxed">
-            <p className="text-base sm:text-lg text-black leading-relaxed text-justify">
+          <div className="text-l md:text-lg text-black leading-relaxed md:pt-[25%]">
+            <p className="text-base sm:text-xl text-black leading-relaxed text-justify">
               Ready to turn your wild ideas into reality (and maybe a little bit
               of magic)? At Origins Studios, we mix bold creativity, slick
-              production, and fresh concepts—all under one roof—kind of like a
+              production, and fresh concepts all under one roof kind of like a
               creative smoothie, but way tastier. We’re hunting for curious,
               fearless folks who don’t mind getting their hands a little
               creative and love making stuff that wows. If you’re ready to roll

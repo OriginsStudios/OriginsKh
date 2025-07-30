@@ -6,6 +6,7 @@ import LogoOriginsSection from "../logo-origins-section";
 import FloatingShape from "../../ui/floating-shape";
 
 export default function IntroHomeSection() {
+  
   return (
     <section id="intro" className="min-h-screen bg-transparent m-0 py-0">
       {/* Background shapes */}
@@ -47,9 +48,10 @@ export default function IntroHomeSection() {
         thumbnailSrc={"/origins-thumbnail.png"}
         id=""
         showControls={true}
-        autoPlay={false}
-        muted={false}
+        autoPlay={true}
+        muted={true}
         loop={true}
+        playsInline={true}
       />
 
       <div className="text-center mb-4 px-4 sm:px-8">
