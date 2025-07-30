@@ -52,18 +52,11 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
     const videoRef = useRef<HTMLVideoElement>(null);
     const progressBarRef = useRef<HTMLDivElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [hasPlayed, setHasPlayed] = useState(false);
+    const [hasPlayed, setHasPlayed] = useState(false); // Track if video has ever played
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState<number | null>(null);
     const [showControlsOverlay, setShowControlsOverlay] = useState(true);
     const [isMuted, setIsMuted] = useState(muted);
-    const [volume, setVolume] = useState(1);
-
-    useEffect(() => {
-      if (videoRef.current) {
-        videoRef.current.volume = volume;
-      }
-    }, [volume]);
 
     const formatTime = (time: number): string => {
       if (isNaN(time) || time < 0 || time === Infinity) return "0:00";
@@ -83,17 +76,15 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
         if (playPromise !== undefined) {
           playPromise.catch((err) => console.error("Playback failed:", err));
         }
-        setHasPlayed(true);
+        setHasPlayed(true); // Mark that the video has started playing at least once
       }
       setIsPlaying(!isPlaying);
     };
 
     const toggleMute = () => {
       if (!videoRef.current) return;
-      const newMuted = !videoRef.current.muted;
-      videoRef.current.muted = newMuted;
-      setIsMuted(newMuted);
-      setVolume(newMuted ? 0 : 0.5);
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
     };
 
     const toggleFullScreen = () => {
@@ -138,13 +129,49 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
       video.addEventListener("play", handlePlay);
       video.addEventListener("pause", handlePause);
 
+      let retryCount = 0;
+      const retryLoad = setInterval(() => {
+        if (!isNaN(video.duration) && video.duration > 0) {
+          setDuration(video.duration);
+          clearInterval(retryLoad);
+        } else if (retryCount++ > 10) {
+          console.warn("Failed to load duration after retries");
+          clearInterval(retryLoad);
+        }
+      }, 1000);
+
       return () => {
         video.removeEventListener("loadedmetadata", handleLoadedMetadata);
         video.removeEventListener("timeupdate", handleTimeUpdate);
         video.removeEventListener("play", handlePlay);
         video.removeEventListener("pause", handlePause);
+        clearInterval(retryLoad);
       };
     }, []);
+
+    useEffect(() => {
+      const progressBar = progressBarRef.current;
+      const video = videoRef.current;
+      if (!progressBar || !video || duration === null) return;
+
+      const handleWheel = (e: WheelEvent) => {
+        e.preventDefault();
+        const delta = e.deltaY;
+        const timeChange = (delta / 100) * (duration / 100);
+        const newTime = Math.min(
+          Math.max(video.currentTime + timeChange, 0),
+          duration
+        );
+        video.currentTime = newTime;
+        setCurrentTime(newTime);
+      };
+
+      progressBar.addEventListener("wheel", handleWheel, { passive: false });
+
+      return () => {
+        progressBar.removeEventListener("wheel", handleWheel);
+      };
+    }, [duration]);
 
     return (
       <section
@@ -158,6 +185,7 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
           onMouseEnter={() => setShowControlsOverlay(true)}
           onMouseLeave={() => setShowControlsOverlay(false)}
         >
+          {/* Thumbnail Overlay */}
           {thumbnailSrc && !hasPlayed && !isPlaying && (
             <div
               className="absolute inset-0 z-10"
@@ -165,6 +193,7 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
                 backgroundImage: `url(${thumbnailSrc})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 opacity: isPlaying ? 0 : 1,
                 transition: "opacity 0.5s ease-in-out",
                 pointerEvents: "none",
@@ -185,6 +214,7 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
             </div>
           )}
 
+          {/* Video Element */}
           <video
             ref={videoRef}
             className={`relative w-full h-auto object-cover cursor-pointer ${videoClassName}`}
@@ -193,9 +223,8 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
             muted={isMuted}
             playsInline={playsInline}
             onClick={togglePlay}
-            preload="metadata"
+            preload="auto"
             controlsList="nodownload noplaybackrate nofullscreen"
-            crossOrigin="anonymous"
           >
             <source src={videoSrc} type={videoType} />
             Your browser does not support the video tag.
@@ -207,6 +236,7 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
                 showControlsOverlay ? "opacity-100" : "opacity-0"
               }`}
             >
+              {/* Center Play/Pause Button */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <button
                   onClick={(e) => {
@@ -224,7 +254,9 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
                 </button>
               </div>
 
+              {/* Bottom Controls */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                {/* Progress Bar */}
                 <div
                   ref={progressBarRef}
                   className="h-1 bg-gray-600 rounded-lg mb-2 cursor-pointer"
@@ -242,7 +274,9 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
                   ></div>
                 </div>
 
+                {/* Time Info & Buttons */}
                 <div className="flex items-center justify-between text-white text-sm gap-2">
+                  {/* Play Button */}
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -258,86 +292,53 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
                     )}
                   </button>
 
-                  {/* YouTube-style volume */}
-                  <div
-                    className={`relative group inline-flex items-center ${
-                      !isPlaying ? "pointer-events-none" : ""
-                    }`}
+                  {/* Mute Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleMute();
+                    }}
+                    className="p-1 hover:bg-gray-700 rounded"
+                    aria-label={isMuted ? "Unmute" : "Mute"}
                   >
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleMute();
-                      }}
-                      className={`p-1 hover:bg-gray-700 rounded ${
-                        isPlaying ? "group-hover:bg-gray-700" : "opacity-50"
-                      }`}
-                      aria-label={isMuted || volume === 0 ? "Unmute" : "Mute"}
-                    >
-                      {isMuted || volume === 0 ? (
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M9 9L15 15M15 9L9 15"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      ) : (
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M11 5L6 9H2v6h4l5 4V5z"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      )}
-                    </button>
-                    <div
-                      className={`absolute left-full ml-2 w-24 opacity-0 invisible ${
-                        isPlaying
-                          ? "group-hover:opacity-100 group-hover:visible"
-                          : ""
-                      } transition-all duration-300 z-10`}
-                    >
-                      <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={volume}
-                        onChange={(e) => {
-                          const newVolume = parseFloat(e.target.value);
-                          setVolume(newVolume);
-                          if (videoRef.current) {
-                            videoRef.current.muted = newVolume === 0;
-                            setIsMuted(newVolume === 0);
-                          }
-                        }}
-                        className="w-full h-1 accent-blue-500 cursor-pointer bg-gray-600 rounded-lg"
-                      />
-                    </div>
-                  </div>
+                    {isMuted ? (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9 9L15 15M15 9L9 15"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M11 5L6 9H2v6h4l5 4V5z"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )}
+                  </button>
 
-                  <div className="flex-1"></div>
-
+                  {/* Fullscreen Button */}
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleFullScreen();
                     }}
-                    className="p-1 hover:bg-gray-700 rounded ml-2"
+                    className="p-1 hover:bg-gray-700 rounded"
                     aria-label="Fullscreen"
                   >
                     <svg
@@ -355,7 +356,8 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
                     </svg>
                   </button>
 
-                  <span className="ml-2">
+                  {/* Time Info */}
+                  <span className="ml-auto">
                     {formatTime(currentTime)} /{" "}
                     {duration !== null ? formatTime(duration) : "0:00"}
                   </span>
