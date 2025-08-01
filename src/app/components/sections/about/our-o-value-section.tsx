@@ -14,33 +14,37 @@ interface ValueData {
   imageAlt: string;
 }
 
-const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
+interface OurOValuesSectionProps {
+  id?: string;
+}
+
+const OurOValuesSection = forwardRef<HTMLElement, OurOValuesSectionProps>(({ id }, ref) => {
   const [expandedValue, setExpandedValue] = useState<ValueId | null>(null);
 
   const valuesData: ValueData[] = [
     {
       id: "1",
-      title: "O’riginality.",
+      title: "O'riginality.",
       description:
         "We lead with boldness and bring fresh, inventive energy into everything we create.",
       image: "/o2v2.png",
-      imageAlt: "O’riginality.",
+      imageAlt: "O'riginality.",
     },
     {
       id: "2",
-      title: "O’thenticity.",
+      title: "O'thenticity.",
       description:
         "We keep it real with our creation reflecting depth and emotional resonance.",
       image: "/o3v2.png",
-      imageAlt: "O’thenticity.",
+      imageAlt: "O'thenticity.",
     },
     {
       id: "3",
-      title: "O’wesomeness.",
+      title: "O'wesomeness.",
       description:
-        "Our standard is excellence. We aim to “wow” through wonder, quality and impact.",
+        "Our standard is excellence. We aim to \"wow\" through wonder, quality and impact.",
       image: "/o1v2.png",
-      imageAlt: "O’wesomeness.",
+      imageAlt: "O'wesomeness.",
     },
   ];
 
@@ -58,7 +62,7 @@ const OurOValuesSection = forwardRef<HTMLElement>((props, ref) => {
       : defaultImage;
 
   return (
-    <section ref={ref} className="min-h-screen bg-gray-50 py-24 px-8 sm:px-8">
+    <section ref={ref} id={id} className="min-h-screen py-24 px-8 sm:px-8 transition-all duration-700 ease-in-out">
       <div className="relative z-10 mx-auto w-full">
         {/* Header */}
         <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-start text-sm space-y-4 md:space-y-0 mb-12">

@@ -63,9 +63,10 @@ interface TimelineItemProps {
   index: number
   isActive: boolean
   progress: MotionValue<number>
+  textColor: string
 }
 
-const TimelineItem = ({ item, index, isActive, progress }: TimelineItemProps) => {
+const TimelineItem = ({ item, index, isActive, progress, textColor }: TimelineItemProps) => {
   const itemRef = useRef(null)
   return (
     <motion.div
@@ -88,13 +89,13 @@ const TimelineItem = ({ item, index, isActive, progress }: TimelineItemProps) =>
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-black text-white font-mono font-bold text-lg"
+              className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white text-black font-mono font-bold text-lg"
             >
-            <div className="flex items-center gap-1 text-white text-sm">
+            <div className="flex items-center gap-1 text-sm">
               <Image 
             src="/originsStar2.svg" 
             alt="origin icon" 
-            className="w-6 h-6" 
+            className="w-6 h-6 filter contrast-200 invert" 
             width={24} // Adjust the width according to your needs
             height={24} // Adjust the height according to your needs
           />
@@ -105,7 +106,8 @@ const TimelineItem = ({ item, index, isActive, progress }: TimelineItemProps) =>
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              style={{ color: textColor }}
             >
               {item.title}
             </motion.h3>
@@ -113,13 +115,17 @@ const TimelineItem = ({ item, index, isActive, progress }: TimelineItemProps) =>
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-600 text-lg md:text-xl leading-relaxed"
+              className="text-lg md:text-xl leading-relaxed"
+              style={{ color: textColor }}
             >
               {item.description}
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
               <ButtonSection 
+                textColor={"text-black"}
                 buttonHref="/portfolio"
+                buttonBgColor="bg-white"
+
                 />
             </motion.div>
           </motion.div>
@@ -167,7 +173,12 @@ const TimelineItem = ({ item, index, isActive, progress }: TimelineItemProps) =>
   )
 }
 
-const OurOriginsSection = forwardRef<HTMLElement>((props, ref) => {
+interface OurOriginsSectionProps {
+  id?: string;
+  textColor?: string;
+}
+
+const OurOriginsSection = forwardRef<HTMLElement, OurOriginsSectionProps>(({ id , textColor}, ref) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const { scrollYProgress } = useScroll({
@@ -192,7 +203,7 @@ const OurOriginsSection = forwardRef<HTMLElement>((props, ref) => {
   }, [currentSection, activeIndex])
 
   return (
-    <section ref={ref} id="origins" className="relative bg-white text-black overflow-hidden">
+    <section ref={ref} id={id} className="relative overflow-hidden transition-all duration-700 ease-in-out" style={{ color: textColor }}>
       <style jsx global>{`
         html {
           scrollbar-width: none;
@@ -207,10 +218,10 @@ const OurOriginsSection = forwardRef<HTMLElement>((props, ref) => {
       <div className="relative z-10 pt-20 pb-10 text-center">
         <motion.div initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <h2 className="text-4xl md:text-7xl font-bold mb-6">
-            <span className="text-black">Our</span>
+            <span style={{ color: textColor }}>Our</span>
             <span className="ml-4 text-orange-400">Origins</span>
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto text-l md:text-2xl mb-8 px-6">
+          <p className="max-w-3xl mx-auto text-l md:text-2xl mb-8 px-6" style={{ color: textColor }}>
             Scroll to explore the journey that shaped who we are today
           </p>
         </motion.div>
@@ -225,6 +236,7 @@ const OurOriginsSection = forwardRef<HTMLElement>((props, ref) => {
             index={index}
             isActive={index === activeIndex}
             progress={currentSection}
+            textColor={textColor || "black"}
           />
         ))}
       </div>
@@ -236,4 +248,3 @@ const OurOriginsSection = forwardRef<HTMLElement>((props, ref) => {
 
 OurOriginsSection.displayName = "OurOriginsSection"
 export default OurOriginsSection
-

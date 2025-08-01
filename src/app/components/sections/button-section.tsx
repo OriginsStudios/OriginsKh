@@ -20,6 +20,7 @@ export default function ButtonSection({
   bgColor = "bg-transparent",
   buttonBgColor = "bg-black",
   buttonHoverColor = "hover:bg-orange-400",
+  textColor = "text-black",
 }: ButtonSectionProps) {
   return (
     <section className={`${bgColor} relative overflow-hidden`}>
@@ -30,12 +31,12 @@ export default function ButtonSection({
 
             <Link href={buttonHref}>
               <button
-                className={`flex items-center px-6 py-3 ${buttonBgColor} text-white rounded-full font-bold ${buttonHoverColor} transition-colors text-sm md:text-base`}
+                className={`flex items-center px-6 py-3 ${buttonBgColor} ${textColor} rounded-full font-bold ${buttonHoverColor} transition-colors text-sm md:text-base`}
               >
                 {buttonText}
                 {showArrowAnimation && (
                   <motion.div
-                    className="ml-3"
+                    className={`ml-3 ${textColor}`}
                     animate={{ x: [0, 6, 0] }}
                     transition={{
                       repeat: Number.POSITIVE_INFINITY,

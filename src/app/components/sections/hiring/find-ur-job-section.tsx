@@ -1,4 +1,3 @@
-
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -32,14 +31,17 @@ const FindUrJobSection: React.FC = () => {
   };
 
   return (
-    <section id="findUrJob" className="bg-transparent relative overflow-hidden w-full m-0 px-8 py-24">
+    <section
+      id="findUrJob"
+      className="bg-transparent relative overflow-hidden w-full m-0 px-8 py-24"
+    >
       {/* Full-width container with no left/right padding */}
       <div className="w-full mx-auto">
         {/* Title Section */}
         <div className="text-center mb-4">
           <h2
             className="text-4xl md:text-7xl font-serif mb-12  text-black"
-            style={{ fontFamily: 'DM Serif Text' }}
+            style={{ fontFamily: "DM Serif Text" }}
           >
             Find Your Dream Job
           </h2>
@@ -47,27 +49,28 @@ const FindUrJobSection: React.FC = () => {
 
         <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 mb-8"></div>
 
-          <div className="flex flex-wrap items-center gap-2 pb-32">
-            <span className="px-4 py-2 rounded-full text-lg font-medium text-black">POSITION:</span>
-            
-            {/* Show nav items based on screen size */}
-            {navItems.map((item) => {
-              const active = activeCategory === item.label;
-              return (
-                <button
-                  key={item.label}
-                  onClick={() => handleCategoryChange(item.label)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                    active
-                      ? "bg-black text-white"
-                      : "bg-gray-200 text-black hover:bg-gray-300"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
+        <div className="flex flex-wrap items-center gap-2 pb-32">
+          <span className="px-4 py-2 rounded-full text-lg font-medium text-black">
+            POSITION:
+          </span>
 
+          {/* Show nav items based on screen size */}
+          {navItems.map((item) => {
+            const active = activeCategory === item.label;
+            return (
+              <button
+                key={item.label}
+                onClick={() => handleCategoryChange(item.label)}
+                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-black hover:bg-gray-300"
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Message Display */}
@@ -78,7 +81,7 @@ const FindUrJobSection: React.FC = () => {
         </div>
 
         {/* Text section with px-8 */}
-      {/* <div className="text-left mb-4 px-8 pt-32 pb-24">
+        {/* <div className="text-left mb-4 px-8 pt-32 pb-24">
         <h2
           className="text-3xl md:text-5xl font-normal mb-6 text-black"
           style={{ fontFamily: 'DM Serif Text' }}
@@ -94,8 +97,6 @@ const FindUrJobSection: React.FC = () => {
                 </h3>
             </div>
       </div> */}
-
-
 
         {/* Hiring Journey Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start pt-32">
@@ -120,18 +121,24 @@ const FindUrJobSection: React.FC = () => {
               <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
                 <div className="w-full text-left">
                   <h3 className="text-2xl md:text-3xl text-black mb-8">
-                    To craft exceptional brand experiences, we embrace a multidisciplinary approach—blending strategy, creativity, and technology—while working hand-in-hand with our clients every step of the way.
+                    To craft exceptional brand experiences, we embrace a
+                    multidisciplinary approach—blending strategy, creativity,
+                    and technology—while working hand-in-hand with our clients
+                    every step of the way.
                   </h3>
                   <Link href="/studios">
                     <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
-                      View Our Services 
+                      View Our Services
                       <motion.div
-                      className="ml-3"
-                      animate={{ x: [0, 6, 0] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-                    >
-                      →
-                    </motion.div>
+                        className="ml-3"
+                        animate={{ x: [0, 6, 0] }}
+                        transition={{
+                          repeat: Number.POSITIVE_INFINITY,
+                          duration: 1.5,
+                        }}
+                      >
+                        →
+                      </motion.div>
                     </button>
                   </Link>
                 </div>
@@ -149,16 +156,25 @@ const FindUrJobSection: React.FC = () => {
 
               <div className="space-y-6">
                 <p className="text-lg">
-                  <span className="font-bold">01</span> Once we&apos;ve checked out your application, a recruiter will reach out to guide you through the next steps.
+                  <span className="font-bold">01</span> Once we&apos;ve checked
+                  out your application, a recruiter will reach out to guide you
+                  through the next steps.
                 </p>
                 <p className="text-lg">
-                  <span className="font-bold">02</span> You&apos;ll have a friendly chat with a recruiter to learn more about the role—and to tell us all about your superpowers.
+                  <span className="font-bold">02</span> You&apos;ll have a
+                  friendly chat with a recruiter to learn more about the
+                  role—and to tell us all about your superpowers.
                 </p>
                 <p className="text-lg">
-                  <span className="font-bold">03</span> Next, two virtual interviews with key team members—think of it as a friendly showdown where we find out if you&apos;re the perfect fit.
+                  <span className="font-bold">03</span> Next, two virtual
+                  interviews with key team members—think of it as a friendly
+                  showdown where we find out if you&apos;re the perfect fit.
                 </p>
                 <p className="text-lg">
-                  <span className="font-bold">04</span> If you&apos;re the chosen one, you&apos;ll get a formal offer letter with your start date and all the exciting details. Spoiler: we&apos;ll be thrilled to have you!
+                  <span className="font-bold">04</span> If you&apos;re the
+                  chosen one, you&apos;ll get a formal offer letter with your
+                  start date and all the exciting details. Spoiler: we&apos;ll
+                  be thrilled to have you!
                 </p>
               </div>
             </div>
@@ -189,5 +205,3 @@ const ForwardedFindUrJobSection = React.forwardRef<HTMLElement>((props) => {
 ForwardedFindUrJobSection.displayName = "FindUrJobSection";
 
 export default ForwardedFindUrJobSection;
-
-

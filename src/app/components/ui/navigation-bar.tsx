@@ -13,12 +13,16 @@ interface NavigationBarProps {
   activeSection: string;
   navBackground?: string;
   centerType?: "logo" | "cta"; // New prop
+  textColor?: string;
+  logo?: string;
 }
 
 export default function NavigationBar({
   activeSection,
   navBackground = "transparent",
   centerType = "logo", // Default to showing logo
+  textColor = "#000000",
+  logo = "/originlogo.png",
 }: NavigationBarProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
@@ -60,7 +64,11 @@ export default function NavigationBar({
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: isVisible ? 0 : -80, opacity: isVisible ? 1 : 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 40 }}
-      style={{ backgroundColor: navBackground }}
+      style={{
+        backgroundColor: navBackground,
+        transition:
+          "background-color 700ms ease-in-out, color 700ms ease-in-out",
+      }}
       className="fixed top-0 left-0 right-0 z-50 px-6 md:px-8 py-6 pointer-events-none"
     >
       <div className="pointer-events-auto w-full">
@@ -113,7 +121,7 @@ export default function NavigationBar({
               {centerType === "logo" || showLogo ? (
                 <Link href="/">
                   <Image
-                    src="/originlogo.png"
+                    src={logo}
                     alt="Origins Logo"
                     width={180}
                     height={180}
@@ -123,11 +131,15 @@ export default function NavigationBar({
                   />
                 </Link>
               ) : (
-                <div className="sm:text-xs font-medium uppercase tracking-wider hidden lg:inline">
+                <div
+                  className="sm:text-xs font-medium uppercase tracking-wider hidden lg:inline transition-all duration-700 ease-in-out"
+                  style={{ color: textColor }}
+                >
                   LOOKING TO REVIVE YOUR DREAMS?{" "}
                   <button
                     onClick={() => setShowFunnyPopup(true)}
-                    className="inline-flex items-center ml-2 text-black hover:text-orange-600 transition-colors"
+                    className="inline-flex items-center ml-2 hover:text-orange-600 transition-all duration-700 ease-in-out"
+                    style={{ color: textColor }}
                   >
                     CALL US
                     <ArrowRight className="ml-1 h-3 w-3" />
@@ -183,7 +195,7 @@ export default function NavigationBar({
         <div className="md:hidden flex justify-between items-center">
           <Link href="/">
             <Image
-              src="/originlogo.png"
+              src={logo}
               alt="Origins Logo"
               width={120}
               height={120}
@@ -194,7 +206,8 @@ export default function NavigationBar({
           </Link>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-black"
+            className="transition-colors duration-700 ease-in-out"
+            style={{ color: textColor }}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -216,7 +229,14 @@ export default function NavigationBar({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden mt-4 pb-6 border-b border-gray-200"
+            className="md:hidden mt-4 pb-6"
+            style={{
+              borderBottom: `1px solid ${
+                textColor === "#FFFFFF"
+                  ? "rgba(255, 255, 255, 0.2)"
+                  : "rgba(0, 0, 0, 0.2)"
+              }`,
+            }}
           >
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
@@ -224,7 +244,30 @@ export default function NavigationBar({
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex justify-between items-center px-4 py-3 text-lg font-medium uppercase tracking-wider border-b border-gray-100 hover:bg-gray-200"
+                  className="flex justify-between items-center px-4 py-3 text-lg font-medium uppercase tracking-wider transition-all duration-200 rounded-lg"
+                  style={{
+                    color: textColor,
+                    borderBottom: `1px solid ${
+                      textColor === "#FFFFFF"
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : "rgba(0, 0, 0, 0.1)"
+                    }`,
+                  }}
+                  onMouseEnter={(e) => {
+                    if (textColor === "#FFFFFF") {
+                      // Dark background - white text becomes black on white hover
+                      e.currentTarget.style.backgroundColor = "white";
+                      e.currentTarget.style.color = "black";
+                    } else {
+                      // Light background - black text becomes white on gray hover
+                      e.currentTarget.style.backgroundColor =
+                        "rgba(0, 0, 0, 0.1)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = textColor;
+                  }}
                 >
                   {link.label}
                   <ArrowRight className="h-4 w-4" />

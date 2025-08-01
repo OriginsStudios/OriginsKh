@@ -12,7 +12,12 @@ export default function ContactPage() {
   const navBackground = useTransform(scrollY, [0, 100], ["rgb(255, 255, 255)", "rgba(255, 251, 251, 0.9)"]);
 
   return (
-    <SecondaryLayout navBackground={navBackground} activeSection={activeSection} scrollToSection={scrollToSection}>
+    <SecondaryLayout 
+      navColor={navBackground.get()} 
+      pageBackground="rgb(255, 255, 255)"
+      activeSection={activeSection} 
+      scrollToSection={scrollToSection}
+    >
       <IntroContactSection/>
       <Footer />
     </SecondaryLayout>

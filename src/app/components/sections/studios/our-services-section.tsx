@@ -1,10 +1,9 @@
-
 "use client";
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronRight, ExternalLink, Play } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ChevronRight, ExternalLink, Play } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function OurServicesSection() {
   const [activeSpace, setActiveSpace] = useState<"event" | "studio">("event");
@@ -19,12 +18,17 @@ export default function OurServicesSection() {
       subtitle: "Suitable for small seminar/meeting up to 30 pax.",
       description: [
         "½ Day or Full-day Events",
-        "A minimalist space keeps the attention of your attendees on the things that matter"
+        "A minimalist space keeps the attention of your attendees on the things that matter",
       ],
       specs:
         "50m² (Main Event Space) + 20m² (For Catering/Networking), Fully-equipped with Air-conditioning, Projector, LED Lighting, PA Sound System, Parking Space for up to 10 Scooters + 1 Car",
       services: "Catering/Beverages, Photography/Videography",
-      images: ["/eventspace1.png", "/eventspace2.png", "/eventspace3.png", "/eventspace4.png"],
+      images: [
+        "/eventspace1.png",
+        "/eventspace2.png",
+        "/eventspace3.png",
+        "/eventspace4.png",
+      ],
       color: "orange",
     },
     studio: {
@@ -32,12 +36,17 @@ export default function OurServicesSection() {
       subtitle: "Re-surfacable Studio Backdrop with Diffuser Scrim Lighting.",
       description: [
         "Hourly, 1⁄2 Day or Full-day Rental",
-        "Unlike traditional studio backdrop with a fixed curve, our studio features a flat, re-surfacable backdrop wall that opens up a world of creative flexibility"
+        "Unlike traditional studio backdrop with a fixed curve, our studio features a flat, re-surfacable backdrop wall that opens up a world of creative flexibility",
       ],
       specs:
         "Flooring/ Scrim: 4.0m X 2.6m (10.4m2) Backdrop Wall: 4.0m X 2.9m (11.6m2) Hoist-able Diffuser Scrim Lighting Truss (Max Load 25kg)",
       services: "Equipment Rental",
-      images: ["/studiospace1.png", "/studiospace2.jpg", "/studiospace3.jpg", "/studiospace4.png"],
+      images: [
+        "/studiospace1.png",
+        "/studiospace2.jpg",
+        "/studiospace3.jpg",
+        "/studiospace4.png",
+      ],
       color: "black",
     },
   };
@@ -45,7 +54,10 @@ export default function OurServicesSection() {
   const currentSpace = spaces[activeSpace];
 
   return (
-    <section ref={containerRef} className="relative min-h-screen bg-transparent overflow-hidden px-6 pb-12 md:px-8 md:pb-18">
+    <section
+      ref={containerRef}
+      className="relative min-h-screen bg-transparent overflow-hidden px-6 pb-12 md:px-8 md:pb-18"
+    >
       {/* Content container - removed max-w-screen-xl and mx-auto */}
       <div className="relative z-10 w-full">
         {/* OUR STUDIOS header and Space selector */}
@@ -53,7 +65,9 @@ export default function OurServicesSection() {
           <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 mb-8"></div>
           {/* Space selector */}
           <div className="flex justify-start items-center mb-8">
-            <span className="text-gray-500 font-semibold uppercase mr-4">SPACE:</span>
+            <span className="text-gray-500 font-semibold uppercase mr-4">
+              SPACE:
+            </span>
             <div className="flex gap-4 items-center">
               <motion.button
                 onClick={() => setActiveSpace("event")}
@@ -103,7 +117,9 @@ export default function OurServicesSection() {
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className={`h-1 ${activeSpace === "event" ? "bg-orange-400" : "bg-black"} mb-8`}
+                className={`h-1 ${
+                  activeSpace === "event" ? "bg-orange-400" : "bg-black"
+                } mb-8`}
               />
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -111,7 +127,9 @@ export default function OurServicesSection() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="uppercase tracking-wider text-sm font-medium text-gray-500 mb-4"
               >
-                {activeSpace === "event" ? "OUR EVENT SPACE" : "OUR STUDIO SPACE"}
+                {activeSpace === "event"
+                  ? "OUR EVENT SPACE"
+                  : "OUR STUDIO SPACE"}
               </motion.h2>
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
@@ -153,7 +171,9 @@ export default function OurServicesSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1 }}
                   >
-                    <h3 className="text-black font-semibold mb-2">Technical Specifications</h3>
+                    <h3 className="text-black font-semibold mb-2">
+                      Technical Specifications
+                    </h3>
                     <p className="text-gray-600">{currentSpace.specs}</p>
                   </motion.div>
                   <motion.div
@@ -161,7 +181,9 @@ export default function OurServicesSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.1 }}
                   >
-                    <h3 className="text-black font-semibold mb-2">Additional Services</h3>
+                    <h3 className="text-black font-semibold mb-2">
+                      Additional Services
+                    </h3>
                     <p className="text-gray-600">{currentSpace.services}</p>
                   </motion.div>
                 </div>
@@ -173,20 +195,24 @@ export default function OurServicesSection() {
                 className="mt-10 flex flex-wrap gap-4"
               >
                 <Link href="/contact">
-                <motion.button
-                  className={`group relative overflow-hidden px-4 py-2 md:px-8 md:py-4 text-white font-medium inline-flex items-center gap-2 rounded-2xl ${
-                    activeSpace === "event" ? "bg-orange-400" : "bg-black"
-                  }`}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  Book This Space               
-                  <motion.div
+                  <motion.button
+                    className={`group relative overflow-hidden px-4 py-2 md:px-8 md:py-4 text-white font-medium inline-flex items-center gap-2 rounded-2xl ${
+                      activeSpace === "event" ? "bg-orange-400" : "bg-black"
+                    }`}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    Book This Space
+                    <motion.div
                       className="ml-3"
                       animate={{ x: [0, 6, 0] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+                      transition={{
+                        repeat: Number.POSITIVE_INFINITY,
+                        duration: 1.5,
+                      }}
                     >
-                      → </motion.div>
+                      →{" "}
+                    </motion.div>
                   </motion.button>
                 </Link>
                 <motion.button
@@ -216,8 +242,13 @@ export default function OurServicesSection() {
                   className="relative z-10 overflow-hidden rounded-2xl"
                 >
                   <Image
-                    src={currentSpace.images[0] || `/placeholder.svg?height=600&width=800`}
-                    alt={`${activeSpace === "event" ? "Event" : "Studio"} Space Main View`}
+                    src={
+                      currentSpace.images[0] ||
+                      `/placeholder.svg?height=600&width=800`
+                    }
+                    alt={`${
+                      activeSpace === "event" ? "Event" : "Studio"
+                    } Space Main View`}
                     width={800}
                     height={500}
                     unoptimized
@@ -242,14 +273,15 @@ export default function OurServicesSection() {
                       transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                       className="relative overflow-hidden group cursor-pointer rounded-2xl"
                       onClick={() => setExpandedImage(index + 1)}
-                      
                     >
                       <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
                         <ExternalLink className="text-white h-5 w-5" />
                       </div>
                       <Image
                         src={img || `/placeholder.svg?height=200&width=300`}
-                        alt={`${activeSpace === "event" ? "Event" : "Studio"} Space View ${index + 2}`}
+                        alt={`${
+                          activeSpace === "event" ? "Event" : "Studio"
+                        } Space View ${index + 2}`}
                         width={300}
                         height={200}
                         unoptimized
@@ -272,7 +304,9 @@ export default function OurServicesSection() {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-32 pt-16 border-t border-gray-200"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">Compare Our Spaces</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Compare Our Spaces
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Event Space Card */}
             <motion.div
@@ -282,7 +316,9 @@ export default function OurServicesSection() {
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-orange-400 rounded-t-2xl" />
               <h3 className="text-2xl font-bold mb-4">Event Space</h3>
-              <p className="text-gray-600 mb-6">Perfect for seminars, workshops, and meetings up to 30 people.</p>
+              <p className="text-gray-600 mb-6">
+                Perfect for seminars, workshops, and meetings up to 30 people.
+              </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-5 w-5 text-orange-400 flex-shrink-0 mt-0.5" />
@@ -298,18 +334,21 @@ export default function OurServicesSection() {
                 </li>
               </ul>
               <div className="absolute bottom-0 left-0 w-full h-0 bg-orange-400/10 transition-all duration-500 group-hover:h-full -z-10 rounded-2xl" />
-                <Link href="/contact">
-                  <button className="flex items-center px-6 py-3 bg-orange-400 text-white rounded-full font-bold hover:bg-black transition-colors text-sm md:text-base">
-                    Get In Touch 
-                    <motion.div
-                      className="ml-3"
-                      animate={{ x: [0, 6, 0] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-                    >
-                      →
-                    </motion.div>
-                  </button>
-                </Link>
+              <Link href="/contact">
+                <button className="flex items-center px-6 py-3 bg-orange-400 text-white rounded-full font-bold hover:bg-black transition-colors text-sm md:text-base">
+                  Get In Touch
+                  <motion.div
+                    className="ml-3"
+                    animate={{ x: [0, 6, 0] }}
+                    transition={{
+                      repeat: Number.POSITIVE_INFINITY,
+                      duration: 1.5,
+                    }}
+                  >
+                    →
+                  </motion.div>
+                </button>
+              </Link>
             </motion.div>
             {/* Studio Space Card */}
             <motion.div
@@ -320,7 +359,8 @@ export default function OurServicesSection() {
               <div className="absolute top-0 left-0 w-full h-1 bg-black rounded-t-2xl" />
               <h3 className="text-2xl font-bold mb-4">Studio Space</h3>
               <p className="text-gray-600 mb-6">
-                Professional photography studio with re-surfacable backdrop and lighting.
+                Professional photography studio with re-surfacable backdrop and
+                lighting.
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -337,18 +377,21 @@ export default function OurServicesSection() {
                 </li>
               </ul>
               <div className="absolute bottom-0 left-0 w-full h-0 bg-black/10 transition-all duration-500 group-hover:h-full -z-10 rounded-2xl" />
-                <Link href="/contact">
-                  <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
-                    Get In Touch 
-                    <motion.div
-                      className="ml-3"
-                      animate={{ x: [0, 6, 0] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-                    >
-                      →
-                    </motion.div>
-                  </button>
-                </Link>
+              <Link href="/contact">
+                <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
+                  Get In Touch
+                  <motion.div
+                    className="ml-3"
+                    animate={{ x: [0, 6, 0] }}
+                    transition={{
+                      repeat: Number.POSITIVE_INFINITY,
+                      duration: 1.5,
+                    }}
+                  >
+                    →
+                  </motion.div>
+                </button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -405,11 +448,15 @@ export default function OurServicesSection() {
               transition={{ duration: 0.3 }}
               className="relative max-w-5xl max-h-[80vh]"
               onClick={(e) => e.stopPropagation()}
-              
             >
               <Image
-                src={currentSpace.images[expandedImage] || "/placeholder.svg?height=800&width=1200"}
-                alt={`${activeSpace === "event" ? "Event" : "Studio"} Space Expanded View`}
+                src={
+                  currentSpace.images[expandedImage] ||
+                  "/placeholder.svg?height=800&width=1200"
+                }
+                alt={`${
+                  activeSpace === "event" ? "Event" : "Studio"
+                } Space Expanded View`}
                 width={1200}
                 height={800}
                 unoptimized
@@ -430,7 +477,3 @@ export default function OurServicesSection() {
     </section>
   );
 }
-
-
-
-

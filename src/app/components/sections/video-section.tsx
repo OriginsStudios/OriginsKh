@@ -1,14 +1,14 @@
 "use client";
 /**
  * Enhanced VideoSection Component with Improved Autoplay
- * 
+ *
  * Features:
  * - Programmatic autoplay with proper error handling
  * - Intersection Observer for autoplay on visible
  * - Automatic muting for autoplay compliance
  * - User preference detection
  * - Graceful fallback when autoplay fails
- * 
+ *
  * Usage:
  * - autoPlay: Basic autoplay on component mount
  * - autoplayOnVisible: Autoplay when video comes into view
@@ -53,7 +53,6 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
       sectionClassName = "",
       videoClassName = "",
       minHeight = "min-h-[50vh]",
-      backgroundColor = "bg-white",
       marginBottom = "mb-6 sm:mb-12 md:mb-8",
       autoPlay = false,
       loop = false,
@@ -83,26 +82,26 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
     // Programmatic autoplay function
     const attemptAutoplay = useCallback(async () => {
       if (!videoRef.current || autoplayAttempted) return;
-      
+
       setAutoplayAttempted(true);
-      
+
       try {
         const video = videoRef.current;
-        
+
         // Ensure video is muted for autoplay (browser requirement)
         if (!muted) {
           video.muted = true;
           setIsMuted(true);
         }
-        
+
         video.playsInline = true;
-        
+
         const playPromise = video.play();
         if (playPromise !== undefined) {
           await playPromise;
           setIsPlaying(true);
           setHasPlayed(true);
-          
+
           // If user wanted unmuted, try to unmute after a short delay
           if (!muted) {
             setTimeout(() => {
@@ -130,7 +129,10 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio >= autoplayThreshold) {
+            if (
+              entry.isIntersecting &&
+              entry.intersectionRatio >= autoplayThreshold
+            ) {
               if (!isPlaying && !autoplayAttempted) {
                 attemptAutoplay();
               }
@@ -154,7 +156,13 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
       return () => {
         observer.unobserve(currentSectionRef);
       };
-    }, [autoplayOnVisible, autoplayThreshold, isPlaying, autoplayAttempted, attemptAutoplay]);
+    }, [
+      autoplayOnVisible,
+      autoplayThreshold,
+      isPlaying,
+      autoplayAttempted,
+      attemptAutoplay,
+    ]);
 
     // Handle initial autoplay
     useEffect(() => {
@@ -163,12 +171,11 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
         const timer = setTimeout(() => {
           attemptAutoplay();
         }, 100);
-        
+
         return () => clearTimeout(timer);
       }
     }, [autoPlay, autoplayAttempted, attemptAutoplay]);
 
-    
     const formatTime = (time: number): string => {
       if (isNaN(time) || time < 0 || time === Infinity) return "0:00";
       const minutes = Math.floor(time / 60);
@@ -313,7 +320,7 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
       <section
         ref={sectionRef}
         id={id}
-        className={`${minHeight} ${backgroundColor} m-0 p-0 ${sectionClassName} ${className}`}
+        className={`${minHeight} m-0 p-0 ${sectionClassName} ${className}`}
       >
         {showTopSpacer && <div className={topSpacerClassName}></div>}
         <div
@@ -402,7 +409,9 @@ const VideoSection = React.forwardRef<HTMLElement, VideoSectionProps>(
                     <div
                       className="absolute inset-y-0 left-0 h-full bg-blue-500 rounded-full"
                       style={{
-                        width: duration ? `${(currentTime / duration) * 100}%` : "0%",
+                        width: duration
+                          ? `${(currentTime / duration) * 100}%`
+                          : "0%",
                       }}
                     />
                   </div>

@@ -7,7 +7,12 @@ import Image from "next/image";
 import { TEAM_MEMBERS, TeamMember } from "@/data/management-team";
 import TeamMemberModal from "../team-modal";
 
-const TeamSection = React.forwardRef<HTMLElement>((props, ref) => {
+interface TeamSectionProps {
+  id?: string;
+  textColor?: string;
+}
+
+const TeamSection = React.forwardRef<HTMLElement, TeamSectionProps>(({ id, textColor }, ref) => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [preloadedImages, setPreloadedImages] = useState<Set<string>>(new Set());
 
@@ -29,11 +34,11 @@ const TeamSection = React.forwardRef<HTMLElement>((props, ref) => {
   };
 
   return (
-    <section id="team" ref={ref} className="pb-32 bg-white px-8 sm:px-8">
+    <section id={id} ref={ref} className="pb-32 px-8 sm:px-8 transition-all duration-700 ease-in-out">
       <div className="w-full">
         {/* Header */}
         <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-12">
-          <p className="text-gray-600 text-xl mt-2 font-medium">MANAGEMENT TEAM</p>
+          <p className={`text-[${textColor}] text-xl mt-2 font-medium`}>MANAGEMENT TEAM</p>
         </div>
 
         {/* Team Grid */}
@@ -63,10 +68,10 @@ const TeamSection = React.forwardRef<HTMLElement>((props, ref) => {
 
               {/* Text content */}
               <div className="text-left">
-                <h3 className="font-bold text-xl sm:text-2xl text-black mb-1 group-hover:translate-x-1 transition-transform duration-200">
+                <h3 className={`font-bold text-xl sm:text-2xl text-[${textColor}] mb-1 group-hover:translate-x-1 transition-transform duration-200`}>
                   {member.name}
                 </h3>
-                <p className="text-gray-600 font-medium text-sm sm:text-base">
+                <p className={`text-[${textColor}] font-medium text-sm sm:text-base`}>
                   {member.position}
                 </p>
               </div>

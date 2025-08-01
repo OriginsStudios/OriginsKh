@@ -93,7 +93,10 @@ const buttonVariants = {
 
 export default function DetailStudioSection() {
   return (
-    <section id="journey" className="bg-transparent relative overflow-hidden py-48 px-8">
+    <section
+      id="journey"
+      className="bg-transparent relative overflow-hidden py-48 px-8"
+    >
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -108,7 +111,7 @@ export default function DetailStudioSection() {
             }`}
           >
             {/* Background Image with rounded corners preserved */}
-            <motion.div 
+            <motion.div
               className="absolute inset-0 z-0 overflow-hidden rounded-xl"
               whileHover="hover"
             >
@@ -126,15 +129,12 @@ export default function DetailStudioSection() {
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
             </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              custom={index}
-            >
+            <motion.div variants={itemVariants} custom={index}>
               {/* Content Wrapper - responsive padding */}
               <div className="relative z-10 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 lg:py-28 mx-auto max-w-screen-xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16">
                 {/* Left Section - Studio Name */}
                 <div className="w-full md:w-1/2">
-                  <motion.h1 
+                  <motion.h1
                     className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-light text-white leading-none"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -146,7 +146,7 @@ export default function DetailStudioSection() {
                 </div>
                 {/* Right Section - Description & Services */}
                 <div className="w-full md:w-1/2 text-left text-white">
-                  <motion.p 
+                  <motion.p
                     className="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed opacity-90"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -156,16 +156,19 @@ export default function DetailStudioSection() {
                     {studio.description}
                   </motion.p>
                   {/* Services Grid */}
-                  <motion.div 
+                  <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 text-sm"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.4, staggerChildren: 0.1 }}
+                    transition={{
+                      delay: index * 0.1 + 0.4,
+                      staggerChildren: 0.1,
+                    }}
                   >
                     {studio.services.map((service, idx) => (
-                      <motion.p 
-                        key={idx} 
+                      <motion.p
+                        key={idx}
                         className="text-gray-200"
                         initial={{ opacity: 0, x: 10 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -178,21 +181,24 @@ export default function DetailStudioSection() {
                   </motion.div>
                   <div className="w-full md:w-1/2 text-left">
                     <Link href="/portfolio">
-                      <motion.button 
+                      <motion.button
                         className="flex items-center px-6 py-3 bg-white text-black rounded-full font-bold hover:text-white hover:bg-black transition-colors text-sm md:text-base"
                         variants={buttonVariants}
                         initial="rest"
                         whileHover="hover"
                         whileTap="pressed"
                       >
-                        See Work 
+                        See Work
                         <motion.div
-                        className="ml-3"
-                        animate={{ x: [0, 6, 0] }}
-                        transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-                      >
-                        →
-                      </motion.div>
+                          className="ml-3"
+                          animate={{ x: [0, 6, 0] }}
+                          transition={{
+                            repeat: Number.POSITIVE_INFINITY,
+                            duration: 1.5,
+                          }}
+                        >
+                          →
+                        </motion.div>
                       </motion.button>
                     </Link>
                   </div>
@@ -205,4 +211,3 @@ export default function DetailStudioSection() {
     </section>
   );
 }
-
