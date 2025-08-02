@@ -4,8 +4,13 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import FloatingShape from "../../ui/floating-shape";
+interface IntroHiringSectionProps {
+  textColor: string;
+}
 
-const IntroHiringSection: React.FC = () => {
+const IntroHiringSection: React.FC<IntroHiringSectionProps> = ({
+  textColor,
+}) => {
   return (
     <section id="intro" className="min-h-screen bg-transparent ">
       {/* Section with px-8 */}
@@ -44,7 +49,7 @@ const IntroHiringSection: React.FC = () => {
         {/* Text section with responsive padding */}
         <div className="text-center mb-4 px-6 md:px-12 md:pt-48 pt-24">
           <h2
-            className="text-4xl md:text-8xl font-serif mb-6 text-black"
+            className={`text-4xl md:text-8xl font-serif mb-6 text-[${textColor}]`}
             style={{ fontFamily: "DM Serif Text" }}
           >
             Ready to turn dreams into reality?
@@ -56,7 +61,7 @@ const IntroHiringSection: React.FC = () => {
         <div className="text-center mb-4 pb-24 w-full">
           <div className="flex items-center justify-center">
             <p
-              className="text-xl md:text-3xl font-light text-black mr-4"
+              className={`text-xl md:text-3xl font-light text-${[]} mr-4`}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               Let’s get started.
@@ -92,14 +97,22 @@ const IntroHiringSection: React.FC = () => {
       />
 
       {/* Section with px-8 */}
-      <div className="bg-white py-8 pb-10 md:py-16 md:pb-12  w-full px-8">
+      <div className=" py-8 pb-10 md:py-16 md:pb-12  w-full px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
-          <h3 className="text-xl sm:text-4xl font-semi-bold text-black leading-tight text-justify">
+          <h3
+            className={`text-xl sm:text-4xl font-semi-bold text-${[
+              textColor,
+            ]}leading-tight text-justify`}
+          >
             Dream wildly. Design fearlessly. Join Origins Studios where bold
             visions ignite and magic happens.{" "}
           </h3>
-          <div className="text-l md:text-lg text-black leading-relaxed md:pt-[25%]">
-            <p className="text-base sm:text-xl text-black leading-relaxed text-justify">
+          <div
+            className={`text-l md:text-lg text-${[
+              textColor,
+            ]} leading-relaxed md:pt-[25%]`}
+          >
+            <p className="text-base sm:text-xl leading-relaxed text-justify">
               Ready to turn your wild ideas into reality (and maybe a little bit
               of magic)? At Origins Studios, we mix bold creativity, slick
               production, and fresh concepts all under one roof kind of like a
@@ -150,7 +163,10 @@ const IntroHiringSection: React.FC = () => {
 };
 
 // Wrap component with forwardRef while keeping internal logic clean
-const ForwardedIntroHiringSection = React.forwardRef<HTMLElement>((props) => {
+const ForwardedIntroHiringSection = React.forwardRef<
+  HTMLElement,
+  IntroHiringSectionProps
+>((props) => {
   return <IntroHiringSection {...props} />;
 });
 ForwardedIntroHiringSection.displayName = "IntroHiringSection";

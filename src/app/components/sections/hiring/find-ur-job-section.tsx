@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+interface IntroHiringSectionProps {
+  textColor: string;
+}
 
-const FindUrJobSection: React.FC = () => {
+const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [, setIsMobile] = useState(false);
 
@@ -40,7 +43,7 @@ const FindUrJobSection: React.FC = () => {
         {/* Title Section */}
         <div className="text-center mb-4">
           <h2
-            className="text-4xl md:text-7xl font-serif mb-12  text-black"
+            className={`text-4xl md:text-7xl font-serif mb-12  text-[${textColor}]`}
             style={{ fontFamily: "DM Serif Text" }}
           >
             Find Your Dream Job
@@ -50,7 +53,9 @@ const FindUrJobSection: React.FC = () => {
         <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 mb-8"></div>
 
         <div className="flex flex-wrap items-center gap-2 pb-32">
-          <span className="px-4 py-2 rounded-full text-lg font-medium text-black">
+          <span
+            className={`px-4 py-2 rounded-full text-lg font-medium text-[${textColor}]`}
+          >
             POSITION:
           </span>
 
@@ -120,7 +125,9 @@ const FindUrJobSection: React.FC = () => {
             <div className="w-full">
               <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
                 <div className="w-full text-left">
-                  <h3 className="text-2xl md:text-3xl text-black mb-8">
+                  <h3
+                    className={`text-2xl md:text-3xl text-[${textColor}] mb-8`}
+                  >
                     To craft exceptional brand experiences, we embrace a
                     multidisciplinary approach—blending strategy, creativity,
                     and technology—while working hand-in-hand with our clients
@@ -199,7 +206,10 @@ const FindUrJobSection: React.FC = () => {
 };
 
 // Wrap component with forwardRef while keeping internal logic clean
-const ForwardedFindUrJobSection = React.forwardRef<HTMLElement>((props) => {
+const ForwardedFindUrJobSection = React.forwardRef<
+  HTMLElement,
+  IntroHiringSectionProps
+>((props) => {
   return <FindUrJobSection {...props} />;
 });
 ForwardedFindUrJobSection.displayName = "FindUrJobSection";

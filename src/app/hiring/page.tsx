@@ -1,29 +1,96 @@
 "use client";
-import { useScroll, useTransform } from "framer-motion";
-import { useNavigation } from "../components/hooks/use-navigation";
+
 import Footer from "../components/ui/footer";
+import { useNavigation } from "../components/hooks/use-navigation";
 import IntroHiringSection from "../components/sections/hiring/intro-hiring-section";
 import FindUrJobSection from "../components/sections/hiring/find-ur-job-section";
 import SecondaryLayout from "../components/layouts/secondary-layout";
+import { useState, useEffect } from "react";
 
 export default function HiringPage() {
   const { activeSection, scrollToSection } = useNavigation();
-  const { scrollY } = useScroll();
-  const navBackground = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgb(255, 255, 255)", "rgba(255, 251, 251, 0.9)"]
-  );
+  const [navColor, setNavColor] = useState<string>("rgb(255, 255, 255)");
+  const [pageBackground, setPageBackground] =
+    useState<string>("rgb(255, 255, 255)");
+  const [textColor, setTextColor] = useState<string>("#000000");
+  const [currentLogo, setCurrentLogo] = useState<string>("/originlogo.png");
+
+  useEffect(() => {
+    // Section color mapping (customize as needed)
+    const sectionColors = {
+      intro: {
+        nav: "#868895",
+        bg: "#868895",
+        text: "#FFFFFF",
+        logo: "/originlogo2.png",
+      },
+      findUrJob: {
+        nav: "#293df0",
+        bg: "#293df0",
+        text: "#FFFFFF",
+        logo: "/originlogo2.png",
+      },
+    };
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const threshold = windowHeight * 0.3;
+
+      const sections = Object.keys(sectionColors)
+        .map((sectionId) => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            const top = rect.top + scrollY;
+            const bottom = top + element.offsetHeight;
+            return { id: sectionId, top, bottom, element };
+          }
+          return null;
+        })
+        .filter(Boolean);
+
+      let currentSection = "intro";
+      for (const section of sections) {
+        if (section) {
+          const sectionTop = section.top;
+          const sectionBottom = section.bottom;
+          if (
+            scrollY + threshold >= sectionTop &&
+            scrollY + threshold < sectionBottom
+          ) {
+            currentSection = section.id;
+            break;
+          }
+        }
+      }
+      const colors =
+        sectionColors[currentSection as keyof typeof sectionColors];
+      if (colors) {
+        setNavColor(colors.nav);
+        setPageBackground(colors.bg);
+        setTextColor(colors.text);
+        setCurrentLogo(colors.logo);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <SecondaryLayout
-      navColor={navBackground.get()}
-      pageBackground="rgb(255, 255, 255)"
+      navColor={navColor}
+      pageBackground={pageBackground}
+      textColor={textColor}
       activeSection={activeSection}
       scrollToSection={scrollToSection}
+      logo={currentLogo}
     >
-      <IntroHiringSection />
-      <FindUrJobSection />
+      <IntroHiringSection textColor={textColor} />
+      <FindUrJobSection textColor={textColor} />
       <Footer />
     </SecondaryLayout>
   );
