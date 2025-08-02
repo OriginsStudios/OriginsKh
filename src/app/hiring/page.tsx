@@ -19,14 +19,14 @@ export default function HiringPage() {
     // Section color mapping (customize as needed)
     const sectionColors = {
       intro: {
-        nav: "#868895",
-        bg: "#868895",
+        nav: "#293df0",
+        bg: "#293df0",
         text: "#FFFFFF",
         logo: "/originlogo2.png",
       },
       findUrJob: {
-        nav: "#293df0",
-        bg: "#293df0",
+        nav: "#868895",
+        bg: "#868895",
         text: "#FFFFFF",
         logo: "/originlogo2.png",
       },
