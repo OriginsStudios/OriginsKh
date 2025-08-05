@@ -25,14 +25,30 @@ export const slugify = (text: string) =>
 export const allImages: ImageData[] = [
   {
     images: [
-      { src: '/custin08.png', width: 800, height: 600 },
-      { src: '/custin14.png', width: 800, height: 600 },
-      { src: '/custin07.png', width: 800, height: 600 },
-      { src: '/custin13.png', width: 800, height: 600 },
-      { src: '/custin18.png', width: 800, height: 600 },
-      { src: '/custin16.png', width: 800, height: 600 },
-      { src: '/custin15.png', width: 800, height: 600 },
-      { src: '/custin03.png', width: 800, height: 600 },
+      { src: '/ORS_HYUJACKET-1.jpg', width: 800, height: 800 },
+      { src: '/ORS_HYUJACKET-2.jpg', width: 800, height: 800 },
+      { src: '/ORS_HYUJACKET-3.jpg', width: 800, height: 800 },
+      { src: '/ORS_HYUJACKET-4.jpg', width: 800, height: 800 },
+    ],
+    caption: 'Apparel Design for Hyundai Cambodia',
+    hashtags: '#CONCEPT',
+    description: 'Gallery | Hyundai Venue Jacket',
+    longDescription: "At ORIGINS STUDIOS, we had the privilege of designing and producing the official Hyundai Venue jacket artwork for Hyundai Cambodia's Venue launch event. This bold and energetic design celebrates the youthful spirit and urban lifestyle that the Hyundai Venue represents. Featuring pop-art influences, street-style elements, and dynamic visuals of the car itself, the jacket communicates both style and performance. Every graphical detail; from the checkerboard pattern to the illustrated icons; was carefully curated to create a cohesive and vibrant identity for the launch, making it not just a promotional item, but a statement piece that embodies the Venue’s arrival in Cambodia.",
+    width: undefined,
+    height: undefined,
+    src: "",
+    date: ""
+  },
+  {
+    images: [
+      { src: '/custin08.png', width: 800, height: 800 },
+      { src: '/custin14.png', width: 800, height: 800 },
+      { src: '/custin07.png', width: 800, height: 800 },
+      { src: '/custin13.png', width: 800, height: 800 },
+      { src: '/custin18.png', width: 800, height: 800 },
+      { src: '/custin16.png', width: 800, height: 800 },
+      { src: '/custin15.png', width: 800, height: 800 },
+      { src: '/custin03.png', width: 800, height: 800 },
     ],
     caption: 'Photography for Hyundai Cambodia',
     hashtags: '#PRODUCTION',
@@ -45,13 +61,13 @@ export const allImages: ImageData[] = [
   },
     {
       images: [
-        { src: '/stargazerXPic6.png', width: 800, height: 600 },
-        { src: '/stargazerXPic7v2.png', width: 800, height: 600 },
-        { src: '/stargazerXPic6.png', width: 800, height: 600 },
-        { src: '/stargazerXPic5.png', width: 800, height: 600 },
-        { src: '/stargazerXPic1.png', width: 800, height: 600 },
-        { src: '/stargazerXPic3v4.png', width: 800, height: 600 },
-        { src: '/stargazerXPic9.png', width: 800, height: 600 },
+        { src: '/stargazerXPic6.png', width: 800, height: 800 },
+        { src: '/stargazerXPic7v2.png', width: 800, height: 800 },
+        { src: '/stargazerXPic6.png', width: 800, height: 800 },
+        { src: '/stargazerXPic5.png', width: 800, height: 800 },
+        { src: '/stargazerXPic1.png', width: 800, height: 800 },
+        { src: '/stargazerXPic3v4.png', width: 800, height: 800 },
+        { src: '/stargazerXPic9.png', width: 800, height: 800 },
       ],
       caption: 'Photography for Hyundai Cambodia',
       hashtags: '#PRODUCTION',
@@ -64,7 +80,7 @@ export const allImages: ImageData[] = [
     },
   {
     images: [
-      { src: '/DSC00637.png', width: 800, height: 600 },
+      { src: '/DSC00637.png', width: 800, height: 800 },
     ],
     caption: 'Photography for Hyundai Cambodia',
     hashtags: '#PRODUCTION',
@@ -77,10 +93,10 @@ export const allImages: ImageData[] = [
   },
   {
     images: [
-      { src: '/DSC04366.jpg', width: 800, height: 600 },
-      { src: '/DSC04780.jpg', width: 800, height: 600 },
-      { src: '/DSC04264.jpg', width: 800, height: 600 },
-      { src: '/DSC04658.jpg', width: 800, height: 600 },
+      { src: '/DSC04366.jpg', width: 800, height: 800 },
+      { src: '/DSC04780.jpg', width: 800, height: 800 },
+      { src: '/DSC04264.jpg', width: 800, height: 800 },
+      { src: '/DSC04658.jpg', width: 800, height: 800 },
     ],
     caption: 'Stage Design for Cloud Photo Studio',
     hashtags: '#CONCEPT',
@@ -93,8 +109,8 @@ export const allImages: ImageData[] = [
   },
   {
     images: [
-      { src: '/DFGL_hah_001.jpeg', width: 800, height: 600 },
-      { src: '/4k-horizon-pastures.png', width: 800, height: 600 },
+      { src: '/DFGL_hah_001.jpeg', width: 800, height: 800 },
+      { src: '/4k-horizon-pastures.png', width: 800, height: 800 },
     ],
     caption: 'Branding Materials for DFLG',
     hashtags: '#CREATIVE',
@@ -152,9 +168,9 @@ export const allImages: ImageData[] = [
 
   {
     images: [
-      { src: '/DSC06741.png', width: 800, height: 600 },
-      { src: '/DSC06744.png', width: 800, height: 600 },
-      { src: '/DSC06749.png', width: 800, height: 600 },
+      { src: '/DSC06741.png', width: 800, height: 800 },
+      { src: '/DSC06744.png', width: 800, height: 800 },
+      { src: '/DSC06749.png', width: 800, height: 800 },
     ],
     caption: 'Apparel Design for Hyundai Cambodia',
     hashtags: '#CONCEPT',
@@ -168,7 +184,7 @@ export const allImages: ImageData[] = [
   {
     images: [
       { src: '/back.png', width: 800, height: 800 },
-      { src: '/front.jpeg', width: 800, height: 600 },
+      { src: '/front.jpeg', width: 800, height: 800 },
     ],
     caption: 'Apparel Design for Hyundai Cambodia',
     hashtags: '#CONCEPT',
@@ -180,15 +196,15 @@ export const allImages: ImageData[] = [
   },
   {
     images: [
-      { src: '/multiple-1.JPEG', width: 800, height: 600 },
-      { src: '/multiple-2.JPEG', width: 800, height: 600 },
-      { src: '/multiple-3.JPEG', width: 800, height: 600 },
-      { src: '/multiple-4.JPEG', width: 800, height: 600 },
-      { src: '/multiple-5.JPEG', width: 800, height: 600 },
-      { src: '/multiple-6.JPEG', width: 800, height: 600 },
-      { src: '/multiple-7.JPEG', width: 800, height: 600 },
-      { src: '/multiple-8.JPEG', width: 800, height: 600 },
-      { src: '/multiple-9.JPEG', width: 800, height: 600 },
+      { src: '/multiple-1.JPEG', width: 800, height: 800 },
+      { src: '/multiple-2.JPEG', width: 800, height: 800 },
+      { src: '/multiple-3.JPEG', width: 800, height: 800 },
+      { src: '/multiple-4.JPEG', width: 800, height: 800 },
+      { src: '/multiple-5.JPEG', width: 800, height: 800 },
+      { src: '/multiple-6.JPEG', width: 800, height: 800 },
+      { src: '/multiple-7.JPEG', width: 800, height: 800 },
+      { src: '/multiple-8.JPEG', width: 800, height: 800 },
+      { src: '/multiple-9.JPEG', width: 800, height: 800 },
     ],
     caption: 'Apparel Design',
     hashtags: '#CONCEPT',
@@ -199,8 +215,8 @@ export const allImages: ImageData[] = [
     date: ""
   },
   {
-    images: [
-      { src: '/DSC06709.png', width: 800, height: 600 },
+  images: [
+      { src: '/DSC06709.png', width: 800, height: 800 },
     ],
     caption: 'Apparel Design for MATTER Phnom Penh',
     hashtags: '#CONCEPT',
@@ -210,6 +226,7 @@ export const allImages: ImageData[] = [
     src: "",
     date: ""
   },
+  
 
 
 ];
