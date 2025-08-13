@@ -13,15 +13,29 @@ export default function ViewerPage() {
   const tourNodes: PanoViewerNode[] = [
     {
       id: "1",
-      panorama: "/pano/room1.JPG",
+      panorama: "/pano/1.JPG",
       links: [{ nodeId: "2" }],
       gps: [-20.156479, 25.666725, 3] as [number, number, number],
       sphereCorrection: { pan: "0deg" },
     },
     {
       id: "2",
-      panorama: "/pano/room2.JPG",
-      links: [{ nodeId: "1" }],
+      panorama: "/pano/2.JPG",
+      links: [{ nodeId: "1" }, { nodeId: "3" }, { nodeId: "4" }],
+      gps: [-80.156168, 25.666623, 3] as [number, number, number],
+      sphereCorrection: { pan: "0deg" },
+    },
+    {
+      id: "3",
+      panorama: "/pano/3.JPG",
+      links: [{ nodeId: "1" }, { nodeId: "2" }, { nodeId: "4" }],
+      gps: [-80.156168, 25.666623, 3] as [number, number, number],
+      sphereCorrection: { pan: "0deg" },
+    },
+    {
+      id: "4",
+      panorama: "/pano/4.JPG",
+      links: [{ nodeId: "1" }, { nodeId: "2" }, { nodeId: "3" }],
       gps: [-80.156168, 25.666623, 3] as [number, number, number],
       sphereCorrection: { pan: "0deg" },
     },
