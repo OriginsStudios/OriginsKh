@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import LogoOriginsSection from "../logo-origins-section";
-import FloatingShape from "../../ui/floating-shape";
 
 interface InstagramPost {
   id: string;
@@ -42,39 +40,6 @@ const InstagramNewsSection = React.forwardRef<HTMLElement>((props, ref) => {
   return (
     <section ref={ref} className="min-h-screen bg-transparent text-black pb-24">
       {/* Background shapes */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <FloatingShape
-          delay={0}
-          duration={12}
-          className="top-1/4 left-1/4 md:w-30 md:h-30 w-15 h-15 rounded-full bg-orange-400"
-        />
-        <FloatingShape
-          delay={4}
-          duration={18}
-          className="top-3/4 right-1/4 md:w-32 md:h-32 w-12 h-12 rounded-full bg-gray-400"
-        />
-        <FloatingShape
-          delay={8}
-          duration={20}
-          className="top-1/2 right-1/3 md:w-20 md:h-20 w-10 h-10 rounded-2xl bg-orange-400"
-        />
-
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="w-full h-full"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
-      </div>
-      <div className="w-full flex justify-center items-center pb-12 px-12">
-        <LogoOriginsSection />
-      </div>
 
       <div className="relative z-10 w-full mx-auto">
         <div className="text-sm uppercase tracking-wider text-gray-500 mb-2 pb-8 px-12">

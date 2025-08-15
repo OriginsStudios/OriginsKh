@@ -1,6 +1,4 @@
-
-
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -15,11 +13,12 @@ type SubscriptionStatus = {
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [subscriptionStatus, setSubscriptionStatus] = useState<SubscriptionStatus>(null);
+  const [subscriptionStatus, setSubscriptionStatus] =
+    useState<SubscriptionStatus>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const getInTouchLinks = [
-    { id: 1, name: "Start a Project", href: "/contact" }, 
+    { id: 1, name: "Start a Project", href: "/contact" },
     { id: 2, name: "Join the Team", href: "/hiring" },
     { id: 3, name: "Drop Us a Note", href: "/contact" },
   ];
@@ -36,7 +35,7 @@ export default function Footer() {
 
   const followAlongLinks = [
     { id: 11, name: "Instagram", href: "https://instagram.com/originskh" },
-    { id: 12, name: "Facebook", href: "https://facebook.com/originsstudioskh" },
+    { id: 12, name: "Facebook", href: "https://web.facebook.com/originskh" },
     { id: 13, name: "Telegram", href: "https://t.me/originskh" },
   ];
 
@@ -102,7 +101,13 @@ export default function Footer() {
                     )}
                   </button>
                   {subscriptionStatus && (
-                    <p className={`text-sm mt-2 ${subscriptionStatus.success ? "text-green-600" : "text-red-600"}`}>
+                    <p
+                      className={`text-sm mt-2 ${
+                        subscriptionStatus.success
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
                       {subscriptionStatus.message}
                     </p>
                   )}
@@ -176,10 +181,16 @@ export default function Footer() {
         <div className="border-t border-gray-200 mt-8 md:mt-16 pt-6 md:pt-8 w-full">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-xs md:text-sm space-y-4 md:space-y-0 w-full">
             <div className="flex flex-row flex-wrap gap-x-6 gap-y-2">
-              <Link href="/sitemap" className="hover:text-white transition-colors">
+              <Link
+                href="/sitemap"
+                className="hover:text-white transition-colors"
+              >
                 Sitemap
               </Link>
-              <Link href="/privacypolicy" className="hover:text-white transition-colors">
+              <Link
+                href="/privacypolicy"
+                className="hover:text-white transition-colors"
+              >
                 Privacy Policy
               </Link>
             </div>
@@ -192,4 +203,3 @@ export default function Footer() {
     </footer>
   );
 }
-

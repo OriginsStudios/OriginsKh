@@ -87,7 +87,7 @@ const IntroContactSection = React.forwardRef<HTMLElement>((props, ref) => {
           </a>
 
           <a
-            href="https://facebook.com/originsstudioskh"
+            href="https://web.facebook.com/originskh"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base"
