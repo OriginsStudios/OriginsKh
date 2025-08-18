@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://originsstudios.com"),
+  metadataBase: new URL("https://www.originskh.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://originsstudios.com",
+    url: "https://www.originskh.com",
     title: "Origins Studios - Creative Digital Agency in Cambodia",
     description:
       "Leading creative digital agency in Cambodia specializing in motion graphics, web development, brand identity, video production, and digital marketing solutions.",

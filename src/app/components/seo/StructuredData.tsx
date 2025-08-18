@@ -82,13 +82,12 @@ export function OrganizationStructuredData() {
     name: "Origins Studios",
     description:
       "Leading creative digital agency in Cambodia specializing in motion graphics, web development, brand identity, video production, and digital marketing solutions.",
-    url: "https://originsstudios.com",
-    logo: "https://originsstudios.com/origins-thumbnail.png",
+    url: "https://www.originskh.com",
+    logo: "https://www.originskh.com/origins-thumbnail.png",
     sameAs: [
-      // Add your social media URLs here
-      // "https://www.facebook.com/originsstudios",
-      // "https://www.instagram.com/originsstudios",
-      // "https://www.linkedin.com/company/origins-studios",
+      "https://www.instagram.com/originskh/",
+      "https://web.facebook.com/originskh",
+      "https://t.me/originskh",
     ],
     address: {
       "@type": "PostalAddress",
@@ -98,7 +97,7 @@ export function OrganizationStructuredData() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
-      url: "https://originsstudios.com/contact",
+      url: "https://www.originskh.com/contact",
     },
   };
 
@@ -118,10 +117,10 @@ export function WebsiteStructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Origins Studios",
-    url: "https://originsstudios.com",
+    url: "https://www.originskh.com",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://originsstudios.com/search?q={search_term_string}",
+      target: "https://www.originskh.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
@@ -171,7 +170,7 @@ export function ArticleStructuredData({
       name: "Origins Studios",
       logo: {
         "@type": "ImageObject",
-        url: "https://originsstudios.com/origins-thumbnail.png",
+        url: "https://www.originskh.com/origins-thumbnail.png",
       },
     },
     datePublished: publishedDate,
@@ -286,13 +285,13 @@ export function ServiceStructuredData({
     provider: {
       "@type": "Organization",
       name: "Origins Studios",
-      url: "https://originsstudios.com",
+      url: "https://www.originskh.com",
     },
     areaServed: {
       "@type": "Country",
       name: "Cambodia",
     },
-    url: service.url || "https://originsstudios.com/studios",
+    url: service.url || "https://www.originskh.com/studios",
   }));
 
   return (

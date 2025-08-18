@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "About Us - Origins Studios Creative Team & Company Story",
     description:
       "Learn about Origins Studios, Cambodia's premier creative digital agency. Meet our talented team of designers, developers, and motion artists.",
-    url: "https://originsstudios.com/about",
+    url: "https://www.originskh.com/about",
     images: [
       {
         url: "/origins-thumbnail.png",

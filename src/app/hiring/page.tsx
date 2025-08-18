@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Careers & Jobs - Join the Origins Studios Team",
     description:
       "Join Origins Studios, Cambodia's leading creative digital agency. We're looking for talented designers, developers, motion artists, and creative professionals.",
-    url: "https://originsstudios.com/hiring",
+    url: "https://www.originskh.com/hiring",
     images: [
       {
         url: "/origins-thumbnail.png",

@@ -1,5 +1,5 @@
 export async function GET() {
-  const baseUrl = "https://originsstudios.com";
+  const baseUrl = "https://www.originskh.com";
 
   const robotsTxt = `User-agent: *
 Allow: /

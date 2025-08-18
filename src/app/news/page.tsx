@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "News & Blog - Latest Updates from Origins Studios",
     description:
       "Stay updated with the latest news, insights, and creative stories from Origins Studios. Read our blog posts about motion graphics, web development, design trends, and industry insights.",
-    url: "https://originsstudios.com/news",
+    url: "https://www.originskh.com/news",
     images: [
       {
         url: "/origins-thumbnail.png",

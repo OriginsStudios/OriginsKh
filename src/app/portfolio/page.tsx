@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Portfolio - Creative Projects & Case Studies | Origins Studios",
     description:
       "Explore Origins Studios' portfolio of creative projects including motion graphics, web development, brand identity, and video production work.",
-    url: "https://originsstudios.com/portfolio",
+    url: "https://www.originskh.com/portfolio",
     images: [
       {
         url: "/origins-thumbnail.png",

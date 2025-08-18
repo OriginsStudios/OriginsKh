@@ -21,7 +21,7 @@ export async function generateMetadata({
     };
   }
 
-  const baseUrl = "https://originsstudios.com";
+  const baseUrl = "https://www.originskh.com";
 
   return {
     title: `${work.description} | Origins Studios Portfolio`,

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Contact Us - Get In Touch with Origins Studios",
     description:
       "Ready to start your next creative project? Contact Origins Studios today for motion graphics, web development, branding, and digital marketing solutions.",
-    url: "https://originsstudios.com/contact",
+    url: "https://www.originskh.com/contact",
     images: [
       {
         url: "/origins-thumbnail.png",

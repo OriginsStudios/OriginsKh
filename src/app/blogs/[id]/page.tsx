@@ -26,7 +26,7 @@ export async function generateMetadata({
   }
 
   const author = blog.authorId ? getTeamMemberById(blog.authorId) : null;
-  const baseUrl = "https://originsstudios.com";
+  const baseUrl = "https://www.originskh.com";
 
   return {
     title: blog.title,

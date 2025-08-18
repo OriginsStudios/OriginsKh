@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       "Our Studios - Creative Services & Digital Solutions | Origins Studios",
     description:
       "Discover Origins Studios' comprehensive creative services including motion graphics, web development, brand identity, video production, and digital marketing solutions.",
-    url: "https://originsstudios.com/studios",
+    url: "https://www.originskh.com/studios",
     images: [
       {
         url: "/origins-thumbnail.png",

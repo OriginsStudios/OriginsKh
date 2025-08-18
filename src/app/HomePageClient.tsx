@@ -26,31 +26,31 @@ export default function HomePageClient() {
       name: "Motion Graphics & Animation",
       description:
         "Professional motion graphics and animation services for brands, explainer videos, and marketing content.",
-      url: "https://originsstudios.com/studios#motion-graphics",
+      url: "https://www.originskh.com/studios#motion-graphics",
     },
     {
       name: "Web Development",
       description:
         "Custom website development, web applications, and e-commerce solutions using modern technologies.",
-      url: "https://originsstudios.com/studios#web-development",
+      url: "https://www.originskh.com/studios#web-development",
     },
     {
       name: "Brand Identity Design",
       description:
         "Complete brand identity design including logos, visual guidelines, and brand strategy.",
-      url: "https://originsstudios.com/studios#brand-identity",
+      url: "https://www.originskh.com/studios#brand-identity",
     },
     {
       name: "Video Production",
       description:
         "Professional video production services from concept to final delivery including filming and post-production.",
-      url: "https://originsstudios.com/studios#video-production",
+      url: "https://www.originskh.com/studios#video-production",
     },
     {
       name: "Digital Marketing",
       description:
         "Comprehensive digital marketing solutions including social media management, content creation, and campaign strategy.",
-      url: "https://originsstudios.com/studios#digital-marketing",
+      url: "https://www.originskh.com/studios#digital-marketing",
     },
   ];
 
