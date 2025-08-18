@@ -20,13 +20,13 @@ export default function BlogContentRenderer({
           </p>
         );
 
-            case "heading":
+      case "heading":
         const headingClasses = {
           2: "text-2xl font-bold text-gray-900 mt-12 mb-6",
           3: "text-xl font-bold text-gray-900 mt-8 mb-4",
           4: "text-lg font-bold text-gray-900 mt-6 mb-3",
         };
-        
+
         if (block.level === 2) {
           return (
             <h2

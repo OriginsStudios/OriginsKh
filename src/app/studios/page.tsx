@@ -1,32 +1,50 @@
-"use client";
-import { useScroll, useTransform } from "framer-motion";
-import { useNavigation } from "../components/hooks/use-navigation";
-import IntroStudiosSection from "../components/sections/studios/intro-studio-section";
-import DetailStudiosSection from "../components/sections/studios/detail-studios-section";
-import OurServicesSection from "../components/sections/studios/our-services-section";
-import Footer from "../components/ui/footer";
-import SecondaryLayout from "../components/layouts/secondary-layout";
+import { Metadata } from "next";
+import StudiosPageClient from "./StudiosPageClient";
+
+export const metadata: Metadata = {
+  title:
+    "Our Studios - Creative Services & Digital Solutions | Origins Studios",
+  description:
+    "Discover Origins Studios' comprehensive creative services including motion graphics, web development, brand identity, video production, and digital marketing solutions tailored for your business.",
+  keywords: [
+    "origins studios services",
+    "creative services cambodia",
+    "motion graphics services",
+    "web development cambodia",
+    "brand identity design",
+    "video production services",
+    "digital marketing cambodia",
+    "creative studio phnom penh",
+  ],
+  alternates: {
+    canonical: "/studios",
+  },
+  openGraph: {
+    type: "website",
+    title:
+      "Our Studios - Creative Services & Digital Solutions | Origins Studios",
+    description:
+      "Discover Origins Studios' comprehensive creative services including motion graphics, web development, brand identity, video production, and digital marketing solutions.",
+    url: "https://originsstudios.com/studios",
+    images: [
+      {
+        url: "/origins-thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Origins Studios Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Our Studios - Creative Services & Digital Solutions | Origins Studios",
+    description:
+      "Discover Origins Studios' comprehensive creative services including motion graphics, web development, brand identity, video production, and digital marketing solutions.",
+    images: ["/origins-thumbnail.png"],
+  },
+};
 
 export default function StudiosPage() {
-  const { activeSection, scrollToSection } = useNavigation();
-  const { scrollY } = useScroll();
-  const navBackground = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgb(255, 255, 255)", "rgba(255, 251, 251, 0.9)"]
-  );
-
-  return (
-    <SecondaryLayout
-      navColor={navBackground.get()}
-      pageBackground="rgb(255, 255, 255)"
-      activeSection={activeSection}
-      scrollToSection={scrollToSection}
-    >
-      <IntroStudiosSection />
-      <DetailStudiosSection />
-      <OurServicesSection />
-      <Footer />
-    </SecondaryLayout>
-  );
+  return <StudiosPageClient />;
 }

@@ -114,14 +114,13 @@ export interface Blog {
 export const blogs: Blog[] = [
   {
     id: "bovy-vending-machine-motion-masterpiece",
-    title:
-      "How Bovy Turned 'Vending Machine' into a Motion Masterpiece — And How ORIGINS Can Do the Same for You",
+    title: "How Bovy Turned 'Vending Machine' into a Motion Masterpiece",
     summary:
       "At ORIGINS Studio, every project is a chance to show what happens when vision meets skill — and 'Vending Machine' is one of our proudest examples. In just one week, our motion artist Bovy transformed a simple concept into a visually stunning animation that's as entertaining as it is technically impressive.",
     date: "January 15, 2025",
     image: "/blog/blog1/thumbnail.png",
     category: "Portfolio",
-    authorId: "Ly Bovy",
+    authorId: "Horn Davin",
     tableOfContents: [
       {
         id: "creative-vision",
@@ -166,6 +165,35 @@ export const blogs: Blog[] = [
         poster: "/blog/blog1/thumbnail.png",
         caption:
           "Watch Bovy's \"Vending Machine\" animation - a week's worth of creative excellence compressed into motion",
+      },
+      // Inserted images 1.png to 4.png after the video and before the first heading
+      {
+        type: "image",
+        src: "/blog/blog1/1.png",
+        alt: "Bovy's Vending Machine - Frame 1",
+        caption: "A key frame from the motion masterpiece (1/4)",
+        className: "rounded-2xl shadow-lg object-cover w-full h-80 relative",
+      },
+      {
+        type: "image",
+        src: "/blog/blog1/2.png",
+        alt: "Bovy's Vending Machine - Frame 2",
+        caption: "A key frame from the motion masterpiece (2/4)",
+        className: "rounded-2xl shadow-lg object-cover w-full h-80 relative",
+      },
+      {
+        type: "image",
+        src: "/blog/blog1/3.png",
+        alt: "Bovy's Vending Machine - Frame 3",
+        caption: "A key frame from the motion masterpiece (3/4)",
+        className: "rounded-2xl shadow-lg object-cover w-full h-80 relative",
+      },
+      {
+        type: "image",
+        src: "/blog/blog1/4.png",
+        alt: "Bovy's Vending Machine - Frame 4",
+        caption: "A key frame from the motion masterpiece (4/4)",
+        className: "rounded-2xl shadow-lg object-cover w-full h-80 relative",
       },
       {
         type: "heading",

@@ -1,28 +1,47 @@
-"use client";
-import { useScroll, useTransform } from "framer-motion";
-import { useNavigation } from "../components/hooks/use-navigation";
-import Footer from "../components/ui/footer";
-import ServiceSection from "../components/sections/service-seaction";
-import SecondaryLayout from "../components/layouts/secondary-layout";
-import PortfolioSection from "../components/sections/portfolio/portfolio-section";
+import { Metadata } from "next";
+import PortfolioPageClient from "./PortfolioPageClient";
 
+export const metadata: Metadata = {
+  title: "Portfolio - Creative Projects & Case Studies | Origins Studios",
+  description:
+    "Explore Origins Studios' portfolio of creative projects including motion graphics, web development, brand identity, and video production work for clients across Cambodia and beyond.",
+  keywords: [
+    "origins studios portfolio",
+    "creative projects cambodia",
+    "motion graphics portfolio",
+    "web development projects",
+    "brand identity case studies",
+    "video production portfolio",
+    "digital agency work",
+    "cambodia creative work",
+  ],
+  alternates: {
+    canonical: "/portfolio",
+  },
+  openGraph: {
+    type: "website",
+    title: "Portfolio - Creative Projects & Case Studies | Origins Studios",
+    description:
+      "Explore Origins Studios' portfolio of creative projects including motion graphics, web development, brand identity, and video production work.",
+    url: "https://originsstudios.com/portfolio",
+    images: [
+      {
+        url: "/origins-thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Origins Studios Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio - Creative Projects & Case Studies | Origins Studios",
+    description:
+      "Explore Origins Studios' portfolio of creative projects including motion graphics, web development, brand identity, and video production work.",
+    images: ["/origins-thumbnail.png"],
+  },
+};
 
 export default function PortfolioPage() {
-  const { activeSection, scrollToSection } = useNavigation();
-  const { scrollY } = useScroll();
-  const navBackground = useTransform(scrollY, [0, 100], ["rgb(255, 255, 255)", "rgba(255, 251, 251, 0.9)"]);
-
-  return (
-    <SecondaryLayout 
-      navColor={navBackground.get()} 
-      pageBackground="rgb(255, 255, 255)"
-      activeSection={activeSection} 
-      scrollToSection={scrollToSection}
-    >
-      <PortfolioSection/>
-      <ServiceSection/>
-      <Footer  />
-    </SecondaryLayout>
-  );
+  return <PortfolioPageClient />;
 }
-
