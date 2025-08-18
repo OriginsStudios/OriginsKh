@@ -1,7 +1,3 @@
-import MainLayout from "../components/layouts/main-layout";
-import Footer from "../components/ui/footer";
-import InstagramNewsSection from "../components/sections/news/instagram-news-section";
-import BlogListSection from "../components/sections/blog/BlogListSection";
 import { Metadata } from "next";
 import NewsPageClient from "./NewsPageClient";
 

@@ -1,7 +1,3 @@
-import Footer from "../components/ui/footer";
-import IntroHiringSection from "../components/sections/hiring/intro-hiring-section";
-import FindUrJobSection from "../components/sections/hiring/find-ur-job-section";
-import SecondaryLayout from "../components/layouts/secondary-layout";
 import { Metadata } from "next";
 import HiringPageClient from "./HiringPageClient";
 
