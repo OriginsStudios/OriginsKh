@@ -49,6 +49,10 @@ export const metadata: Metadata = {
       "Join Origins Studios, Cambodia's leading creative digital agency. We're looking for talented designers, developers, motion artists, and creative professionals.",
     images: ["/origins-thumbnail.png"],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function HiringPage() {

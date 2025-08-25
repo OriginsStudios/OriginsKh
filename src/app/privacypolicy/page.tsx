@@ -1,10 +1,63 @@
-"use client"
+import { Metadata } from "next";
+import Link from "next/link";
+import {
+  Shield,
+  Eye,
+  Lock,
+  Users,
+  FileText,
+  Mail,
+  Calendar,
+  ArrowLeft,
+} from "lucide-react";
 
-import Link from "next/link"
-import { Shield, Eye, Lock, Users, FileText, Mail, Calendar, ArrowLeft } from "lucide-react"
+export const metadata: Metadata = {
+  title: "Privacy Policy - How We Protect Your Data | Origins Studios",
+  description:
+    "Learn how Origins Studios collects, uses, and protects your personal information. Our comprehensive privacy policy explains our data practices and your rights regarding your information.",
+  keywords: [
+    "privacy policy origins studios",
+    "data protection Cambodia",
+    "personal information security",
+    "website privacy policy",
+    "data collection practices",
+    "user privacy rights",
+    "information security policy",
+    "digital privacy Cambodia",
+  ],
+  alternates: {
+    canonical: "/privacypolicy",
+  },
+  openGraph: {
+    type: "website",
+    title: "Privacy Policy - How We Protect Your Data | Origins Studios",
+    description:
+      "Learn how Origins Studios collects, uses, and protects your personal information. Our comprehensive privacy policy explains our data practices and your rights.",
+    url: "https://www.originskh.com/privacypolicy",
+    images: [
+      {
+        url: "/origins-thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Origins Studios Privacy Policy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy - How We Protect Your Data | Origins Studios",
+    description:
+      "Learn how Origins Studios collects, uses, and protects your personal information. Our comprehensive privacy policy explains our data practices and your rights.",
+    images: ["/origins-thumbnail.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PrivacyPolicyPage() {
-  const lastUpdated = "December 15, 2024"
+  const lastUpdated = "December 15, 2024";
 
   const sections = [
     {
@@ -106,7 +159,7 @@ export default function PrivacyPolicyPage() {
         },
       ],
     },
-  ]
+  ];
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
@@ -142,8 +195,9 @@ export default function PrivacyPolicyPage() {
             </div>
 
             <p className="text-xl text-slate-600 leading-relaxed max-w-3xl">
-              We are committed to protecting your privacy and ensuring the security of your personal information. This
-              policy explains how we collect, use, and safeguard your data when you use our services.
+              We are committed to protecting your privacy and ensuring the
+              security of your personal information. This policy explains how we
+              collect, use, and safeguard your data when you use our services.
             </p>
           </div>
         </div>
@@ -152,10 +206,12 @@ export default function PrivacyPolicyPage() {
       {/* Table of Contents */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-12 shadow-sm">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Table of Contents</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+            Table of Contents
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {sections.map((section, index) => {
-              const IconComponent = section.icon
+              const IconComponent = section.icon;
               return (
                 <Link
                   key={section.id}
@@ -171,7 +227,7 @@ export default function PrivacyPolicyPage() {
                     </span>
                   </div>
                 </Link>
-              )
+              );
             })}
           </div>
         </div>
@@ -179,7 +235,7 @@ export default function PrivacyPolicyPage() {
         {/* Content Sections */}
         <div className="space-y-16">
           {sections.map((section, index) => {
-            const IconComponent = section.icon
+            const IconComponent = section.icon;
             return (
               <section key={section.id} id={section.id} className="scroll-mt-8">
                 <div className="bg-white rounded-2xl border border-slate-200 p-8 lg:p-12 shadow-sm">
@@ -196,15 +252,22 @@ export default function PrivacyPolicyPage() {
 
                   <div className="space-y-8">
                     {section.content.map((item, itemIndex) => (
-                      <div key={itemIndex} className="border-l-4 border-slate-100 pl-6">
-                        <h3 className="text-xl font-semibold text-slate-900 mb-3">{item.subtitle}</h3>
-                        <p className="text-slate-600 leading-relaxed text-lg">{item.text}</p>
+                      <div
+                        key={itemIndex}
+                        className="border-l-4 border-slate-100 pl-6"
+                      >
+                        <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                          {item.subtitle}
+                        </h3>
+                        <p className="text-slate-600 leading-relaxed text-lg">
+                          {item.text}
+                        </p>
                       </div>
                     ))}
                   </div>
                 </div>
               </section>
-            )
+            );
           })}
         </div>
 
@@ -215,12 +278,15 @@ export default function PrivacyPolicyPage() {
               <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/10">
                 <Mail className="w-6 h-6 text-white" />
               </div>
-              <h2 className="text-3xl font-bold">Questions About This Policy?</h2>
+              <h2 className="text-3xl font-bold">
+                Questions About This Policy?
+              </h2>
             </div>
 
             <p className="text-slate-300 text-lg leading-relaxed mb-8">
-              If you have any questions about this Privacy Policy, our data practices, or your rights regarding your
-              personal information, please don&apos;t hesitate to contact us.
+              If you have any questions about this Privacy Policy, our data
+              practices, or your rights regarding your personal information,
+              please don&apos;t hesitate to contact us.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -243,12 +309,13 @@ export default function PrivacyPolicyPage() {
         {/* Footer Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-slate-500">
-            This privacy policy is effective as of {lastUpdated} and will remain in effect except with respect to any
-            changes in its provisions in the future, which will be in effect immediately after being posted on this
-            page.
+            This privacy policy is effective as of {lastUpdated} and will remain
+            in effect except with respect to any changes in its provisions in
+            the future, which will be in effect immediately after being posted
+            on this page.
           </p>
         </div>
       </div>
     </main>
-  )
+  );
 }

@@ -42,6 +42,7 @@ export default function CustomCursor() {
         transition: "transform 0.15s ease",
         transformOrigin: "center",
       }}
+      className="hidden md:block"
     >
       <Image
         src="/cursor/cursor.png"
