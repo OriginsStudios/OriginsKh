@@ -16,6 +16,7 @@ const categories = [
   "Client Management",
   "Ambassador",
   "Features",
+  "Achievements",
 ];
 
 export default function BlogListSection() {
