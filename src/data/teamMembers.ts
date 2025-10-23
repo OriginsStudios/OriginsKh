@@ -1,5 +1,3 @@
-
-
 export interface SocialLinks {
   linkedin?: string;
   twitter?: string;
@@ -22,62 +20,57 @@ export interface TeamMember {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: "Cheng Dalipine",
-    name: "Cheng Dalipine",
-    position: "Marketing Executive", 
-    image: "/ORS_Dalipine_v60.jpg",
+    id: "Uylong Song",
+    name: "Uylong Song",
+    position: "Webapp & Tech. Development Executive",
+    image: "/Team/ERC_CUTOUT.jpg",
     description: "",
-    expertise: [
-    ],
+    expertise: [],
     joinDate: "",
   },
-    {
+  {
     id: "Horn Davin",
     name: "Horn Davin",
-    position: "Creative Lead",
-    image: "/ORS_Davin_v60.jpg",
+    position: "Team & Project Lead",
+    image: "/Team/DVN_CUTOUT.png",
     description: "",
     expertise: [
       "Business Strategy",
       "Financial Management",
-      "Corporate Leadership"
+      "Corporate Leadership",
     ],
     joinDate: "",
   },
   {
     id: "Ly Bovy",
     name: "Ly Bovy",
-    position: "Creative Executive (Motion)",
-    image: "/ORS_Bovy_v60.jpg",
+    position: "Graphic & Motion Designer",
+    image: "/Team/BVY_CUTOUT.png",
     description: "",
-    expertise: [
-    ],
+    expertise: [],
     joinDate: "",
   },
   {
-    id: "Sarin Sophavatey",
-    name: "Sarin Sophavatey",
-    position: "Creative Executive (Graphics & Concept)",
-    image: "/ORS_Vatey_v60.jpg",
+    id: "Na Sereybosba",
+    name: "Na Sereybosba",
+    position: "Content & Creative Executive",
+    image: "/Team/SBA_CUTOUT.png",
     description: "",
-    expertise: [
-    ],
+    expertise: [],
     joinDate: "",
   },
-    {
-    id: "Van Hoklin",
-    name: "Van Hoklin",
-    position: "Web Developer",
-    image: "/ORS_Hoklin_v60.jpg",
+  {
+    id: "Sokvilya Veasna",
+    name: "Sokvilya Veasna",
+    position: "Marketing & Client Relations Executive",
+    image: "/Team/LYA_CUTOUT.png",
     description: "",
-    expertise: [
-    ],
+    expertise: [],
     joinDate: "",
   },
-
 ];
 
 // Helper function to get team member by ID
 export const getTeamMemberById = (id: string): TeamMember | undefined => {
-  return TEAM_MEMBERS.find(member => member.id === id);
+  return TEAM_MEMBERS.find((member) => member.id === id);
 };

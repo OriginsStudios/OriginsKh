@@ -1,0 +1,60 @@
+
+The image shows an **organization chart** for a company called **ORIGINS**. The company logo is placed at the top left of the document.
+
+Below the logo, the title **"ORGANIZATION CHART"** is written in bold black text.
+
+The chart is divided into **three main sections**:
+
+1. **Business & Development Area**
+2. **Marketing & Operations Area**
+3. **Technical & Production Area**
+
+---
+
+### **Structure of the Organization Chart**
+
+#### **Top Level: Business & Development Area**
+
+* **Prof. Brian Ko** — *Owner & Business Director*
+* **Sam Wujiale** — *Founder & Studio Director*
+
+---
+
+#### **Second Level:**
+
+* **Marketing & Operations Area**
+
+  * **Sreng Sannyaliza** — *Co-Founder & Studio Manager*
+
+    * **Veasna Sokvilya** — *Marketing & Client Relations Executive*
+
+* **Technical & Production Area**
+
+  * **Horn Davin** — *Team & Project Lead*
+
+    * **Na Sereybosba** — *Content & Creative Executive*
+    * **Song Uylong (Eric)** — *Webapp & Tech. Development Executive*
+    * **Ly Bovy** — *Graphic & Motion Designer*
+
+---
+
+### **Roles and Responsibilities (as listed at the bottom of the document)**
+
+* **Leadership & Strategy:** Prof. Brian Ko + Sam Wujiale
+* **Operations & Management:** Sreng Sannyaliza + Horn Davin
+* **Client & Market Growth:** Veasna Sokvilya
+* **Technology:** Song Uylong (Eric)
+* **Content & Creative Production:** Na Sereybosba + Ly Bovy
+
+---
+
+### **Visual Layout Notes**
+
+* The chart uses rectangular boxes with connecting lines to indicate hierarchy and reporting structure.
+* The color scheme is grayscale with black text.
+* The ORIGINS logo includes stylized text with an orange accent in the “O” symbol.
+* The chart appears to be printed on a white paper background.
+
+---
+
+Would you like me to convert this organizational chart into a **digital version (editable diagram or PowerPoint/Excel format)**?
