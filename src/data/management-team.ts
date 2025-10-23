@@ -58,7 +58,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "sreng-sannyaliza",
     name: "Sreng Sannyaliza",
     position: "Co-founder & Studio Manager",
-    image: "/Team/LZA_CUTOUT.png",
+    image: "/Team/LZA_CUTOUT.jpg",
     description:
       "Operations expert who ensures our projects run smoothly from conception to delivery. Liza brings structure and efficiency to our creative process.",
     expertise: [
