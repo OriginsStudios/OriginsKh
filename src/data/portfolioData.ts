@@ -27,7 +27,7 @@ export const allImages: ImageData[] = [
       { src: "/work/juvie/DSC02233.jpg", width: 800, height: 800 },
       { src: "/work/juvie/DSC02316.jpg", width: 800, height: 800 },
       { src: "/work/juvie/DSC02305.jpg", width: 800, height: 800 },
-      { src: "/work/juvie/DSC02217.JPG", width: 800, height: 800 },
+      { src: "/work/juvie/DSC02217.jpg", width: 800, height: 800 },
     ],
     caption: "Studio Event for Juvie",
     hashtags: "#PRODUCTION",
