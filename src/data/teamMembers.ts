@@ -20,10 +20,10 @@ export interface TeamMember {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: "Uylong Song",
-    name: "Uylong Song",
+    id: "Van Hoklin",
+    name: "Van Hoklin",
     position: "Webapp & Tech. Development Executive",
-    image: "/Team/ERC_CUTOUT.jpg",
+    image: "/hoklin.jpg",
     description: "",
     expertise: [],
     joinDate: "",
@@ -50,15 +50,15 @@ export const TEAM_MEMBERS: TeamMember[] = [
     expertise: [],
     joinDate: "",
   },
-  {
-    id: "Na Sereybosba",
-    name: "Na Sereybosba",
-    position: "Content & Creative Executive",
-    image: "/Team/SBA_CUTOUT.png",
-    description: "",
-    expertise: [],
-    joinDate: "",
-  },
+  // {
+  //   id: "Na Sereybosba",
+  //   name: "Na Sereybosba",
+  //   position: "Content & Creative Executive",
+  //   image: "/Team/SBA_CUTOUT.png",
+  //   description: "",
+  //   expertise: [],
+  //   joinDate: "",
+  // },
   {
     id: "Sokvilya Veasna",
     name: "Sokvilya Veasna",
@@ -68,6 +68,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     expertise: [],
     joinDate: "",
   },
+
 ];
 
 // Helper function to get team member by ID
