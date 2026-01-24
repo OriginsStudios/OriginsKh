@@ -23,7 +23,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "Van Hoklin",
     name: "Van Hoklin",
     position: "Webapp & Tech. Development Executive",
-    image: "/ORS_Hoklin_v60.jpg",
+    image: "/placeholder3.jpg",
     description: "",
     expertise: [],
     joinDate: "",
