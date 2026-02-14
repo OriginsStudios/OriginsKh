@@ -10,9 +10,9 @@ import LogoOriginsSection from "../logo-origins-section";
 const categories = [
   "All",
   "Portfolio",
-  "Product Updates",
+  "Concept",
   "News",
-  "Academy",
+  "Creative",
   "Client Management",
   "Ambassador",
   "Features",

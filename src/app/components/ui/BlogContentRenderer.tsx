@@ -1,8 +1,10 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ContentBlock } from "../../../data/blogs";
+import { ContentBlock, ImageBlock, VideoBlock } from "../../../data/blogs";
+import BlogMediaSlideshow from "./BlogMediaSlideshow";
 
 interface BlogContentRendererProps {
   content: ContentBlock[];
@@ -11,6 +13,11 @@ interface BlogContentRendererProps {
 export default function BlogContentRenderer({
   content,
 }: BlogContentRendererProps) {
+  const isMediaBlock = (
+    block: ContentBlock
+  ): block is ImageBlock | VideoBlock =>
+    block.type === "image" || block.type === "video";
+
   const renderBlock = (block: ContentBlock, index: number) => {
     switch (block.type) {
       case "text":
@@ -245,7 +252,48 @@ export default function BlogContentRenderer({
 
   return (
     <div className="space-y-6">
-      {content.map((block, index) => renderBlock(block, index))}
+      {(() => {
+        const renderedBlocks: ReactNode[] = [];
+
+        for (let i = 0; i < content.length; i += 1) {
+          const block = content[i];
+
+          if (isMediaBlock(block)) {
+            const slides: Array<ImageBlock | VideoBlock> = [];
+            let cursor = i;
+
+            while (cursor < content.length && isMediaBlock(content[cursor])) {
+              slides.push(content[cursor] as ImageBlock | VideoBlock);
+              cursor += 1;
+            }
+
+            if (slides.length > 1) {
+              const containerClassName =
+                slides.find(
+                  (slide): slide is ImageBlock =>
+                    slide.type === "image" && Boolean(slide.className)
+                )?.className || undefined;
+
+              renderedBlocks.push(
+                <BlogMediaSlideshow
+                  key={`slideshow-${i}`}
+                  slides={slides}
+                  containerClassName={containerClassName}
+                />
+              );
+            } else {
+              renderedBlocks.push(renderBlock(slides[0], i));
+            }
+
+            i = cursor - 1;
+            continue;
+          }
+
+          renderedBlocks.push(renderBlock(block, i));
+        }
+
+        return renderedBlocks;
+      })()}
     </div>
   );
 }

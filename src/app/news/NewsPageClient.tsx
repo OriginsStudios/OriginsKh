@@ -3,7 +3,7 @@ import { useScroll, useTransform } from "framer-motion";
 import { useNavigation } from "../components/hooks/use-navigation";
 import MainLayout from "../components/layouts/main-layout";
 import Footer from "../components/ui/footer";
-import InstagramNewsSection from "../components/sections/news/instagram-news-section";
+// import InstagramNewsSection from "../components/sections/news/instagram-news-section";
 import BlogListSection from "../components/sections/blog/BlogListSection";
 
 export default function NewsPageClient() {
@@ -22,7 +22,7 @@ export default function NewsPageClient() {
       scrollToSection={scrollToSection}
     >
       <BlogListSection />
-      <InstagramNewsSection />
+      {/* <InstagramNewsSection /> */}
       <Footer />
     </MainLayout>
   );
