@@ -41,6 +41,7 @@ export default function IntroHomeSection() {
       </div>
 
       {/* Bottom fade into the lifestyle section */}
+      {/* <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20 bg-gradient-to-t from-[#fff7f1]/80 via-[#fff7f1]/30 to-transparent" /> */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#fff7f1] to-transparent" />
     </section>
   );
