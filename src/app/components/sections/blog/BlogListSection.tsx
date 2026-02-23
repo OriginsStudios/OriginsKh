@@ -27,6 +27,9 @@ export default function BlogListSection() {
     activeCategory === "All"
       ? blogs
       : blogs.filter((blog) => blog.category === activeCategory);
+  const sortedBlogs = [...filteredBlogs].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <div className="min-h-screen">
@@ -95,24 +98,24 @@ export default function BlogListSection() {
 
       {/* Content Section */}
       <div className="max-w-7xl mx-auto px-14 py-12">
-        {/* Featured Blog Post */}
-        {filteredBlogs.length > 0 && (
+        {/* Featured Blog Post (Latest) */}
+        {sortedBlogs.length > 0 && (
           <div className="mb-16">
-            <BigBlogCard blog={filteredBlogs[0]} />
+            <BigBlogCard blog={sortedBlogs[0]} />
           </div>
         )}
 
         {/* Blog Grid */}
-        {filteredBlogs.length > 1 && (
+        {sortedBlogs.length > 1 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredBlogs.slice(1).map((blog) => (
+            {sortedBlogs.slice(1).map((blog) => (
               <BlogCard key={blog.id} blog={blog} />
             ))}
           </div>
         )}
 
         {/* Empty State */}
-        {filteredBlogs.length === 0 && (
+        {sortedBlogs.length === 0 && (
           <div className="text-center py-16">
             <div className="text-gray-400 mb-4">
               <svg
