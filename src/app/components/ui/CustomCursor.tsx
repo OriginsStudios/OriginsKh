@@ -47,8 +47,8 @@ export default function CustomCursor() {
       <Image
         src="/cursor/cursor.png"
         alt="Custom Cursor"
-        width={hovered ? 36 : 24}
-        height={hovered ? 36 : 24}
+        width={hovered ? 30 : 20}
+        height={hovered ? 30 : 20}
         style={{
           transition: "width 0.05s ease, height 0.05s ease",
         }}
