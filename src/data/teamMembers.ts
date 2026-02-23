@@ -51,7 +51,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     joinDate: "",
   },
   {
-    id: "Sokvilya Veasna",
+    id: "Veasna Sokvilya",
     name: "Sokvilya Veasna",
     position: "Marketing & Client Relations Executive",
     image: "/Team/LYA_CUTOUT.png",
