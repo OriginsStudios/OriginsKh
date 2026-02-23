@@ -1,79 +1,47 @@
 "use client";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import VideoSection from "../video-section";
-import LogoOriginsSection from "../logo-origins-section";
 import FloatingShape from "../../ui/floating-shape";
 
 export default function IntroHomeSection() {
-  
   return (
-    <section id="intro" className="min-h-screen bg-transparent m-0 py-0">
-      {/* Background shapes */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+    <section id="intro" className="relative min-h-screen overflow-hidden bg-black">
+      {/* Video background */}
+      <div className="absolute inset-0">
+        <video
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/origins-thumbnail.png"
+        >
+          <source src="/video/origins-showreel-2025.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.10),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(255,170,90,0.18),transparent_50%)]" />
+      </div>
+
+      {/* Floating accents */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <FloatingShape
           delay={0}
-          duration={12}
-          className="top-1/4 left-1/4 md:w-30 md:h-30 w-15 h-15 rounded-full bg-orange-400"
+          duration={14}
+          className="top-10 left-10 md:w-48 md:h-48 w-28 h-28 rounded-full bg-orange-400/20 blur-3xl"
         />
         <FloatingShape
           delay={4}
           duration={18}
-          className="top-3/4 right-1/4 md:w-32 md:h-32 w-12 h-12 rounded-full bg-gray-400"
+          className="bottom-20 right-12 md:w-56 md:h-56 w-32 h-32 rounded-full bg-white/10 blur-3xl"
         />
         <FloatingShape
           delay={8}
-          duration={20}
-          className="top-1/2 right-1/3 md:w-20 md:h-20 w-10 h-10 rounded-2xl bg-orange-400"
+          duration={22}
+          className="top-1/3 right-1/4 md:w-40 md:h-40 w-24 h-24 rounded-3xl bg-orange-300/20 blur-2xl"
         />
-
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="w-full h-full"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
       </div>
 
-      <LogoOriginsSection />
-
-      <VideoSection
-        videoSrc="/video/origins-showreel-2025.mp4"
-        thumbnailSrc={"/origins-thumbnail.png"}
-        id=""
-        showControls={true}
-        autoPlay={true}
-        muted={true}
-        loop={true}
-        playsInline={true}
-      />
-
-      <div className="text-center mb-4 px-4 sm:px-8">
-        <h2
-          className="text-2xl md:text-4xl  font-normal mb-6 text-black"
-          style={{ fontFamily: "DM Serif Text" }}
-        >
-          We are a creative agency
-          <br />
-          helping brands revive their dreams
-        </h2>
-      </div>
-
-      <div className="text-center px-4 sm:px-8">
-        <Link
-          href="/portfolio"
-          className="bg-orange-400 text-white rounded-full px-3 py-1 md:px-6 md:py-3  font-light inline-flex items-center gap-3 hover:bg-orange-400 transition-colors duration-300"
-        >
-          View All Work
-          <ArrowRight size={18} />
-        </Link>
-      </div>
+      {/* Bottom fade into the lifestyle section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#fff7f1] to-transparent" />
     </section>
   );
 }

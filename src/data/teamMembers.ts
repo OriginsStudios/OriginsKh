@@ -42,10 +42,10 @@ export const TEAM_MEMBERS: TeamMember[] = [
     joinDate: "",
   },
   {
-    id: "Sreng SannyPhillip",
-    name: "Sreng SannyPhillip",
+    id: "Sreng Sannyphillip",
+    name: "Sreng Sannyphillip",
     position: "Graphic & Studios Assistant",
-    image: "/placeholder3.jpg",
+    image: "/Team/phillip.png",
     description: "",
     expertise: [],
     joinDate: "",

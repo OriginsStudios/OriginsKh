@@ -88,9 +88,11 @@ export default function HomePageClient() {
         scrollToSection={scrollToSection}
       >
         <IntroHomeSection />
-        <OurWorkSection />
-        <OurStudiosSection />
-        <OurClientsSection />
+        <div className="bg-[#fff7f1]">
+          <OurWorkSection />
+          <OurStudiosSection />
+          <OurClientsSection />
+        </div>
         {/* <RelatedReading/> */}
         <Footer />
       </MainLayout>

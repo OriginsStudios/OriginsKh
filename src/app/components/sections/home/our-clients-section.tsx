@@ -22,19 +22,24 @@ export default function OurClientsSection() {
   const doubledClients = [...clients, ...clients];
 
   return (
-    <section id="" className="py-16 bg-transparent px-8">
-      <div className="w-full">
-        <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-12">
-          <p className="text-gray-600 text-xl mt-2">OUR CLIENTS</p>
+    <section id="" className="relative py-20 md:py-28 px-4 sm:px-8 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-8 right-16 h-40 w-40 rounded-full bg-orange-200/40 blur-3xl" />
+        <div className="absolute bottom-6 left-12 h-52 w-52 rounded-full bg-teal-200/30 blur-3xl" />
+      </div>
+
+      <div className="relative w-full max-w-6xl mx-auto">
+        <div className="border-t border-teal-200/60 flex justify-between items-center text-sm mb-12 pt-8">
+          <p className="text-teal-700 text-xs uppercase tracking-[0.35em]">Our Clients</p>
         </div>
 
         {/* Scroll Container */}
-        <div className="overflow-hidden whitespace-nowrap relative px-8">
-          <div className="flex space-x-12 animate-scroll">
+        <div className="overflow-hidden whitespace-nowrap relative px-2 md:px-8">
+          <div className="flex space-x-10 animate-scroll">
             {doubledClients.map((client, idx) => (
               <div
                 key={`${client.name}-${idx}`}
-                className=" flex-shrink-0 w-40 h-40 flex items-center justify-center bg-white rounded-lg shadow-sm p-4 border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                className="flex-shrink-0 w-40 h-40 flex items-center justify-center bg-white/80 rounded-2xl shadow-sm p-5 border border-white/60 backdrop-blur hover:shadow-md transition-shadow duration-300"
               >
                 <div className="relative w-full h-full">
                   <Image

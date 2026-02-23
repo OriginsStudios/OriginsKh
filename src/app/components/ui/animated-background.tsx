@@ -81,7 +81,7 @@ export default function AnimatedBackground({
       {
         key: index,
         className: cn(
-          "relative inline-flex bg-gray-200 rounded-full",
+          "relative inline-flex rounded-full bg-white/75 backdrop-blur-md border border-white/60 shadow-sm",
           child.props.className
         ),
         ...interactionProps,

@@ -69,17 +69,19 @@ export default function NavigationBar({
         transition:
           "background-color 700ms ease-in-out, color 700ms ease-in-out",
       }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-8 py-6 pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4 md:py-6 pointer-events-none"
     >
       <div className="pointer-events-auto w-full">
+        <div className="mx-auto">
+          <div className="rounded-full border border-white/70 bg-white/85 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,0.12)] px-4 md:px-6 py-3 md:py-4">
         {/* Desktop Nav */}
         <div className="hidden md:flex flex-col items-center">
           <div className="w-full flex justify-between items-center">
             {/* Left Nav */}
             <div className="flex space-x-2 group">
               <AnimatedBackground
-                className="rounded-full bg-orange-400"
-                hoverClassName="bg-orange-400"
+                className="rounded-full bg-gradient-to-r from-orange-400 to-teal-600"
+                hoverClassName="bg-orange-400/90"
                 transition={{
                   type: "spring",
                   bounce: 0.2,
@@ -103,10 +105,10 @@ export default function NavigationBar({
                       key={link.href}
                       href={link.href}
                       data-id={link.id}
-                      className={`px-4 py-2 transition-colors duration-200 rounded-full text-xs font-medium uppercase tracking-wider relative z-10 bg-gray-200 ${
+                      className={`px-4 py-2 transition-colors duration-200 rounded-full text-[11px] font-semibold uppercase tracking-[0.28em] relative z-10 ${
                         isActive
-                          ? "text-white group-hover:text-black hover:!text-white"
-                          : "text-black hover:text-white"
+                          ? "text-white"
+                          : "text-teal-900/80 hover:text-teal-950"
                       }`}
                     >
                       {link.label}
@@ -132,14 +134,13 @@ export default function NavigationBar({
                 </Link>
               ) : (
                 <div
-                  className="sm:text-xs font-medium uppercase tracking-wider hidden lg:inline transition-all duration-700 ease-in-out"
+                  className="sm:text-[11px] font-semibold uppercase tracking-[0.35em] hidden lg:inline transition-all duration-700 ease-in-out text-teal-900/70"
                   style={{ color: textColor }}
                 >
                   LOOKING TO REVIVE YOUR DREAMS?{" "}
                   <button
                     onClick={() => setShowFunnyPopup(true)}
-                    className="inline-flex items-center ml-2 hover:text-orange-600 transition-all duration-700 ease-in-out"
-                    style={{ color: textColor }}
+                    className="inline-flex items-center ml-2 text-orange-500 transition-all duration-700 ease-in-out"
                   >
                     CALL US
                     <ArrowRight className="ml-1 h-3 w-3" />
@@ -151,8 +152,8 @@ export default function NavigationBar({
             {/* Right Nav */}
             <div className="flex space-x-2 group">
               <AnimatedBackground
-                className="rounded-full bg-orange-400"
-                hoverClassName="bg-orange-400"
+                className="rounded-full bg-gradient-to-r from-orange-400 to-teal-600"
+                hoverClassName="bg-orange-400/90"
                 transition={{
                   type: "spring",
                   bounce: 0.2,
@@ -176,10 +177,10 @@ export default function NavigationBar({
                       key={link.href}
                       href={link.href}
                       data-id={link.id}
-                      className={`px-4 py-2 transition-colors duration-200 rounded-full text-xs font-medium uppercase tracking-wider relative z-10 bg-gray-200 ${
+                      className={`px-4 py-2 transition-colors duration-200 rounded-full text-[11px] font-semibold uppercase tracking-[0.28em] relative z-10 ${
                         isActive
-                          ? "text-white group-hover:text-black hover:!text-white"
-                          : "text-black hover:text-white"
+                          ? "text-white"
+                          : "text-teal-900/80 hover:text-teal-950"
                       }`}
                     >
                       {link.label}
@@ -206,7 +207,7 @@ export default function NavigationBar({
           </Link>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="transition-colors duration-700 ease-in-out"
+            className="transition-colors duration-700 ease-in-out text-teal-900"
             style={{ color: textColor }}
             aria-label="Toggle menu"
           >
@@ -216,6 +217,8 @@ export default function NavigationBar({
               <Menu className="h-6 w-6" />
             )}
           </button>
+        </div>
+          </div>
         </div>
         <FunnyPopup
           isOpen={showFunnyPopup}
@@ -229,14 +232,7 @@ export default function NavigationBar({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden mt-4 pb-6"
-            style={{
-              borderBottom: `1px solid ${
-                textColor === "#FFFFFF"
-                  ? "rgba(255, 255, 255, 0.2)"
-                  : "rgba(0, 0, 0, 0.2)"
-              }`,
-            }}
+            className="md:hidden mt-4 rounded-3xl bg-white/95 backdrop-blur-xl p-4 shadow-lg border border-white/70"
           >
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
@@ -244,30 +240,7 @@ export default function NavigationBar({
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex justify-between items-center px-4 py-3 text-lg font-medium uppercase tracking-wider transition-all duration-200 rounded-lg"
-                  style={{
-                    color: textColor,
-                    borderBottom: `1px solid ${
-                      textColor === "#FFFFFF"
-                        ? "rgba(255, 255, 255, 0.1)"
-                        : "rgba(0, 0, 0, 0.1)"
-                    }`,
-                  }}
-                  onMouseEnter={(e) => {
-                    if (textColor === "#FFFFFF") {
-                      // Dark background - white text becomes black on white hover
-                      e.currentTarget.style.backgroundColor = "white";
-                      e.currentTarget.style.color = "black";
-                    } else {
-                      // Light background - black text becomes white on gray hover
-                      e.currentTarget.style.backgroundColor =
-                        "rgba(0, 0, 0, 0.1)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "transparent";
-                    e.currentTarget.style.color = textColor;
-                  }}
+                  className="flex justify-between items-center px-4 py-3 text-base font-semibold uppercase tracking-[0.25em] transition-all duration-200 rounded-2xl text-teal-900 hover:bg-orange-100"
                 >
                   {link.label}
                   <ArrowRight className="h-4 w-4" />

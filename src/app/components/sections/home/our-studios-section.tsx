@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function OurStudiosSection() {
   const slides = [
@@ -25,104 +24,93 @@ export default function OurStudiosSection() {
     },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState<"right" | "reset">("right");
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDirection(activeIndex === slides.length - 1 ? "reset" : "right");
-      setTimeout(() => {
-        setActiveIndex((prev) => (activeIndex === slides.length - 1 ? 0 : prev + 1));
-      }, 50); // Small delay to allow exit animation
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [activeIndex, slides.length]);
-
   return (
-    <section id="journey" className="py-16 md:py-24 bg-transparent relative overflow-hidden px-8">
-      <div className="w-full">
-        <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-10">
-          <p className="text-gray-600 text-xl mt-2">OUR STUDIOS </p>
-        </div>
+    <section id="journey" className="relative overflow-hidden px-4 sm:px-8 py-20 md:py-28">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-16 left-10 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl" />
+        <div className="absolute top-10 right-16 h-44 w-44 rounded-full bg-orange-200/50 blur-3xl" />
+        <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-orange-100/60 blur-3xl" />
+      </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-          {/* Text Section */}
-          <div className="w-full md:w-1/2 text-left">
-            <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">We&rsquo;re A Creative Powerhouse.</h3>
-            <p className="text-gray-600 mb-6 text-md  md:text-lg">
-              As a dynamic and multi-disciplinary Creative Powerhouse, ORIGINS STUDIOS operates across three distinct
-              sectors: ORIGINS Creative, ORIGINS Production & ORIGINS Concept. Each sector designed to bring visionary
-              projects to life through bold ideas and innovative execution.
-            </p>
-            <Link href="/portfolio">
-              <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
-                See more 
-                  <motion.div
-                  className="ml-3"
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-                >
-                  →
-                </motion.div>
-              </button>
-            </Link>
+      <div className="relative w-full max-w-6xl mx-auto">
+        <div className="rounded-[32px] border border-white/70 bg-white/75 backdrop-blur-xl px-6 py-10 md:px-10 md:py-12 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+          <div className="flex flex-col gap-6">
+            <div>
+              <p className="text-xs uppercase tracking-[0.35em] text-teal-700">Our Studios</p>
+              <h3
+                className="mt-3 text-3xl md:text-5xl font-normal text-teal-900"
+                style={{ fontFamily: "DM Serif Text" }}
+              >
+                A creative powerhouse with three distinct studio lanes.
+              </h3>
+            </div>
           </div>
 
-          {/* Enhanced Slideshow Section */}
-          <div className="w-full md:w-1/2 relative mt-8 md:mt-0">
-            <div className="relative w-full aspect-[4/3] md:aspect-square overflow-hidden rounded-xl shadow-xl border-2 border-gray-100">
-              <AnimatePresence initial={false} custom={direction}>
-                <motion.div
-                  key={activeIndex}
-                  custom={direction}
-                  initial={{
-                    opacity: 0,
-                    x: direction === "right" ? 100 : -100,
-                  }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{
-                    opacity: 0,
-                    x: direction === "reset" ? -100 : 100,
-                  }}
-                  transition={{
-                    x: { type: "tween", duration: 0.4 },
-                    opacity: { duration: 0.3 },
-                  }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={slides[activeIndex].image || "/placeholder.svg"}
-                    alt={slides[activeIndex].title}
-                    fill
-                    className="object-cover"
-                    priority
-                    rel="preload"
-                  />
-                  <div className="absolute bottom-4 left-4 right-4 text-orange-400">
-                    <div className="text-lg md:text-xl font-bold bg-transparent/80 backdrop-blur-[2px] px-3 py-1 rounded-lg inline-block">
-                      {slides[activeIndex].title}
+          <div className="mt-12 space-y-5">
+            {slides.map((slide, index) => (
+              <motion.div
+                key={slide.title}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                className="group relative overflow-hidden rounded-[28px] border border-white/70 bg-gradient-to-br from-white/95 via-white/80 to-white/60 p-6 md:p-8 shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
+              >
+                <div className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-orange-200/40 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute -top-10 -left-10 h-28 w-28 rounded-full bg-teal-200/40 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                  <div className="flex items-start gap-5">
+                    <div className="flex flex-col items-center gap-2">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-800 text-white text-xs font-semibold">
+                        0{index + 1}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-teal-600">
+                        Studio
+                      </span>
+                    </div>
+
+                    <div>
+                      <h4
+                        className="text-2xl md:text-3xl font-normal text-teal-900"
+                        style={{ fontFamily: "DM Serif Text" }}
+                      >
+                        {slide.title}
+                      </h4>
+                      <p className="mt-2 text-sm md:text-base text-teal-900/70">
+                        {slide.description}
+                      </p>
                     </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
 
-              {/* Slide Indicators */}
-              <div className="absolute bottom-4 right-4 flex gap-1 md:gap-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setDirection(index > activeIndex ? "right" : "reset");
-                      setActiveIndex(index);
-                    }}
-                    className={`h-1.5 w-4 md:w-5 rounded-full transition-all duration-300 ${
-                      index === activeIndex ? "bg-orange-400" : "bg-gray-300 hover:bg-gray-400"
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
+                  <div className="relative h-24 w-24 md:h-28 md:w-28 overflow-hidden rounded-2xl border border-white/70 shadow-sm">
+                    <Image
+                      src={slide.image || "/placeholder.svg"}
+                      alt={slide.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      priority={index === 0}
+                      rel="preload"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between pt-2">
+              <p className="max-w-3xl text-sm md:text-base text-teal-900/70">
+                ORIGINS Creative, Production, and Concept work together to craft
+                cinematic brand experiences across regions and industries.
+              </p>
+              <Link href="/portfolio" className="shrink-0">
+                <button className="inline-flex items-center justify-center px-6 py-3 bg-teal-800 text-white rounded-full font-semibold hover:bg-orange-400 transition-colors text-sm md:text-base">
+                  See more
+                  <motion.div
+                    className="ml-3"
+                    animate={{ x: [0, 6, 0] }}
+                    transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+                  >
+                    →
+                  </motion.div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
