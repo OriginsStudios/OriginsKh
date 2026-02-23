@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import SlideshowSection from "../slideshow-section";
-import FloatingShape from "../../ui/floating-shape";
 
 type IntroStudiosSectionProps = Record<string, never>;
 const IntroStudiosSection = React.forwardRef<
@@ -75,75 +74,47 @@ const IntroStudiosSection = React.forwardRef<
     <section
       ref={ref}
       id="intro"
-      className="min-h-screen bg-transparent flex flex-col justify-center items-center"
+      className="relative overflow-hidden px-4 sm:px-8 py-20 md:py-28"
     >
-      <div className="text-center mb-4 px-8 py-48">
-        <h2
-          className="text-3xl md:text-7xl font-serif mb-6 text-black"
-          style={{ fontFamily: "DM Serif Text" }}
-        >
-          We revive visions and bring
-          <br />
-          brands’ aspirations to life.
-        </h2>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 left-10 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl" />
+        <div className="absolute top-10 right-16 h-40 w-40 rounded-full bg-orange-200/50 blur-3xl" />
+        <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-orange-100/60 blur-3xl" />
       </div>
-      {/* Background shapes */}
-      {/* Background shapes */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <FloatingShape
-          delay={0}
-          duration={12}
-          className="top-1/4 left-1/4 md:w-30 md:h-30 w-15 h-15 rounded-full bg-orange-400"
-        />
-        <FloatingShape
-          delay={4}
-          duration={18}
-          className="top-3/4 right-1/4 md:w-32 md:h-32 w-12 h-12 rounded-full bg-gray-400"
-        />
-        <FloatingShape
-          delay={8}
-          duration={20}
-          className="top-1/2 right-1/3 md:w-20 md:h-20 w-10 h-10 rounded-2xl bg-orange-400"
-        />
 
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="w-full h-full"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
-      </div>
-      <SlideshowSection
-        images={images}
-        repeatCount={3}
-        scrollSpeed={2}
-        containerClassName="py-4"
-        defaultImageWidth={300}
-        defaultImageHeight={200}
-        autoScrollSpeed={1.5}
-        autoScrollEnabled={true}
-      />
-      <div className="w-full px-12 md:px-24 pt-48">
-        <div className="mx-auto w-full">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-            <div className="w-full">
-              <h3 className="text-2xl md:text-3xl text-black mb-8 text-justify">
-                We empower brands to revive their dreams by uniting creative
-                vision, production excellence, and innovative concepts—all under
-                one roof. Through close collaboration, we guide our clients in
-                making bold decisions, seizing opportunities, and crafting
-                memorable experiences that resonate. Together, we transform
-                ideas into powerful realities that elevate brands and captivate
-                audiences.
-              </h3>
-            </div>
+      <div className="relative w-full max-w-6xl mx-auto">
+        <div className="rounded-[32px] border border-white/70 bg-white/70 backdrop-blur-xl px-6 py-10 md:px-10 md:py-12 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-teal-700">
+              Studios
+            </p>
+            <h2
+              className="mt-3 text-3xl md:text-5xl font-normal text-teal-900"
+              style={{ fontFamily: "DM Serif Text" }}
+            >
+              We revive visions and bring brands’ aspirations to life.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm md:text-base text-teal-900/70">
+              We unite creative vision, production excellence, and innovative concepts—turning bold ideas into memorable realities.
+            </p>
           </div>
+
+          <div className="mt-8 md:mt-10 -mx-6 md:-mx-10">
+            <SlideshowSection
+              images={images}
+              repeatCount={3}
+              scrollSpeed={2}
+              containerClassName="py-4"
+              defaultImageWidth={300}
+              defaultImageHeight={200}
+              autoScrollSpeed={1.5}
+              autoScrollEnabled={true}
+            />
+          </div>
+
+          <p className="mt-8 text-sm md:text-base text-teal-900/70">
+            We empower brands to revive their dreams by uniting creative vision, production excellence, and innovative concepts—all under one roof. Through close collaboration, we guide our clients in making bold decisions, seizing opportunities, and crafting memorable experiences that resonate. Together, we transform ideas into powerful realities that elevate brands and captivate audiences.
+          </p>
         </div>
       </div>
     </section>

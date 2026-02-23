@@ -1,10 +1,11 @@
 
 'use client';
 import { useState, useEffect } from 'react';
-import FloatingShape from '../../ui/floating-shape';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { slugify } from '../../utils/slugify';
+import ServiceSection from '../service-seaction';
 import { imageMap } from '@/data/portfolioData';
 
 export default function PortfolioSection() {
@@ -37,143 +38,141 @@ export default function PortfolioSection() {
   const imagesToShow = isMobile && !showAll ? currentImages.slice(0, 3) : currentImages;
 
   return (
-    <section id="" className="min-h-screen bg-transparent flex flex-col justify-center items-center px-8">
-      <div className="w-full">
-        {/* Background shapes */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          <FloatingShape delay={0} duration={12} className="top-1/4 left-1/4 md:w-30 md:h-30 w-15 h-15 rounded-full bg-orange-400" />
-          <FloatingShape delay={4} duration={18} className="top-3/4 right-1/4 md:w-32 md:h-32 w-12 h-12 rounded-full bg-gray-400" />
-          <FloatingShape delay={8} duration={20} className="top-1/2 right-1/3 md:w-20 md:h-20 w-10 h-10 rounded-2xl bg-orange-400" />
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="w-full h-full"
-              style={{
-                backgroundImage: `
-                  linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-                `,
-                backgroundSize: '50px 50px',
-              }}
-            />
-          </div>
-        </div>
+    <section id="" className="relative overflow-hidden px-4 sm:px-8 py-20 md:py-28">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 left-10 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl" />
+        <div className="absolute top-10 right-16 h-40 w-40 rounded-full bg-orange-200/50 blur-3xl" />
+        <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-orange-100/60 blur-3xl" />
+      </div>
 
-        <div className="text-center mb-4 px-8 py-48">
-          <h2
-            className="text-3xl md:text-7xl font-serif mb-6 text-black"
-            style={{ fontFamily: 'DM Serif Text' }}
-          >
-            We turn bold dreams into impactful brands; 
-            imaginative, authentic, and full 
-            of awesomeness.
-          </h2>
-        </div>
-        
-        {/* Filter Controls */}
-        <div className="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
-          <div className="flex flex-wrap items-center gap-2 pb-32">
-            <span className="px-4 py-2 rounded-full text-sm font-medium text-black">FILTER:</span>
-            {navItems.map((item) => {
-              const active = activeCategory === item.label;
+      <div className="relative w-full max-w-6xl mx-auto">
+        <div className="rounded-[32px] border border-white/70 bg-white/70 backdrop-blur-xl px-6 py-10 md:px-10 md:py-12 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-teal-700">Portfolio</p>
+            <h2
+              className="mt-3 text-3xl md:text-5xl font-normal text-teal-900"
+              style={{ fontFamily: 'DM Serif Text' }}
+            >
+              We turn bold dreams into impactful brands—imaginative, authentic, and full of awesomeness.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm md:text-base text-teal-900/70">
+              A curated selection of motion, production, and concept work shaped by color, light, and tone.
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {navItems.map((item) => {
+                const active = activeCategory === item.label;
+                return (
+                  <motion.button
+                    key={item.label}
+                    onClick={() => handleCategoryChange(item.label)}
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`relative px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${
+                      active ? 'text-white' : 'text-teal-800 hover:text-teal-900'
+                    }`}
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="portfolio-filter-pill"
+                        className="absolute inset-0 rounded-full bg-teal-800 shadow-md shadow-teal-900/20"
+                        transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+                      />
+                    )}
+                    {!active && (
+                      <span className="absolute inset-0 rounded-full border border-teal-100 bg-white" />
+                    )}
+                    <span className="relative z-10">{item.label}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Grid Layout */}
+          <div className="grid md:grid-cols-3 gap-6 w-full mx-auto mt-12">
+            {imagesToShow.map((image, index: number) => {
+              const uniqueKey = `${activeCategory}-${index}-${image.src}`;
+              const isHovered = hoveredImage === uniqueKey;
+
               return (
-                <button
-                  key={item.label}
-                  onClick={() => handleCategoryChange(item.label)}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                    active
-                      ? 'bg-black text-white'
-                      : 'bg-gray-200 text-black hover:bg-gray-300'
-                  }`}
+                <Link
+                  key={uniqueKey}
+                  href={`/portfolio/${slugify(image.description)}`}
+                  className="relative bg-transparent rounded-3xl p-2 group cursor-pointer"
+                  onMouseEnter={() => setHoveredImage(uniqueKey)}
+                  onMouseLeave={() => setHoveredImage(null)}
                 >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Grid Layout */}
-        <div className="grid md:grid-cols-3 gap-4 w-full mx-auto mt-4">
-          {imagesToShow.map((image, index: number) => {
-            const uniqueKey = `${activeCategory}-${index}-${image.src}`;
-            const isHovered = hoveredImage === uniqueKey;
-
-            return (
-              <Link
-                key={uniqueKey}
-                href={`/portfolio/${slugify(image.description)}`}
-                className="relative bg-transparent rounded-xl p-2 group cursor-pointer"
-                onMouseEnter={() => setHoveredImage(uniqueKey)}
-                onMouseLeave={() => setHoveredImage(null)}
-              >
-                <div className="w-full flex justify-center">
-                  <div className="w-full aspect-square relative flex items-center justify-center overflow-hidden rounded-xl">
-                    <div className="relative w-full h-full">
-                      {/* Background Stack Layers */}
-                      <div className={`absolute inset-0 bg-gray-200 rounded-2xl transform transition-all duration-500 ease-out ${
-                        isHovered ? 'translate-x-3 translate-y-3 scale-105' : 'translate-x-2 translate-y-2'
-                      }`} />
-                      <div className={`absolute inset-0 bg-gray-300 rounded-2xl transform transition-all duration-300 ease-out ${
-                        isHovered ? 'translate-x-2 translate-y-2 scale-102' : 'translate-x-1 translate-y-1'
-                      }`} />
-                      {/* Main Image */}
-                      <div className={`relative w-full h-full transform transition-all duration-700 ease-out ${
-                        isHovered ? 'scale-110 -translate-x-1 -translate-y-1' : 'scale-100'
-                      }`}>
-                        <Image
-                          src={image.images[0].src }
-                          alt={image.description}
-                          width={image.images[0].width}
-                          height={image.images[0].height}
-                          className="w-full h-full object-cover rounded-2xl shadow-lg"
-                          priority={index < 3}
-                        />
-                        <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-2xl transition-opacity duration-500 ${
-                          isHovered ? 'opacity-100' : 'opacity-0'
+                  <div className="w-full flex justify-center">
+                    <div className="w-full aspect-square relative flex items-center justify-center overflow-hidden rounded-3xl">
+                      <div className="relative w-full h-full">
+                        {/* Background Stack Layers */}
+                        <div className={`absolute inset-0 bg-[#f3e9dd] rounded-3xl transform transition-all duration-500 ease-out ${
+                          isHovered ? 'translate-x-3 translate-y-3 scale-105' : 'translate-x-2 translate-y-2'
+                        }`} />
+                        <div className={`absolute inset-0 bg-[#efe4da] rounded-3xl transform transition-all duration-300 ease-out ${
+                          isHovered ? 'translate-x-2 translate-y-2 scale-102' : 'translate-x-1 translate-y-1'
+                        }`} />
+                        {/* Main Image */}
+                        <div className={`relative w-full h-full transform transition-all duration-700 ease-out ${
+                          isHovered ? 'scale-110 -translate-x-1 -translate-y-1' : 'scale-100'
                         }`}>
-                          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                            <div className={`transition-all duration-500 px-4 ${
-                              isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                            }`}>
-                              <h3 className="font-bold text-lg mb-2">{image.caption}</h3>
-                              <p className="text-sm text-gray-200 mb-2">{image.description}</p>
+                          <Image
+                            src={image.images[0].src}
+                            alt={image.description}
+                            width={image.images[0].width}
+                            height={image.images[0].height}
+                            className="w-full h-full object-cover rounded-3xl shadow-lg"
+                            priority={index < 3}
+                          />
+                          <div className={`absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/20 to-transparent rounded-3xl transition-opacity duration-500 ${
+                            isHovered ? 'opacity-100' : 'opacity-0'
+                          }`}>
+                            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                              <div className={`transition-all duration-500 px-4 ${
+                                isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                              }`}>
+                                <h3 className="font-semibold text-lg mb-2">{image.caption}</h3>
+                                <p className="text-sm text-white/80 mb-2">{image.description}</p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Show More (Mobile) */}
-        {isMobile && currentImages.length > 3 && (
-          <div className="text-center mt-4">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-400 font-semibold"
-              aria-expanded={showAll}
-              aria-controls="image-list"
-            >
-              {showAll ? 'Show Less' : 'Show More'}
-              <svg
-                className={`w-4 h-4 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+                </Link>
+              );
+            })}
           </div>
-        )}
+
+          {/* Show More (Mobile) */}
+          {isMobile && currentImages.length > 3 && (
+            <div className="text-center mt-6">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-teal-800 hover:bg-orange-50 transition-colors"
+                aria-expanded={showAll}
+                aria-controls="image-list"
+              >
+                {showAll ? 'Show Less' : 'Show More'}
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="mt-8 md:mt-10">
+          <ServiceSection variant="embedded" />
+        </div>
       </div>
     </section>
   );
 }
-
-

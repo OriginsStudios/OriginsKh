@@ -1,43 +1,46 @@
 "use client";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface ServiceSectionProps {
   id?: string;
   textColor?: string;
+  variant?: "standalone" | "embedded";
 }
 
-export default function ServiceSection({ id, textColor }: ServiceSectionProps) {
+export default function ServiceSection({
+  id,
+  textColor,
+  variant = "standalone",
+}: ServiceSectionProps) {
+  const isEmbedded = variant === "embedded";
+  const resolvedTextClass = isEmbedded
+    ? "text-teal-900"
+    : textColor
+      ? `text-[${textColor}]`
+      : "text-black";
+  const sectionClassName = isEmbedded
+    ? "pt-8 md:pt-10 border-t border-teal-100/70"
+    : "py-10 md:py-24 relative overflow-hidden px-8 transition-all duration-700 ease-in-out";
+  const buttonClassName = isEmbedded
+    ? "inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-teal-800 hover:bg-orange-50 transition-colors whitespace-nowrap"
+    : "inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base whitespace-nowrap";
+  const headingSizeClass = isEmbedded ? "text-base md:text-xl" : "text-base md:text-2xl";
+
   return (
-    <section
-      id={id}
-      className="py-10 md:py-24 relative overflow-hidden px-8 transition-all duration-700 ease-in-out"
-    >
-      {" "}
-      {/* Unified padding here */}
-      <div className="mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-          <div className="w-full md:w-[75%] text-left">
-            <h3 className={`text-l md:text-3xl text-[${textColor}] mb-6 text-justify`}>
-              We craft brand experiences that resonate; where imagination meets
-              intention, authenticity drives impact, and awesomeness is
-              non-negotiable. With a multidisciplinary mindset and a spirit of
-              true collaboration, we turn bold dreams into meaningful realities,
-              side by side with our clients every step of the way.{" "}
+    <section id={id} className={sectionClassName}>
+      <div className="mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 md:gap-8">
+          <div className="w-full">
+            <h3
+              className={`${headingSizeClass} ${resolvedTextClass} text-left leading-relaxed`}
+            >
+              We craft brand experiences where imagination meets intention and authenticity drives impact.
             </h3>
+          </div>
+          <div className="w-full flex md:justify-end">
             <Link href="/studios">
-              <button className="flex items-center px-4 py-2 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
-                View Our Services
-                <motion.div
-                  className="ml-3"
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{
-                    repeat: Number.POSITIVE_INFINITY,
-                    duration: 1.5,
-                  }}
-                >
-                  →
-                </motion.div>
+              <button className={buttonClassName}>
+                View Our Services →
               </button>
             </Link>
           </div>

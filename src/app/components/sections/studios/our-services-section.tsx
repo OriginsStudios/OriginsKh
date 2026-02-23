@@ -56,46 +56,80 @@ export default function OurServicesSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen bg-transparent overflow-hidden px-6 pb-12 md:px-8 md:pb-18"
+      className="relative overflow-hidden px-4 sm:px-8 py-20 md:py-28"
     >
-      {/* Content container - removed max-w-screen-xl and mx-auto */}
-      <div className="relative z-10 w-full">
-        {/* OUR STUDIOS header and Space selector */}
-        <div>
-          <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 mb-8"></div>
-          {/* Space selector */}
-          <div className="flex justify-start items-center mb-8">
-            <span className="text-gray-500 font-semibold uppercase mr-4">
-              SPACE:
-            </span>
-            <div className="flex gap-4 items-center">
-              <motion.button
-                onClick={() => setActiveSpace("event")}
-                className={`px-3 py-1 text-sx font-medium rounded-full transition-all duration-300 h-10 flex items-center justify-center ${
-                  activeSpace === "event"
-                    ? "text-white bg-orange-400"
-                    : "text-black bg-gray-200 hover:bg-gray-300"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Event Space
-              </motion.button>
-              <motion.button
-                onClick={() => setActiveSpace("studio")}
-                className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 h-10 flex items-center justify-center ${
-                  activeSpace === "studio"
-                    ? "text-white bg-black"
-                    : "text-black bg-gray-200 hover:bg-gray-300"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Studio Space
-              </motion.button>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 left-10 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl" />
+        <div className="absolute top-10 right-16 h-40 w-40 rounded-full bg-orange-200/50 blur-3xl" />
+        <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-orange-100/60 blur-3xl" />
+      </div>
+
+      <div className="relative w-full max-w-6xl mx-auto">
+        <div className="rounded-[32px] border border-white/70 bg-white/70 backdrop-blur-xl px-6 py-10 md:px-10 md:py-12 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+          <div className="relative z-10 w-full">
+            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.4em] text-teal-700">
+                  Our Spaces
+                </p>
+                <h2
+                  className="mt-3 text-2xl md:text-4xl font-normal text-teal-900"
+                  style={{ fontFamily: "DM Serif Text" }}
+                >
+                  Purpose-built spaces for shoots, workshops, and gatherings.
+                </h2>
+                <p className="mt-3 max-w-xl text-sm md:text-base text-teal-900/70">
+                  Choose the setting that fits your production needs, with flexible booking and support.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <motion.button
+                  onClick={() => setActiveSpace("event")}
+                  className={`relative px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${
+                    activeSpace === "event"
+                      ? "text-white"
+                      : "text-teal-800 hover:text-teal-900"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {activeSpace === "event" && (
+                    <motion.span
+                      layoutId="space-filter-pill"
+                      className="absolute inset-0 rounded-full bg-orange-400 shadow-md shadow-orange-500/20"
+                      transition={{ type: "spring", stiffness: 500, damping: 40 }}
+                    />
+                  )}
+                  {activeSpace !== "event" && (
+                    <span className="absolute inset-0 rounded-full border border-teal-100 bg-white" />
+                  )}
+                  <span className="relative z-10">Event Space</span>
+                </motion.button>
+                <motion.button
+                  onClick={() => setActiveSpace("studio")}
+                  className={`relative px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${
+                    activeSpace === "studio"
+                      ? "text-white"
+                      : "text-teal-800 hover:text-teal-900"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {activeSpace === "studio" && (
+                    <motion.span
+                      layoutId="space-filter-pill"
+                      className="absolute inset-0 rounded-full bg-teal-800 shadow-md shadow-teal-900/20"
+                      transition={{ type: "spring", stiffness: 500, damping: 40 }}
+                    />
+                  )}
+                  {activeSpace !== "studio" && (
+                    <span className="absolute inset-0 rounded-full border border-teal-100 bg-white" />
+                  )}
+                  <span className="relative z-10">Studio Space</span>
+                </motion.button>
+              </div>
             </div>
           </div>
-        </div>
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -104,7 +138,7 @@ export default function OurServicesSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center"
+            className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center"
           >
             {/* Left column - Content */}
             <motion.div
@@ -118,14 +152,14 @@ export default function OurServicesSection() {
                 animate={{ width: "100%" }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className={`h-1 ${
-                  activeSpace === "event" ? "bg-orange-400" : "bg-black"
+                  activeSpace === "event" ? "bg-orange-400" : "bg-teal-800"
                 } mb-8`}
               />
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="uppercase tracking-wider text-sm font-medium text-gray-500 mb-4"
+                className="uppercase tracking-wider text-sm font-medium text-teal-600 mb-4"
               >
                 {activeSpace === "event"
                   ? "OUR EVENT SPACE"
@@ -135,7 +169,7 @@ export default function OurServicesSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-serif font-light text-black leading-none mb-6"
+                className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-teal-900 leading-none mb-6"
               >
                 {currentSpace.title}
               </motion.h1>
@@ -143,8 +177,8 @@ export default function OurServicesSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className={`text-xl md:text-2xl mb-8 font-medium ${
-                  activeSpace === "event" ? "text-orange-400" : "text-gray-800"
+                className={`text-lg md:text-2xl mb-8 font-medium ${
+                  activeSpace === "event" ? "text-orange-400" : "text-teal-800"
                 }`}
               >
                 {currentSpace.subtitle}
@@ -153,7 +187,7 @@ export default function OurServicesSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="space-y-6 text-gray-700 text-lg leading-relaxed"
+                className="space-y-6 text-teal-900/70 text-base md:text-lg leading-relaxed"
               >
                 {currentSpace.description.map((paragraph, index) => (
                   <motion.p
@@ -165,26 +199,26 @@ export default function OurServicesSection() {
                     {paragraph}
                   </motion.p>
                 ))}
-                <div className="pt-6 space-y-6 border-t border-gray-200">
+                <div className="pt-6 space-y-6 border-t border-teal-100/70">
                   <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1 }}
                   >
-                    <h3 className="text-black font-semibold mb-2">
+                    <h3 className="text-teal-900 font-semibold mb-2">
                       Technical Specifications
                     </h3>
-                    <p className="text-gray-600">{currentSpace.specs}</p>
+                    <p className="text-teal-900/70">{currentSpace.specs}</p>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.1 }}
                   >
-                    <h3 className="text-black font-semibold mb-2">
+                    <h3 className="text-teal-900 font-semibold mb-2">
                       Additional Services
                     </h3>
-                    <p className="text-gray-600">{currentSpace.services}</p>
+                    <p className="text-teal-900/70">{currentSpace.services}</p>
                   </motion.div>
                 </div>
               </motion.div>
@@ -196,8 +230,8 @@ export default function OurServicesSection() {
               >
                 <Link href="/contact">
                   <motion.button
-                    className={`group relative overflow-hidden px-4 py-2 md:px-8 md:py-4 text-white font-medium inline-flex items-center gap-2 rounded-2xl ${
-                      activeSpace === "event" ? "bg-orange-400" : "bg-black"
+                    className={`group relative overflow-hidden px-4 py-2 md:px-8 md:py-4 text-white font-semibold uppercase tracking-[0.2em] inline-flex items-center gap-2 rounded-full ${
+                      activeSpace === "event" ? "bg-orange-400" : "bg-teal-800"
                     }`}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
@@ -217,7 +251,7 @@ export default function OurServicesSection() {
                 </Link>
                 <motion.button
                   onClick={() => setIsVideoPlaying(true)}
-                  className="group px-4 py-2 md:px-8 md:py-4 bg-transparent border border-gray-300 text-gray-700 font-medium inline-flex items-center gap-2 hover:bg-gray-50 rounded-2xl"
+                  className="group px-4 py-2 md:px-8 md:py-4 bg-transparent border border-teal-200 text-teal-800 font-semibold uppercase tracking-[0.2em] inline-flex items-center gap-2 hover:bg-orange-50 rounded-full"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -239,7 +273,7 @@ export default function OurServicesSection() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0.4 }}
-                  className="relative z-10 overflow-hidden rounded-2xl"
+                  className="relative z-10 overflow-hidden rounded-3xl border border-white/70 shadow-lg"
                 >
                   <Image
                     src={
@@ -252,12 +286,12 @@ export default function OurServicesSection() {
                     width={800}
                     height={500}
                     unoptimized
-                    className="w-full h-[500px] object-cover rounded-2xl"
+                    className="w-full h-[500px] object-cover rounded-3xl"
                     priority
                     rel="preload"
                   />
                   <motion.div
-                    className="absolute inset-0 border-2 border-white rounded-2xl"
+                    className="absolute inset-0 border border-white/70 rounded-3xl"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
@@ -271,7 +305,7 @@ export default function OurServicesSection() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                      className="relative overflow-hidden group cursor-pointer rounded-2xl"
+                      className="relative overflow-hidden group cursor-pointer rounded-2xl border border-white/70 shadow-sm"
                       onClick={() => setExpandedImage(index + 1)}
                     >
                       <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
@@ -302,24 +336,27 @@ export default function OurServicesSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-32 pt-16 border-t border-gray-200"
+          className="mt-12 md:mt-16 pt-10 border-t border-teal-100/70"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2
+            className="text-3xl md:text-4xl font-normal text-center text-teal-900 mb-10"
+            style={{ fontFamily: "DM Serif Text" }}
+          >
             Compare Our Spaces
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Event Space Card */}
             <motion.div
-              className="bg-transparent border border-gray-200 p-8 relative overflow-hidden group rounded-2xl"
+              className="bg-white/80 border border-white/70 p-6 md:p-8 relative overflow-hidden group rounded-[28px] shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
               whileHover={{ y: -10 }}
               transition={{ duration: 0.3 }}
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-orange-400 rounded-t-2xl" />
-              <h3 className="text-2xl font-bold mb-4">Event Space</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-2xl font-semibold text-teal-900 mb-4">Event Space</h3>
+              <p className="text-teal-900/70 mb-6">
                 Perfect for seminars, workshops, and meetings up to 30 people.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 text-teal-900/70">
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-5 w-5 text-orange-400 flex-shrink-0 mt-0.5" />
                   <span>50m² main space + 20m² networking area</span>
@@ -333,68 +370,47 @@ export default function OurServicesSection() {
                   <span>Catering options available</span>
                 </li>
               </ul>
-              <div className="absolute bottom-0 left-0 w-full h-0 bg-orange-400/10 transition-all duration-500 group-hover:h-full -z-10 rounded-2xl" />
               <Link href="/contact">
-                <button className="flex items-center px-6 py-3 bg-orange-400 text-white rounded-full font-bold hover:bg-black transition-colors text-sm md:text-base">
-                  Get In Touch
-                  <motion.div
-                    className="ml-3"
-                    animate={{ x: [0, 6, 0] }}
-                    transition={{
-                      repeat: Number.POSITIVE_INFINITY,
-                      duration: 1.5,
-                    }}
-                  >
-                    →
-                  </motion.div>
+                <button className="inline-flex items-center gap-2 rounded-full bg-orange-400 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white hover:bg-orange-500 transition-colors">
+                  Get In Touch →
                 </button>
               </Link>
             </motion.div>
             {/* Studio Space Card */}
             <motion.div
-              className="bg-transparent border border-gray-200 p-8 relative overflow-hidden group rounded-2xl"
+              className="bg-white/80 border border-white/70 p-6 md:p-8 relative overflow-hidden group rounded-[28px] shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
               whileHover={{ y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-black rounded-t-2xl" />
-              <h3 className="text-2xl font-bold mb-4">Studio Space</h3>
-              <p className="text-gray-600 mb-6">
+              <div className="absolute top-0 left-0 w-full h-1 bg-teal-800 rounded-t-2xl" />
+              <h3 className="text-2xl font-semibold text-teal-900 mb-4">Studio Space</h3>
+              <p className="text-teal-900/70 mb-6">
                 Professional photography studio with re-surfacable backdrop and
                 lighting.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 text-teal-900/70">
                 <li className="flex items-start gap-2">
-                  <ChevronRight className="h-5 w-5 text-black flex-shrink-0 mt-0.5" />
+                  <ChevronRight className="h-5 w-5 text-teal-800 flex-shrink-0 mt-0.5" />
                   <span>10.4m² flooring + 11.6m² backdrop wall</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ChevronRight className="h-5 w-5 text-black flex-shrink-0 mt-0.5" />
+                  <ChevronRight className="h-5 w-5 text-teal-800 flex-shrink-0 mt-0.5" />
                   <span>Hoist-able diffuser scrim lighting</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <ChevronRight className="h-5 w-5 text-black flex-shrink-0 mt-0.5" />
+                  <ChevronRight className="h-5 w-5 text-teal-800 flex-shrink-0 mt-0.5" />
                   <span>Equipment rental available</span>
                 </li>
               </ul>
-              <div className="absolute bottom-0 left-0 w-full h-0 bg-black/10 transition-all duration-500 group-hover:h-full -z-10 rounded-2xl" />
               <Link href="/contact">
-                <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
-                  Get In Touch
-                  <motion.div
-                    className="ml-3"
-                    animate={{ x: [0, 6, 0] }}
-                    transition={{
-                      repeat: Number.POSITIVE_INFINITY,
-                      duration: 1.5,
-                    }}
-                  >
-                    →
-                  </motion.div>
+                <button className="inline-flex items-center gap-2 rounded-full bg-teal-800 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white hover:bg-teal-900 transition-colors">
+                  Get In Touch →
                 </button>
               </Link>
             </motion.div>
           </div>
         </motion.div>
+        </div>
       </div>
 
       {/* Video modal */}

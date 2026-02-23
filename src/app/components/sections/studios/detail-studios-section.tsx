@@ -50,18 +50,18 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.7,
       ease: [0.16, 0.77, 0.47, 0.97],
     },
   },
@@ -95,118 +95,95 @@ export default function DetailStudioSection() {
   return (
     <section
       id="journey"
-      className="bg-transparent relative overflow-hidden py-48 px-8"
+      className="relative overflow-hidden px-4 sm:px-8 py-20 md:py-28"
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-20 left-10 h-56 w-56 rounded-full bg-teal-200/40 blur-3xl" />
+        <div className="absolute top-12 right-12 h-40 w-40 rounded-full bg-orange-200/50 blur-3xl" />
+        <div className="absolute bottom-0 right-10 h-64 w-64 rounded-full bg-orange-100/60 blur-3xl" />
+      </div>
+
       <motion.div
+        className="relative w-full max-w-6xl mx-auto space-y-10 md:space-y-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        {studios.map((studio, index) => (
-          <div
-            key={studio.name}
-            className={`relative w-full ${
-              index !== 0 ? "mt-16 sm:mt-20 lg:mt-24" : ""
-            }`}
-          >
-            {/* Background Image with rounded corners preserved */}
-            <motion.div
-              className="absolute inset-0 z-0 overflow-hidden rounded-xl"
-              whileHover="hover"
-            >
-              <motion.div variants={imageVariants}>
-                <Image
-                  src={studio.image}
-                  alt={`${studio.name} Studio`}
-                  fill
-                  className="object-cover brightness-75"
-                  priority={index === 0}
-                  rel="preload"
-                />
-              </motion.div>
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
-            </motion.div>
+        {studios.map((studio, index) => {
+          const isReversed = index % 2 === 1;
+          const imageOrder = isReversed ? "md:order-2" : "md:order-1";
+          const contentOrder = isReversed ? "md:order-1" : "md:order-2";
 
-            <motion.div variants={itemVariants} custom={index}>
-              {/* Content Wrapper - responsive padding */}
-              <div className="relative z-10 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 lg:py-28 mx-auto max-w-screen-xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16">
-                {/* Left Section - Studio Name */}
-                <div className="w-full md:w-1/2">
-                  <motion.h1
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-light text-white leading-none"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.2, duration: 0.8 }}
+          return (
+            <motion.div
+              key={studio.name}
+              variants={cardVariants}
+              className="rounded-[32px] border border-white/70 bg-white/70 backdrop-blur-xl shadow-[0_20px_60px_rgba(15,23,42,0.08)] overflow-hidden"
+            >
+              <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center p-6 md:p-8">
+                <div className={`relative w-full aspect-[4/3] ${imageOrder}`}>
+                  <div className="absolute inset-0 bg-[#f3e9dd] rounded-3xl transform translate-x-2 translate-y-2" />
+                  <div className="absolute inset-0 bg-[#efe4da] rounded-3xl transform translate-x-1 translate-y-1" />
+                  <motion.div
+                    className="relative w-full h-full rounded-3xl overflow-hidden shadow-lg"
+                    variants={imageVariants}
+                    whileHover="hover"
+                  >
+                    <Image
+                      src={studio.image}
+                      alt={`${studio.name} Studio`}
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                  </motion.div>
+                </div>
+
+                <div className={`w-full ${contentOrder}`}>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-teal-600">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-teal-800 text-white text-[10px] font-semibold">
+                      0{index + 1}
+                    </span>
+                    <span>Studio</span>
+                  </div>
+                  <h3
+                    className="mt-4 text-3xl md:text-4xl font-normal text-teal-900"
+                    style={{ fontFamily: "DM Serif Text" }}
                   >
                     {studio.name}
-                  </motion.h1>
-                </div>
-                {/* Right Section - Description & Services */}
-                <div className="w-full md:w-1/2 text-left text-white">
-                  <motion.p
-                    className="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed opacity-90"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                  >
+                  </h3>
+                  <p className="mt-4 text-sm md:text-base text-teal-900/70 leading-relaxed">
                     {studio.description}
-                  </motion.p>
-                  {/* Services Grid */}
-                  <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 text-sm"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: index * 0.1 + 0.4,
-                      staggerChildren: 0.1,
-                    }}
-                  >
-                    {studio.services.map((service, idx) => (
-                      <motion.p
-                        key={idx}
-                        className="text-gray-200"
-                        initial={{ opacity: 0, x: 10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 + 0.4 + idx * 0.05 }}
-                      >
-                        {service}
-                      </motion.p>
+                  </p>
+
+                  <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-teal-900/70">
+                    {studio.services.map((service) => (
+                      <div key={service} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-600" />
+                        <span>{service}</span>
+                      </div>
                     ))}
-                  </motion.div>
-                  <div className="w-full md:w-1/2 text-left">
+                  </div>
+
+                  <div className="mt-6">
                     <Link href="/portfolio">
                       <motion.button
-                        className="flex items-center px-6 py-3 bg-white text-black rounded-full font-bold hover:text-white hover:bg-black transition-colors text-sm md:text-base"
+                        className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-teal-800 hover:bg-orange-50 transition-colors"
                         variants={buttonVariants}
                         initial="rest"
                         whileHover="hover"
                         whileTap="pressed"
                       >
-                        See Work
-                        <motion.div
-                          className="ml-3"
-                          animate={{ x: [0, 6, 0] }}
-                          transition={{
-                            repeat: Number.POSITIVE_INFINITY,
-                            duration: 1.5,
-                          }}
-                        >
-                          →
-                        </motion.div>
+                        See Work →
                       </motion.button>
                     </Link>
                   </div>
                 </div>
               </div>
             </motion.div>
-          </div>
-        ))}
+          );
+        })}
       </motion.div>
     </section>
   );

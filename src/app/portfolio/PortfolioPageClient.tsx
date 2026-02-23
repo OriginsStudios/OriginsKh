@@ -2,7 +2,6 @@
 import { useScroll, useTransform } from "framer-motion";
 import { useNavigation } from "../components/hooks/use-navigation";
 import Footer from "../components/ui/footer";
-import ServiceSection from "../components/sections/service-seaction";
 import SecondaryLayout from "../components/layouts/secondary-layout";
 import PortfolioSection from "../components/sections/portfolio/portfolio-section";
 
@@ -23,7 +22,6 @@ export default function PortfolioPageClient() {
       scrollToSection={scrollToSection}
     >
       <PortfolioSection />
-      <ServiceSection />
       <Footer />
     </SecondaryLayout>
   );
