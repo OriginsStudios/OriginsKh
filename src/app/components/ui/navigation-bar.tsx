@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
@@ -25,29 +25,54 @@ export default function NavigationBar({
   logo = "/originlogo.png",
 }: NavigationBarProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
-    null
-  );
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [hoveredNavId, setHoveredNavId] = useState<string | null>(null);
+  const lastScrollYRef = useRef(0);
+  const lastScrollTimeRef = useRef(0);
+  const isVisibleRef = useRef(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showFunnyPopup, setShowFunnyPopup] = useState(false);
   const pathname = usePathname();
 
-  // Scroll tracking logic
+  // Scroll tracking logic (hide/show on fast scrolls)
   useEffect(() => {
+    lastScrollTimeRef.current = performance.now();
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
+      const now = performance.now();
+      const deltaY = currentScrollY - lastScrollYRef.current;
+      const deltaTime = now - lastScrollTimeRef.current;
+
       setScrollPosition(currentScrollY);
-      setLastScrollY(currentScrollY);
+
+      if (deltaTime > 0) {
+        const velocity = (deltaY / deltaTime) * 1000; // px/s
+        const fastDownThreshold = 1200;
+        const fastUpThreshold = -1000;
+
+        if (velocity > fastDownThreshold && currentScrollY > 60) {
+          if (isVisibleRef.current) {
+            isVisibleRef.current = false;
+            setIsVisible(false);
+          }
+        } else if (velocity < fastUpThreshold || currentScrollY < 50) {
+          if (!isVisibleRef.current) {
+            isVisibleRef.current = true;
+            setIsVisible(true);
+          }
+        }
+      }
+
+      lastScrollYRef.current = currentScrollY;
+      lastScrollTimeRef.current = now;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const isAtTop = scrollPosition < 50;
-  const isVisible = isAtTop || scrollDirection !== "down";
   const showLogo = !isAtTop && isVisible;
 
   const navLinks = [
@@ -88,6 +113,8 @@ export default function NavigationBar({
                   duration: 0.6,
                 }}
                 enableHover
+                externalHoveredId={hoveredNavId}
+                onHoverChange={setHoveredNavId}
                 defaultValue={
                   navLinks
                     .slice(0, 3)
@@ -98,18 +125,12 @@ export default function NavigationBar({
                 }
               >
                 {navLinks.slice(0, 3).map((link) => {
-                  const isActive =
-                    activeSection === link.id || pathname === link.href;
                   return (
                     <Link
                       key={link.href}
                       href={link.href}
                       data-id={link.id}
-                      className={`px-4 py-2 transition-colors duration-200 rounded-full text-[11px] font-semibold uppercase tracking-[0.28em] relative z-10 ${
-                        isActive
-                          ? "text-white"
-                          : "text-teal-900/80 hover:text-teal-950"
-                      }`}
+                      className="px-4 py-2 transition-colors duration-200 rounded-full text-[11px] font-semibold uppercase tracking-[0.28em] relative z-10 text-teal-900/80 hover:text-teal-950 data-[active=true]:text-white data-[any-hovered=true]:data-[active=true]:text-teal-900/80 data-[hovered=true]:text-white"
                     >
                       {link.label}
                     </Link>
@@ -153,13 +174,15 @@ export default function NavigationBar({
             <div className="flex space-x-2 group">
               <AnimatedBackground
                 className="rounded-full bg-gradient-to-r from-orange-400 to-teal-600"
-                hoverClassName="bg-orange-400/90"
+                hoverClassName="bg-teal-600"
                 transition={{
                   type: "spring",
                   bounce: 0.2,
                   duration: 0.6,
                 }}
                 enableHover
+                externalHoveredId={hoveredNavId}
+                onHoverChange={setHoveredNavId}
                 defaultValue={
                   navLinks
                     .slice(3)
@@ -170,18 +193,12 @@ export default function NavigationBar({
                 }
               >
                 {navLinks.slice(3).map((link) => {
-                  const isActive =
-                    activeSection === link.id || pathname === link.href;
                   return (
                     <Link
                       key={link.href}
                       href={link.href}
                       data-id={link.id}
-                      className={`px-4 py-2 transition-colors duration-200 rounded-full text-[11px] font-semibold uppercase tracking-[0.28em] relative z-10 ${
-                        isActive
-                          ? "text-white"
-                          : "text-teal-900/80 hover:text-teal-950"
-                      }`}
+                      className="px-4 py-2 transition-colors duration-200 rounded-full text-[11px] font-semibold uppercase tracking-[0.28em] relative z-10 text-teal-900/80 hover:text-teal-950 data-[active=true]:text-white data-[any-hovered=true]:data-[active=true]:text-teal-900/80 data-[hovered=true]:text-white"
                     >
                       {link.label}
                     </Link>

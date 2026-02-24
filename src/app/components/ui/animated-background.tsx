@@ -16,6 +16,8 @@ type AnimatedBackgroundProps = {
     | ReactElement<{ "data-id": string }>;
   defaultValue?: string;
   onValueChange?: (newActiveId: string | null) => void;
+  onHoverChange?: (newHoveredId: string | null) => void;
+  externalHoveredId?: string | null;
   className?: string;
   hoverClassName?: string;
   transition?: Transition;
@@ -26,6 +28,8 @@ export default function AnimatedBackground({
   children,
   defaultValue,
   onValueChange,
+  onHoverChange,
+  externalHoveredId,
   className,
   hoverClassName,
   transition,
@@ -45,10 +49,16 @@ export default function AnimatedBackground({
 
   const handleMouseEnter = (id: string) => {
     setHoveredId(id);
+    if (onHoverChange) {
+      onHoverChange(id);
+    }
   };
 
   const handleMouseLeave = () => {
     setHoveredId(null);
+    if (onHoverChange) {
+      onHoverChange(null);
+    }
   };
 
   useEffect(() => {
@@ -58,8 +68,13 @@ export default function AnimatedBackground({
   }, [defaultValue]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const effectiveHoveredId = externalHoveredId ?? hoveredId;
+  const hasHover = effectiveHoveredId !== null;
+
   return Children.map(children, (child: ReactElement<any>, index) => {
     const id = child.props["data-id"];
+    const isActive = activeId === id;
+    const isHovered = effectiveHoveredId === id;
 
     const interactionProps = enableHover
       ? {
@@ -71,8 +86,8 @@ export default function AnimatedBackground({
           onClick: () => handleSetActiveId(id),
         };
 
-    const currentBackgroundId = hoveredId || activeId;
-    const backgroundClass = hoveredId
+    const currentBackgroundId = effectiveHoveredId || activeId;
+    const backgroundClass = effectiveHoveredId
       ? hoverClassName || "bg-orange-400"
       : className;
 
@@ -84,6 +99,9 @@ export default function AnimatedBackground({
           "relative inline-flex rounded-full bg-white/75 backdrop-blur-md border border-white/60 shadow-sm",
           child.props.className
         ),
+        "data-active": isActive ? "true" : "false",
+        "data-hovered": isHovered ? "true" : "false",
+        "data-any-hovered": hasHover ? "true" : "false",
         ...interactionProps,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any,
