@@ -216,24 +216,22 @@ const OurManagementTeam = React.forwardRef<HTMLElement, OurManagementTeamProps>(
 
           {/* Bottom CTA Section */}
           <div className="pt-16 sm:pt-32">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-              <div className="w-full md:w-1/2 text-left">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-stone-900 mb-6">
-                  Think you&lsquo;d be a good addition to our team?
-                </h3>
-                <button className="flex items-center px-6 py-3 bg-stone-900 text-stone-50 rounded-full font-semibold uppercase tracking-[0.2em] hover:bg-amber-700 transition-colors text-xs md:text-sm">
-                  Hiring
-                  <motion.div
-                    className="ml-3"
-                    animate={selectedMember ? {} : { x: [0, 6, 0] }}
-                    transition={
-                      selectedMember ? {} : { repeat: Infinity, duration: 1.5 }
-                    }
-                  >
-                    →
-                  </motion.div>
-                </button>
-              </div>
+            <div className="flex flex-row items-center justify-between gap-8">
+              <h3 className="flex-1 text-xl sm:text-2xl md:text-3xl font-serif text-stone-900">
+                Think you&lsquo;d be a good addition to our team?
+              </h3>
+              <button className="shrink-0 flex items-center px-6 py-3 bg-stone-900 text-stone-50 rounded-full font-semibold uppercase tracking-[0.2em] hover:bg-amber-700 transition-colors text-xs md:text-sm">
+                Hiring
+                <motion.div
+                  className="ml-3"
+                  animate={selectedMember ? {} : { x: [0, 6, 0] }}
+                  transition={
+                    selectedMember ? {} : { repeat: Infinity, duration: 1.5 }
+                  }
+                >
+                  →
+                </motion.div>
+              </button>
             </div>
           </div>
         </div>

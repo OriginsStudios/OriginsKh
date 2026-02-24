@@ -97,10 +97,8 @@ const OurOValuesSection = forwardRef<HTMLElement, OurOValuesSectionProps>(({ id 
               {valuesData.map((value) => {
                 const isActive = expandedValue === value.id;
                 return (
-                  <motion.div
+                  <div
                     key={value.id}
-                    layout
-                    transition={{ type: "spring", stiffness: 220, damping: 28 }}
                     className={`rounded-2xl border transition-colors duration-300 ${
                       isActive
                         ? "border-stone-900/10 bg-white/90 shadow-[0_16px_40px_rgba(24,24,24,0.12)]"
@@ -138,29 +136,21 @@ const OurOValuesSection = forwardRef<HTMLElement, OurOValuesSectionProps>(({ id 
                       </div>
                     </button>
 
-                    <AnimatePresence initial={false}>
-                      {isActive ? (
-                        <motion.div
-                          key={`${value.id}-content`}
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <p className="px-5 pb-6 text-stone-600 leading-relaxed text-md sm:text-lg lg:text-xl">
-                            {value.description}
-                          </p>
-                        </motion.div>
-                      ) : null}
-                    </AnimatePresence>
-                  </motion.div>
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                        isActive ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="px-5 pb-6 text-stone-600 leading-relaxed text-md sm:text-lg lg:text-xl">
+                          {value.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 );
               })}
             </div>
-          <p className="text-stone-500 text-sm md:text-base max-w-md pt-10">
-            A playful, grounded philosophy for how we dream, build, and deliver.
-          </p>
           </div>
 
           {/* Right side - Dynamic image with smooth transition */}
