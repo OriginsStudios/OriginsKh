@@ -1,21 +1,18 @@
+"use client";
 
-"use client"
-
-import { useRef, forwardRef, useState, useEffect } from "react"
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion"
-import { cn } from "../../utils/utils"
-import ButtonSection from "../button-section"
-import Image from 'next/image';
-
-
+import { useRef, forwardRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { cn } from "../../utils/utils";
+import ButtonSection from "../button-section";
+import Image from "next/image";
 
 type TimelineItem = {
-  years: string
-  title: string
-  description: string
-  image: string
-  highlight: boolean
-}
+  years: string;
+  title: string;
+  description: string;
+  image: string;
+  highlight: boolean;
+};
 
 const timelineData: TimelineItem[] = [
   {
@@ -29,14 +26,16 @@ const timelineData: TimelineItem[] = [
   {
     years: "2019",
     title: "Creative Consultation Starts",
-    description: "Launched creative consultation services in Cambodia. Developed innovative solutions for emerging markets",
+    description:
+      "Launched creative consultation services in Cambodia. Developed innovative solutions for emerging markets",
     image: "/pic2019.png",
     highlight: true,
   },
   {
     years: "2020-2021",
     title: "Adapting Through Change",
-    description: "Helped brands adapt during the pandemic with digital transformation. Pioneered remote creative collaboration frameworks",
+    description:
+      "Helped brands adapt during the pandemic with digital transformation. Pioneered remote creative collaboration frameworks",
     image: "/pic2020.jpg",
     highlight: false,
   },
@@ -56,195 +55,199 @@ const timelineData: TimelineItem[] = [
     image: "/pic2025.jpg",
     highlight: true,
   },
-]
+];
 
 interface TimelineItemProps {
-  item: TimelineItem
-  index: number
-  isActive: boolean
-  progress: MotionValue<number>
-  textColor: string
+  item: TimelineItem;
+  index: number;
+  isActive: boolean;
+  textColor: string;
 }
 
-const TimelineItem = ({ item, index, isActive, progress, textColor }: TimelineItemProps) => {
-  const itemRef = useRef(null)
+const TimelineItem = ({ item, index, isActive, textColor }: TimelineItemProps) => {
+  const itemRef = useRef<HTMLDivElement>(null);
+  const isHighlighted = item.highlight;
+  const alignmentClass = index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse";
+  const cardRing = isHighlighted ? "ring-amber-200/80" : "ring-stone-200/70";
+  const chipClass = isHighlighted
+    ? "bg-amber-100/80 text-amber-700 border-amber-200/80"
+    : "bg-stone-100/80 text-stone-600 border-stone-200/80";
+  const nodeClass = isHighlighted ? "bg-amber-600 ring-amber-100/80" : "bg-stone-400 ring-stone-100";
+  const glowClass = isHighlighted
+    ? "from-amber-200/50 via-transparent to-rose-200/20"
+    : "from-stone-200/40 via-transparent to-transparent";
+
   return (
     <motion.div
       ref={itemRef}
-      className="min-h-[90vh] flex items-center justify-center px-8 md:px-12 py-12"
-      style={{
-        opacity: useTransform(progress, [index - 0.5, index, index + 0.5], [0.3, 1, 0.3]),
-        scale: useTransform(progress, [index - 0.5, index, index + 0.5], [0.8, 1, 0.8]),
-      }}
+      data-timeline-item
+      className="relative shrink-0 snap-center px-4 md:px-8 py-10 w-[min(92vw,1100px)]"
+      animate={{ opacity: isActive ? 1 : 0.55, scale: isActive ? 1 : 0.97 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <motion.div
-            className={cn("space-y-6", index % 2 === 0 ? "md:order-1" : "md:order-2")}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
-            animate={{ opacity: isActive ? 1 : 0.5, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white text-black font-mono font-bold text-lg"
-            >
-            <div className="flex items-center gap-1 text-sm">
-              <Image 
-            src="/originsStar2.svg" 
-            alt="origin icon" 
-            className="w-6 h-6 filter contrast-200 invert" 
-            width={24} // Adjust the width according to your needs
-            height={24} // Adjust the height according to your needs
-          />
-            {item.years}
-          </div>
-            </motion.div>
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+      <span
+        className={cn(
+          "absolute left-1/2 top-6 h-3 w-3 -translate-x-1/2 rounded-full ring-8",
+          nodeClass
+        )}
+      />
+      <div className={cn("mt-10 flex flex-col gap-8 md:gap-12 md:items-center", alignmentClass)}>
+        <div className="md:w-1/2">
+          <div className={cn("rounded-3xl bg-white/80 p-6 md:p-8 ring-1 shadow-[0_16px_40px_rgba(24,24,24,0.12)]", cardRing)}>
+            <div className="flex flex-wrap items-center gap-3">
+              <span
+                className={cn(
+                  "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs uppercase tracking-[0.35em]",
+                  chipClass
+                )}
+              >
+                <Image src="/originsStar.svg" alt="origin icon" className="h-4 w-4 opacity-70" width={16} height={16} />
+                {item.years}
+              </span>
+              {/* {item.highlight ? (
+                <span className="text-[10px] uppercase tracking-[0.3em] text-amber-600">Featured</span>
+              ) : null} */}
+            </div>
+            <h3
+              className="mt-6 text-3xl md:text-5xl font-serif font-semibold tracking-tight"
               style={{ color: textColor }}
             >
               {item.title}
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-lg md:text-xl leading-relaxed"
-              style={{ color: textColor }}
-            >
+            </h3>
+            <p className="mt-4 text-base md:text-lg leading-relaxed opacity-80" style={{ color: textColor }}>
               {item.description}
-            </motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
-              <ButtonSection 
-                textColor={"text-black"}
+            </p>
+            <div className="mt-6">
+              <ButtonSection
+                textColor="text-stone-50"
                 buttonHref="/portfolio"
-                buttonBgColor="bg-white"
-
-                />
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className={cn("relative", index % 2 === 0 ? "md:order-2" : "md:order-1")}
-            initial={{ opacity: 0, x: index % 2 === 0 ? 60 : -60 }}
-            animate={{ opacity: isActive ? 1 : 0.5, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-white">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent z-10" />
-              <motion.img
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
-                className="w-full h-80 md:h-[500px] object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                buttonBgColor={isHighlighted ? "bg-amber-700" : "bg-stone-900"}
+                buttonHoverColor={isHighlighted ? "hover:bg-amber-800" : "hover:bg-amber-700"}
               />
-              <div className="absolute top-6 right-6 z-20">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Number.POSITIVE_INFINITY, duration: 10, ease: "linear" }}
-                  className="w-10 h-10 border-2 border-orange-400 rounded-full flex items-center justify-center bg-white/90"
-                >
-                  <div className="flex items-center gap-1 text-white text-sm">
-                <Image 
-                  src="/originsStar.svg" 
-                  alt="origin icon" 
-                  className="w-10 h-8" 
-                  width={40} // Adjust the width according to your needs
-                  height={32} // Adjust the height according to your needs
-                />
-                </div>
-                </motion.div>
-              </div>
-
-
             </div>
-          </motion.div>
+          </div>
+        </div>
+
+        <div className="md:w-1/2">
+          <div className="relative overflow-hidden rounded-[32px] bg-white/80 ring-1 ring-stone-200/70 shadow-[0_24px_60px_rgba(24,24,24,0.16)]">
+            <div className={cn("absolute inset-0 bg-gradient-to-br", glowClass)} />
+            <motion.img
+              src={item.image}
+              alt={item.title}
+              loading="lazy"
+              className="h-80 w-full object-cover md:h-[520px]"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.3 }}
+            />
+            <div className="absolute bottom-4 right-4 rounded-full bg-white/80 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-stone-500 shadow-sm">
+              {item.years}
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 interface OurOriginsSectionProps {
   id?: string;
   textColor?: string;
 }
 
-const OurOriginsSection = forwardRef<HTMLElement, OurOriginsSectionProps>(({ id , textColor}, ref) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
-  const currentSection = useTransform(smoothProgress, [0, 1], [0, timelineData.length - 1])
+const OurOriginsSection = forwardRef<HTMLElement, OurOriginsSectionProps>(({ id, textColor }, ref) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const unsubscribe = currentSection.onChange((latest) => {
-      const newIndex = Math.round(latest)
-      if (newIndex !== activeIndex && newIndex >= 0 && newIndex < timelineData.length) {
-        setActiveIndex(newIndex)
-      }
-    })
-    return unsubscribe
-  }, [currentSection, activeIndex])
+    const container = containerRef.current;
+    if (!container) return;
+
+    const updateActiveIndex = () => {
+      const center = container.scrollLeft + container.clientWidth / 2;
+      const items = Array.from(container.querySelectorAll("[data-timeline-item]")) as HTMLElement[];
+      let closestIndex = 0;
+      let minDistance = Number.POSITIVE_INFINITY;
+
+      items.forEach((item, index) => {
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const distance = Math.abs(center - itemCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    };
+
+    updateActiveIndex();
+    container.addEventListener("scroll", updateActiveIndex, { passive: true });
+    window.addEventListener("resize", updateActiveIndex);
+
+    return () => {
+      container.removeEventListener("scroll", updateActiveIndex);
+      window.removeEventListener("resize", updateActiveIndex);
+    };
+  }, []);
 
   return (
-    <section ref={ref} id={id} className="relative overflow-hidden transition-all duration-700 ease-in-out" style={{ color: textColor }}>
-      <style jsx global>{`
-        html {
+    <section
+      ref={ref}
+      id={id}
+      className="relative overflow-hidden transition-all duration-700 ease-in-out"
+      style={{ color: textColor }}
+    >
+      <style jsx>{`
+        .timeline-scroll::-webkit-scrollbar {
+          display: none;
+        }
+        .timeline-scroll {
           scrollbar-width: none;
           -ms-overflow-style: none;
         }
-        html::-webkit-scrollbar {
-          display: none;
-        }
       `}</style>
 
-      {/* Header */}
-      <div className="relative z-10 pt-20 pb-10 text-center">
-        <motion.div initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <h2 className="text-4xl md:text-7xl font-bold mb-6">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,245,230,0.85),_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_70%,_rgba(245,233,218,0.8),_transparent_55%)]" />
+        <div className="absolute inset-0 opacity-60 bg-[linear-gradient(120deg,_rgba(255,255,255,0.6),_transparent_55%)]" />
+      </div>
+
+      <div className="relative z-10 pt-20 pb-8 text-center">
+        <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <p className="text-xs uppercase tracking-[0.4em] text-stone-500">Origins timeline</p>
+          <h2 className="mt-4 text-3xl md:text-6xl font-serif font-semibold tracking-tight">
             <span style={{ color: textColor }}>Our</span>
-            <span className="ml-4 text-orange-400">Origins</span>
+            <span className="ml-3 text-amber-600">Origins</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-l md:text-2xl mb-8 px-6" style={{ color: textColor }}>
-            Scroll to explore the journey that shaped who we are today
+          <p className="mx-auto mt-4 max-w-3xl text-base md:text-xl opacity-80" style={{ color: textColor }}>
+            Scroll left or right to explore the journey that shaped who we are today
           </p>
         </motion.div>
       </div>
 
-      {/* Scrollable Content */}
-      <div ref={containerRef} className="relative z-10">
-        {timelineData.map((item, index) => (
-          <TimelineItem
-            key={index}
-            item={item}
-            index={index}
-            isActive={index === activeIndex}
-            progress={currentSection}
-            textColor={textColor || "black"}
-          />
-        ))}
+      <div className="relative z-10">
+        <div className="absolute left-0 right-0 top-10 h-px bg-stone-200/70" />
+        <div
+          ref={containerRef}
+          className="timeline-scroll flex gap-4 md:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth px-2 md:px-8 pb-14"
+        >
+          {timelineData.map((item, index) => (
+            <TimelineItem
+              key={item.years}
+              item={item}
+              index={index}
+              isActive={index === activeIndex}
+              textColor={textColor || "#2D241B"}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="h-16" />
+      <div className="h-10" />
     </section>
-  )
-})
+  );
+});
 
-OurOriginsSection.displayName = "OurOriginsSection"
-export default OurOriginsSection
+OurOriginsSection.displayName = "OurOriginsSection";
+export default OurOriginsSection;

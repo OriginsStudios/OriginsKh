@@ -41,12 +41,12 @@ const TeamSection = React.forwardRef<HTMLElement, TeamSectionProps>(
       <section
         id={id}
         ref={ref}
-        className="pb-32 px-8 sm:px-8 transition-all duration-700 ease-in-out"
+        className="pb-32 px-8 sm:px-10 transition-all duration-700 ease-in-out"
       >
         <div className="w-full">
           {/* Header */}
-          <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-12">
-            <p className={`text-[${textColor}] text-xl mt-2 font-medium`}>
+          <div className="border-t border-stone-200/70 flex justify-between items-center text-sm mb-12">
+            <p className="text-stone-500 text-xs uppercase tracking-[0.4em] mt-4 font-medium">
               MANAGEMENT TEAM
             </p>
           </div>
@@ -60,17 +60,17 @@ const TeamSection = React.forwardRef<HTMLElement, TeamSectionProps>(
                 whileInView={selectedMember ? {} : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group cursor-pointer"
+                className="group cursor-pointer rounded-3xl p-3 md:p-4 bg-white/70 ring-1 ring-stone-200/70 shadow-sm transition-transform duration-300 hover:-translate-y-1"
                 onHoverStart={() => handleHover(member.image)}
                 onClick={() => setSelectedMember(member)}
               >
                 {/* Image container */}
-                <div className="aspect-square bg-gray-300 relative overflow-hidden mb-4 rounded-xl">
+                <div className="aspect-square bg-stone-200/70 relative overflow-hidden mb-4 rounded-2xl">
                   <Image
                     src={member.image}
                     alt={`${member.name} - ${member.position}`}
                     fill
-                    className=" rounded-xl group-hover:scale-105 scale-100 transition-transform duration-300 object-cover object-top "
+                    className="rounded-2xl group-hover:scale-105 scale-100 transition-transform duration-300 object-cover object-top"
                     priority={index < 3}
                     loading={index > 2 ? "lazy" : "eager"}
                   />
@@ -79,12 +79,14 @@ const TeamSection = React.forwardRef<HTMLElement, TeamSectionProps>(
                 {/* Text content */}
                 <div className="text-left">
                   <h3
-                    className={`font-bold text-xl sm:text-2xl text-[${textColor}] mb-1 group-hover:translate-x-1 transition-transform duration-200`}
+                    className="font-serif text-xl sm:text-2xl text-stone-900 mb-1 group-hover:translate-x-1 transition-transform duration-200"
+                    style={{ color: textColor }}
                   >
                     {member.name}
                   </h3>
                   <p
-                    className={`text-[${textColor}] font-medium text-sm sm:text-base`}
+                    className="text-stone-600 font-medium text-sm sm:text-base"
+                    style={{ color: textColor }}
                   >
                     {member.position}
                   </p>

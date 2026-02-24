@@ -62,70 +62,111 @@ const OurOValuesSection = forwardRef<HTMLElement, OurOValuesSectionProps>(({ id 
       : defaultImage;
 
   return (
-    <section ref={ref} id={id} className="min-h-screen py-24 px-8 sm:px-8 transition-all duration-700 ease-in-out">
-      <div className="relative z-10 mx-auto w-full">
+    <section
+      ref={ref}
+      id={id}
+      className="relative overflow-hidden min-h-screen py-24 px-8 sm:px-10 transition-all duration-700 ease-in-out"
+    >
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,_rgba(14,116,144,0.16),_transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,_rgba(253,186,116,0.18),_transparent_50%)]" />
+        <div className="absolute inset-0 opacity-70 bg-[linear-gradient(120deg,_rgba(255,255,255,0.6),_transparent_55%)]" />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
         {/* Header */}
-        <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-start text-sm space-y-4 md:space-y-0 mb-12">
-          <p className="text-gray-600 text-xl mt-2 font-medium">OUR &quot;O&quot; VALUES</p>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-t border-stone-200/70 pb-8">
+          <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-stone-200/70 bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.35em] text-stone-600 shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-amber-500" />
+            OUR &quot;O&quot; VALUES
+          </div>
+          {/* <p className="text-stone-500 text-sm md:text-base max-w-md">
+            A playful, grounded philosophy for how we dream, build, and deliver.
+          </p> */}
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start pt-12 lg:pt-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start pt-8 lg:pt-16">
           {/* Left side - Values list */}
           <div className="space-y-8">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-black leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 leading-tight">
               Everything we create at Origins is rooted in our values.
             </h2>
 
-            <div className="space-y-0">
-              {valuesData.map((value) => (
-                <div key={value.id}>
-                  <button
-                    onClick={() => toggleExpanded(value.id)}
-                    className="w-full py-4 flex items-center justify-between text-left transition-colors duration-200 group bg-transparent focus:outline-none"
-                  >
-                    <span
-                      className={`text-xl sm:text-2xl lg:text-4xl transition-colors duration-200 ${
-                        expandedValue === value.id
-                          ? "text-black font-medium"
-                          : "text-gray-600 group-hover:text-black"
-                      }`}
-                    >
-                      {value.title}
-                    </span>
-                    <div
-                      className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
-                        expandedValue === value.id
-                          ? "border-black bg-black text-white"
-                          : "border-gray-400 text-gray-400 group-hover:border-black group-hover:text-black"
-                      }`}
-                    >
-                      {expandedValue === value.id ? (
-                        <Minus className="w-4 h-4" />
-                      ) : (
-                        <Plus className="w-4 h-4" />
-                      )}
-                    </div>
-                  </button>
-
-                  {/* Expanded description */}
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      expandedValue === value.id ? "max-h-40 pb-6" : "max-h-0"
+            <div className="space-y-4">
+              {valuesData.map((value) => {
+                const isActive = expandedValue === value.id;
+                return (
+                  <motion.div
+                    key={value.id}
+                    layout
+                    transition={{ type: "spring", stiffness: 220, damping: 28 }}
+                    className={`rounded-2xl border transition-colors duration-300 ${
+                      isActive
+                        ? "border-stone-900/10 bg-white/90 shadow-[0_16px_40px_rgba(24,24,24,0.12)]"
+                        : "border-stone-200/70 bg-white/60 hover:-translate-y-0.5 hover:bg-white/80 hover:shadow-[0_14px_30px_rgba(24,24,24,0.08)]"
                     }`}
                   >
-                    <p className="text-gray-600 leading-relaxed text-md sm:text-lg lg:text-xl">
-                      {value.description} 
-                    </p>
-                  </div>
-                </div>
-              ))}
+                    <button
+                      type="button"
+                      onClick={() => toggleExpanded(value.id)}
+                      aria-expanded={isActive}
+                      className="w-full px-5 py-5 flex items-start gap-4 text-left transition-colors duration-200 group focus:outline-none"
+                    >
+                      <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-stone-400">
+                        0{value.id}
+                      </div>
+                      <div className="flex-1">
+                        <span
+                          className={`block text-xl sm:text-2xl lg:text-4xl transition-colors duration-200 ${
+                            isActive
+                              ? "text-stone-900 font-medium"
+                              : "text-stone-500 group-hover:text-stone-900"
+                          }`}
+                        >
+                          {value.title}
+                        </span>
+                      </div>
+                      <div
+                        className={`mt-1 w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200 ${
+                          isActive
+                            ? "border-stone-900 bg-stone-900 text-white"
+                            : "border-stone-300 bg-white text-stone-500 group-hover:border-stone-900 group-hover:text-stone-900"
+                        }`}
+                      >
+                        {isActive ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                      </div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isActive ? (
+                        <motion.div
+                          key={`${value.id}-content`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <p className="px-5 pb-6 text-stone-600 leading-relaxed text-md sm:text-lg lg:text-xl">
+                            {value.description}
+                          </p>
+                        </motion.div>
+                      ) : null}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
             </div>
+          <p className="text-stone-500 text-sm md:text-base max-w-md pt-10">
+            A playful, grounded philosophy for how we dream, build, and deliver.
+          </p>
           </div>
 
           {/* Right side - Dynamic image with smooth transition */}
-          <div className="lg:sticky lg:top-8">
-            <div className="relative rounded-2xl overflow-hidden aspect-square">
+          <div className="lg:sticky lg:top-10">
+            <div className="relative rounded-[32px] overflow-hidden aspect-[4/5] bg-white/70 ring-1 ring-stone-200/70 shadow-[0_22px_55px_rgba(24,24,24,0.14)] backdrop-blur">
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-200/30 via-transparent to-amber-100/40 z-10" />
               <AnimatePresence initial={false}>
                 <motion.div
                   key={currentItem.image}
@@ -145,6 +186,9 @@ const OurOValuesSection = forwardRef<HTMLElement, OurOValuesSectionProps>(({ id 
                   />
                 </motion.div>
               </AnimatePresence>
+              <div className="absolute left-4 top-4 z-20 rounded-full bg-white/80 px-4 py-2 text-[10px] uppercase tracking-[0.35em] text-stone-600 shadow-sm">
+                {currentItem.imageAlt}
+              </div>
             </div>
           </div>
         </div>

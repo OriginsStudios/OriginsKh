@@ -155,16 +155,17 @@ const OurManagementTeam = React.forwardRef<HTMLElement, OurManagementTeamProps>(
       <section
         id={id}
         ref={ref}
-        className="pb-32 px-8 sm:px-8"
+        className="pb-32 px-8 sm:px-10"
         style={{
+          color: textColor,
           transition:
             "background-color 700ms ease-in-out, color 700ms ease-in-out",
         }}
       >
         <div className="w-full">
           {/* Header */}
-          <div className="border-t border-gray-300 flex justify-between items-center text-sm mb-12">
-            <p className={`text-[${textColor}] text-xl mt-2 font-medium`}>
+          <div className="border-t border-stone-200/70 flex justify-between items-center text-sm mb-12">
+            <p className="text-stone-500 text-xs uppercase tracking-[0.4em] mt-4 font-medium">
               STUDIO TEAM
             </p>
           </div>
@@ -217,10 +218,10 @@ const OurManagementTeam = React.forwardRef<HTMLElement, OurManagementTeamProps>(
           <div className="pt-16 sm:pt-32">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
               <div className="w-full md:w-1/2 text-left">
-                <h3 className="text-xl sm:text-2xl md:text-3xl text-black mb-6">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-stone-900 mb-6">
                   Think you&lsquo;d be a good addition to our team?
                 </h3>
-                <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
+                <button className="flex items-center px-6 py-3 bg-stone-900 text-stone-50 rounded-full font-semibold uppercase tracking-[0.2em] hover:bg-amber-700 transition-colors text-xs md:text-sm">
                   Hiring
                   <motion.div
                     className="ml-3"
@@ -244,9 +245,9 @@ const OurManagementTeam = React.forwardRef<HTMLElement, OurManagementTeamProps>(
 // Extract the team member card to a separate component for cleaner code
 const TeamMemberCard = ({ member }: { member: TeamMember }) => {
   return (
-    <div className="group cursor-pointer flex-shrink-0">
+    <div className="group cursor-pointer flex-shrink-0 rounded-3xl p-4 bg-white/70 ring-1 ring-stone-200/70 shadow-sm transition-transform duration-300 hover:-translate-y-1">
       {/* Image container */}
-      <div className="w-32 h-32 sm:w-40 sm:h-40 bg-gray-300 relative overflow-hidden mb-4 rounded-full mx-auto">
+      <div className="w-32 h-32 sm:w-40 sm:h-40 bg-stone-200/70 relative overflow-hidden mb-4 rounded-full mx-auto">
         <Image
           src={member.image}
           alt={`${member.name} - ${member.position}`}
@@ -258,10 +259,10 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
 
       {/* Text content */}
       <div className="text-center">
-        <h3 className="font-bold text-xl sm:text-2xl text-black mb-1 group-hover:translate-x-1 transition-transform duration-200">
+        <h3 className="font-serif text-xl sm:text-2xl text-stone-900 mb-1 group-hover:translate-x-1 transition-transform duration-200">
           {member.name}
         </h3>
-        <p className="text-gray-600 font-medium text-sm sm:text-base">
+        <p className="text-stone-600 font-medium text-sm sm:text-base">
           {member.position}
         </p>
       </div>
