@@ -19,16 +19,16 @@ export default function HiringPageClient() {
     // Section color mapping (customize as needed)
     const sectionColors = {
       intro: {
-        nav: "#293df0",
-        bg: "#293df0",
-        text: "#FFFFFF",
-        logo: "/originlogo2.png",
+        nav: "#f7f2ea",
+        bg: "#f7f2ea",
+        text: "#1f1a17",
+        logo: "/originlogo.png",
       },
       findUrJob: {
-        nav: "#868895",
-        bg: "#868895",
-        text: "#FFFFFF",
-        logo: "/originlogo2.png",
+        nav: "#f1e9dd",
+        bg: "#f1e9dd",
+        text: "#1f1a17",
+        logo: "/originlogo.png",
       },
     };
 
@@ -95,4 +95,3 @@ export default function HiringPageClient() {
     </SecondaryLayout>
   );
 }
-

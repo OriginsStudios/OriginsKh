@@ -36,25 +36,40 @@ const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
   return (
     <section
       id="findUrJob"
-      className="bg-transparent relative overflow-hidden w-full m-0 px-8 py-24"
+      className="bg-transparent relative overflow-hidden w-full m-0 px-6 sm:px-10 py-24"
     >
+      {/* Lifestyle background accents */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-16 left-1/3 h-56 w-56 rounded-full bg-amber-200/60 blur-3xl" />
+        <div className="absolute bottom-10 right-10 h-64 w-64 rounded-full bg-rose-200/50 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_rgba(255,255,255,0.7),_transparent_60%)]" />
+      </div>
+
       {/* Full-width container with no left/right padding */}
-      <div className="w-full mx-auto">
+      <div className="relative w-full mx-auto max-w-6xl">
         {/* Title Section */}
-        <div className="text-center mb-4">
-          <h2
-            className={`text-4xl md:text-7xl font-serif mb-12  text-[${textColor}]`}
-            style={{ fontFamily: "DM Serif Text" }}
+        <div className="text-center">
+          <p
+            className="text-xs sm:text-sm uppercase tracking-[0.5em] text-stone-600"
+            style={{ fontFamily: "Inter, sans-serif" }}
           >
-            Find Your Dream Job
+            Careers at Origins
+          </p>
+          <h2
+            className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight mt-6"
+            style={{ fontFamily: "DM Serif Text", color: textColor }}
+          >
+            Find your place on the team.
           </h2>
+          <p className="mt-6 text-base sm:text-lg text-stone-600 leading-relaxed">
+            We look for thoughtful collaborators across design, strategy,
+            technology, production, and operations.
+          </p>
         </div>
 
-        <div className="border-t border-gray-300 flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 mb-8"></div>
-
-        <div className="flex flex-wrap items-center gap-2 pb-32">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-2">
           <span
-            className={`px-4 py-2 rounded-full text-lg font-medium text-[${textColor}]`}
+            className="px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-[0.2em] text-stone-600 bg-white/70 ring-1 ring-stone-200/70"
           >
             POSITION:
           </span>
@@ -66,10 +81,10 @@ const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
               <button
                 key={item.label}
                 onClick={() => handleCategoryChange(item.label)}
-                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ring-1 ${
                   active
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-black hover:bg-gray-300"
+                    ? "bg-stone-900 text-white ring-stone-900"
+                    : "bg-white/80 text-stone-700 ring-stone-200 hover:bg-white"
                 }`}
               >
                 {item.label}
@@ -79,18 +94,26 @@ const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
         </div>
 
         {/* Message Display */}
-        <div className="bg-gray-200 border border-gray-300 rounded-lg p-6 text-center shadow-sm">
-          <p className="text-lg text-black">
+        <div className="mt-10 rounded-[28px] bg-white/75 ring-1 ring-stone-200/70 shadow-[0_18px_50px_rgba(24,24,24,0.08)] backdrop-blur p-6 sm:p-8 text-center">
+          <p className="text-base sm:text-lg text-stone-700">
             {"There are no opening currently. Please check back again!"}
           </p>
+          <div className="mt-4">
+            <Link
+              href="/contact"
+              className="text-sm font-semibold text-amber-700 hover:text-amber-600"
+            >
+              Stay in touch →
+            </Link>
+          </div>
         </div>
 
         {/* Hiring Journey Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start pt-24">
           {/* First Image - Left Side */}
           <div className="space-y-12">
             <div className="lg:sticky lg:top-8">
-              <div className="relative rounded-2xl overflow-hidden aspect-square">
+              <div className="relative rounded-[28px] overflow-hidden aspect-square shadow-[0_24px_60px_rgba(15,23,42,0.12)] ring-1 ring-white/70">
                 <Image
                   src="/ORS_WEB-HIRING1.jpg"
                   alt="A person working at a desk"
@@ -108,7 +131,7 @@ const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
               <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
                 <div className="w-full text-left">
                   <h3
-                    className={`text-2xl md:text-3xl text-[${textColor}] mb-8`}
+                    className="text-xl md:text-3xl text-stone-900 mb-8 leading-snug"
                   >
                     To craft exceptional brand experiences, we embrace a
                     multidisciplinary approach—blending strategy, creativity,
@@ -116,7 +139,7 @@ const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
                     every step of the way.
                   </h3>
                   <Link href="/studios">
-                    <button className="flex items-center px-6 py-3 bg-black text-white rounded-full font-bold hover:bg-orange-400 transition-colors text-sm md:text-base">
+                    <button className="flex items-center px-6 py-3 bg-stone-900 text-white rounded-full font-semibold hover:bg-amber-600 transition-colors text-sm md:text-base">
                       View Our Services
                       <motion.div
                         className="ml-3"
@@ -138,28 +161,31 @@ const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
           {/* Right Side - Text and Second Image */}
           <div className="space-y-12">
             {/* Text Content */}
-            <div className="space-y-8">
-              <h2 className="text-4xl lg:text-5xl font-normal leading-tight">
+            <div className="space-y-8 rounded-[28px] bg-white/70 ring-1 ring-stone-200/70 shadow-[0_18px_50px_rgba(24,24,24,0.08)] backdrop-blur px-6 py-8 sm:px-10 sm:py-10">
+              <h2
+                className="text-3xl lg:text-4xl font-semibold leading-tight text-stone-900"
+                style={{ fontFamily: "DM Serif Text" }}
+              >
                 Inside the Hiring Journey
               </h2>
 
-              <div className="space-y-6">
-                <p className="text-lg">
+              <div className="space-y-6 text-stone-700">
+                <p className="text-base sm:text-lg">
                   <span className="font-bold">01</span> Once we&apos;ve checked
                   out your application, a recruiter will reach out to guide you
                   through the next steps.
                 </p>
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   <span className="font-bold">02</span> You&apos;ll have a
                   friendly chat with a recruiter to learn more about the
                   role—and to tell us all about your superpowers.
                 </p>
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   <span className="font-bold">03</span> Next, two virtual
                   interviews with key team members—think of it as a friendly
                   showdown where we find out if you&apos;re the perfect fit.
                 </p>
-                <p className="text-lg">
+                <p className="text-base sm:text-lg">
                   <span className="font-bold">04</span> If you&apos;re the
                   chosen one, you&apos;ll get a formal offer letter with your
                   start date and all the exciting details. Spoiler: we&apos;ll
@@ -169,7 +195,7 @@ const FindUrJobSection: React.FC<IntroHiringSectionProps> = ({ textColor }) => {
             </div>
 
             {/* Second Image - Below Text */}
-            <div className="relative rounded-2xl overflow-hidden aspect-square">
+            <div className="relative rounded-[28px] overflow-hidden aspect-square shadow-[0_24px_60px_rgba(15,23,42,0.12)] ring-1 ring-white/70">
               <Image
                 src="/ORS_WEB-HIRING2.jpg"
                 alt="A person working at a desk"
