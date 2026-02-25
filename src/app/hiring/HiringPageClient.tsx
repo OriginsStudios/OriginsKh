@@ -19,14 +19,20 @@ export default function HiringPageClient() {
     // Section color mapping (customize as needed)
     const sectionColors = {
       intro: {
-        nav: "#f7f2ea",
-        bg: "#f7f2ea",
+        nav: "#ffffff",
+        bg: "#ffffff",
         text: "#1f1a17",
         logo: "/originlogo.png",
       },
       findUrJob: {
-        nav: "#f1e9dd",
-        bg: "#f1e9dd",
+        nav: "#9fd1fc",
+        bg: "#9fd1fc",
+        text: "#1f1a17",
+        logo: "/originlogo.png",
+      },
+      findUrJobEnd: {
+        nav: "#ffffff",
+        bg: "#ffffff",
         text: "#1f1a17",
         logo: "/originlogo.png",
       },
@@ -36,6 +42,16 @@ export default function HiringPageClient() {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       const threshold = windowHeight * 0.3;
+      const findUrJobElement = document.getElementById("findUrJob");
+
+      // Check if we're near the end of findUrJob section (closer to footer)
+      let isNearFooter = false;
+      if (findUrJobElement) {
+        const findUrJobBottom = findUrJobElement.offsetTop + findUrJobElement.offsetHeight;
+        const distanceFromBottom = findUrJobBottom - (scrollY + windowHeight);
+        // When within 300px of the bottom of findUrJob section
+        isNearFooter = distanceFromBottom < 300;
+      }
 
       const sections = Object.keys(sectionColors)
         .map((sectionId) => {
@@ -59,7 +75,12 @@ export default function HiringPageClient() {
             scrollY + threshold >= sectionTop &&
             scrollY + threshold < sectionBottom
           ) {
-            currentSection = section.id;
+            // If we're near footer within findUrJob, use findUrJobEnd colors
+            if (section.id === "findUrJob" && isNearFooter) {
+              currentSection = "findUrJobEnd";
+            } else {
+              currentSection = section.id;
+            }
             break;
           }
         }
