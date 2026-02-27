@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { blogs } from "@/data/blogs";
 import BlogCard from "../../ui/BlogCard";
 import BigBlogCard from "../../ui/BigBlogCard";
@@ -19,7 +20,11 @@ const categories = [
   "Achievements",
 ];
 
-export default function BlogListSection() {
+interface BlogListSectionProps {
+  textColor?: string;
+}
+
+export default function BlogListSection({ textColor }: BlogListSectionProps) {
   const [activeCategory, setActiveCategory] = useState("All");
 
   // Filter blogs based on active category
@@ -32,51 +37,58 @@ export default function BlogListSection() {
   );
 
   return (
-    <div className="min-h-screen">
-      {/* Header Section */}
-      <div>
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          <FloatingShape
-            delay={0}
-            duration={12}
-            className="top-1/4 left-1/4 md:w-30 md:h-30 w-15 h-15 rounded-full bg-orange-400"
-          />
-          <FloatingShape
-            delay={4}
-            duration={18}
-            className="top-3/4 right-1/4 md:w-32 md:h-32 w-12 h-12 rounded-full bg-gray-400"
-          />
-          <FloatingShape
-            delay={8}
-            duration={20}
-            className="top-1/2 right-1/3 md:w-20 md:h-20 w-10 h-10 rounded-2xl bg-orange-400"
-          />
+    <div className="min-h-screen relative">
+      {/* Lifestyle background accents */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <FloatingShape
+          delay={0}
+          duration={12}
+          className="top-16 left-10 md:w-44 md:h-44 w-28 h-28 rounded-full bg-amber-200/60 blur-2xl"
+        />
+        <FloatingShape
+          delay={4}
+          duration={18}
+          className="top-2/3 right-10 md:w-48 md:h-48 w-28 h-28 rounded-full bg-rose-200/50 blur-2xl"
+        />
+        <FloatingShape
+          delay={8}
+          duration={20}
+          className="top-1/3 right-1/4 md:w-28 md:h-28 w-20 h-20 rounded-2xl bg-emerald-200/40 blur-2xl"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.75),_transparent_65%)] opacity-80" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_70%,_rgba(245,233,218,0.7),_transparent_55%)]" />
+      </div>
 
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="w-full h-full"
-              style={{
-                backgroundImage: `
-                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-              `,
-                backgroundSize: "50px 50px",
-              }}
-            />
-          </div>
-        </div>
+      {/* Header Section */}
+      <div className="relative">
         <div className="w-full flex justify-center items-center pb-12 px-12">
           <LogoOriginsSection />
         </div>
         <div className="max-w-7xl mx-auto px-14">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-teal-800 mb-4">
-            Blog
+          <p
+            className="text-xs sm:text-sm uppercase tracking-[0.5em] text-stone-600"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            <Link href="/" className="hover:text-stone-900 hover:underline transition-colors underline-offset-2">
+              Home
+            </Link>
+            {" / "}Blog
+          </p>
+          <h1
+            className="mt-6 text-3xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-tight text-stone-900"
+            style={{ fontFamily: "DM Serif Text" }}
+          >
+            Stories, ideas, and updates from our studio.
           </h1>
+          <p className="mt-6 text-base sm:text-lg text-stone-600 leading-relaxed max-w-3xl">
+            Explore our latest work, creative concepts, and behind-the-scenes
+            glimpses into how we craft culture-forward brands and experiences.
+          </p>
         </div>
       </div>
 
       {/* Filter Tabs */}
-      <div className="">
+      <div className="relative">
         <div className="max-w-7xl mx-auto px-14">
           <div className="flex overflow-x-auto scrollbar-hide py-4 gap-2">
             {categories.map((category) => (
@@ -85,8 +97,8 @@ export default function BlogListSection() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   activeCategory === category
-                    ? "bg-teal-700 text-white shadow-md"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-stone-900 text-white shadow-md"
+                    : "bg-stone-100 text-stone-700 hover:bg-stone-200"
                 }`}
               >
                 {category}
@@ -97,7 +109,7 @@ export default function BlogListSection() {
       </div>
 
       {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-14 py-12">
+      <div className="max-w-7xl mx-auto px-14 py-12 relative">
         {/* Featured Blog Post (Latest) */}
         {sortedBlogs.length > 0 && (
           <div className="mb-16">
@@ -145,3 +157,4 @@ export default function BlogListSection() {
     </div>
   );
 }
+

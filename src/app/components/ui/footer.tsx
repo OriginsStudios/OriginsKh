@@ -83,7 +83,7 @@ export default function Footer() {
         <div className="grid grid-cols-12 gap-4 md:gap-8 w-full">
           {/* Newsletter */}
           <div className="col-span-12 md:col-span-5 flex flex-row items-start gap-6 mb-8 md:mb-0">
-            <div className="flex-none w-[120px]">
+            {/* <div className="flex-none w-[120px]">
               <Link href="/">
                 <Image
                   src="/originsStar.svg"
@@ -94,7 +94,7 @@ export default function Footer() {
                   priority
                 />
               </Link>
-            </div>
+            </div> */}
             <div className="flex-1 min-w-0">
               <h3 className="text-lg md:text-2xl font-semibold text-teal-900 mb-3 md:mb-4">
                 Studio Notes
