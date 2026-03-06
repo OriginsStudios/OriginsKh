@@ -235,7 +235,7 @@ export default function Footer() {
               </Link>
             </div>
             <span className="text-xs md:text-sm">
-              © 2025, Origins Studios. All Rights Reserved.
+              © 2026, Origins Studios. All Rights Reserved.
             </span>
           </div>
         </div>
