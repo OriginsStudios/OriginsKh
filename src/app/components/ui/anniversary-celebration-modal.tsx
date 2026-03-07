@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { PartyPopper } from "lucide-react";
 
 type RainPopper = {
@@ -61,12 +61,10 @@ const boomPoppers: BoomPopper[] = Array.from({ length: 40 }, (_, index) => ({
 
 export default function AnniversaryCelebrationModal() {
   const [isOpen, setIsOpen] = useState(true);
-  const [showCelebration, setShowCelebration] = useState(true);
 
   useEffect(() => {
     // Always show on fresh load/reload.
     setIsOpen(true);
-    setShowCelebration(true);
   }, []);
 
   useEffect(() => {
@@ -92,18 +90,6 @@ export default function AnniversaryCelebrationModal() {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const timer = window.setTimeout(() => {
-      setShowCelebration(false);
-    }, 4300);
-
-    return () => {
-      window.clearTimeout(timer);
-    };
-  }, [isOpen]);
-
   if (!isOpen) return null;
 
   return (
@@ -116,92 +102,85 @@ export default function AnniversaryCelebrationModal() {
         onClick={() => setIsOpen(false)}
       />
 
-      <AnimatePresence>
-        {showCelebration && (
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-[123] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.25 }}
+      >
+        <div className="absolute left-1/2 top-0 -translate-x-1/2">
           <motion.div
-            className="pointer-events-none absolute inset-0 z-[123] overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            <div className="absolute left-1/2 top-0 -translate-x-1/2">
-              <motion.div
-                className="h-36 w-36 rounded-full bg-orange-300/30"
-                initial={{ opacity: 0, scale: 0.15 }}
-                animate={{ opacity: [0, 1, 0], scale: [0.15, 1.25, 1.8] }}
-                transition={{ duration: 1.1, ease: "easeOut" }}
+            className="h-36 w-36 rounded-full bg-orange-300/30"
+            initial={{ opacity: 0, scale: 0.15 }}
+            animate={{ opacity: [0, 1, 0], scale: [0.15, 1.25, 1.8] }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
+          />
+
+          {boomPoppers.map((piece) => (
+            <motion.span
+              key={piece.id}
+              className="absolute left-1/2 top-1/2"
+              style={{ color: piece.color }}
+              initial={{
+                x: 0,
+                y: 0,
+                opacity: 0,
+                rotate: piece.rotate - 30,
+                scale: 0.25,
+              }}
+              animate={{
+                x: piece.x,
+                y: piece.y,
+                opacity: [0, 1, 0],
+                rotate: piece.rotate + 120,
+                scale: [0.25, 1, 0.7],
+              }}
+              transition={{
+                delay: piece.delay,
+                duration: piece.duration,
+                ease: "easeOut",
+              }}
+            >
+              <PartyPopper
+                style={{ width: piece.size, height: piece.size }}
+                className="drop-shadow-[0_8px_18px_rgba(15,23,42,0.3)]"
               />
+            </motion.span>
+          ))}
+        </div>
 
-              {boomPoppers.map((piece) => (
-                <motion.span
-                  key={piece.id}
-                  className="absolute left-1/2 top-1/2"
-                  style={{ color: piece.color }}
-                  initial={{
-                    x: 0,
-                    y: 0,
-                    opacity: 0,
-                    rotate: piece.rotate - 30,
-                    scale: 0.25,
-                  }}
-                  animate={{
-                    x: piece.x,
-                    y: piece.y,
-                    opacity: [0, 1, 0],
-                    rotate: piece.rotate + 120,
-                    scale: [0.25, 1, 0.7],
-                  }}
-                  transition={{
-                    delay: piece.delay,
-                    duration: piece.duration,
-                    ease: "easeOut",
-                  }}
-                >
-                  <PartyPopper
-                    style={{ width: piece.size, height: piece.size }}
-                    className="drop-shadow-[0_8px_18px_rgba(15,23,42,0.3)]"
-                  />
-                </motion.span>
-              ))}
-            </div>
-
-            {rainPoppers.map((piece) => (
-              <motion.span
-                key={piece.id}
-                className="absolute top-[-18vh]"
-                style={{ left: `${piece.left}%`, color: piece.color }}
-                initial={{
-                  y: 0,
-                  x: 0,
-                  opacity: 0,
-                  rotate: piece.rotateStart,
-                  scale: 0.7,
-                }}
-                animate={{
-                  y: "124vh",
-                  x: piece.drift,
-                  opacity: [0, 1, 1, 0],
-                  rotate: piece.rotateEnd,
-                  scale: [0.7, 1, 1, 0.75],
-                }}
-                transition={{
-                  delay: piece.delay,
-                  duration: piece.duration,
-                  ease: "easeOut",
-                  repeat: 1,
-                  repeatDelay: 0.15,
-                }}
-              >
-                <PartyPopper
-                  style={{ width: piece.size, height: piece.size }}
-                  className="drop-shadow-[0_8px_14px_rgba(15,23,42,0.28)]"
-                />
-              </motion.span>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {rainPoppers.map((piece) => (
+          <motion.span
+            key={piece.id}
+            className="absolute top-[-18vh]"
+            style={{ left: `${piece.left}%`, color: piece.color }}
+            initial={{
+              y: 0,
+              x: 0,
+              opacity: 0,
+              rotate: piece.rotateStart,
+              scale: 0.7,
+            }}
+            animate={{
+              y: "108vh",
+              x: piece.drift,
+              opacity: [0, 1, 1],
+              rotate: piece.rotateEnd,
+              scale: [0.7, 1, 1],
+            }}
+            transition={{
+              delay: piece.delay,
+              duration: piece.duration,
+              ease: "easeOut",
+            }}
+          >
+            <PartyPopper
+              style={{ width: piece.size, height: piece.size }}
+              className="drop-shadow-[0_8px_14px_rgba(15,23,42,0.28)]"
+            />
+          </motion.span>
+        ))}
+      </motion.div>
 
       <div className="fixed inset-0 z-[121] flex items-center justify-center px-4 py-8">
         <motion.div
