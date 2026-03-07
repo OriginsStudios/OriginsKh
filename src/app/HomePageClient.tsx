@@ -1,5 +1,7 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
 import MainLayout from "./components/layouts/main-layout";
 import Footer from "./components/ui/footer";
 import IntroHomeSection from "./components/sections/home/intro-home-section";
@@ -12,14 +14,24 @@ import {
   FAQStructuredData,
 } from "./components/seo/StructuredData";
 
+const AnniversaryCelebrationModal = dynamic(
+  () => import("./components/ui/anniversary-celebration-modal"),
+  { ssr: false }
+);
+
 export default function HomePageClient() {
   const { activeSection, scrollToSection } = useNavigation();
   const { scrollY } = useScroll();
+  const [isMounted, setIsMounted] = useState(false);
   const navBackground = useTransform(
     scrollY,
     [0, 100],
     ["rgb(255, 255, 255)", "rgba(255, 251, 251, 0.9)"]
   );
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const services = [
     {
@@ -82,6 +94,7 @@ export default function HomePageClient() {
     <>
       <ServiceStructuredData services={services} />
       <FAQStructuredData faqs={faqs} />
+      {isMounted ? <AnniversaryCelebrationModal /> : null}
       <MainLayout
         navBackground={navBackground}
         activeSection={activeSection}
