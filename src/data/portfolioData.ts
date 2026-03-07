@@ -24,6 +24,45 @@ export const slugify = (text: string) =>
 export const allImages: ImageData[] = [
   {
     images: [
+      { src: "/blog/blog4/chery/thumbnail.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/2.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/3.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/4.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/5.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/6.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/7.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/8.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/9.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/10.jpg", width: 800, height: 800 },
+      { src: "/blog/blog4/chery/11.jpg", width: 800, height: 800 },
+    ],
+    caption: "Event Production for Chery Cambodia",
+    hashtags: "#CONCEPT",
+    description: "Launch Event | iCAUR V23 2026",
+    longDescription:
+      "On January 30, 2026, Origins Studios delivered a full-scale event experience for Chery's iCAUR V23 2026 launch in collaboration with YNext Creative. Our team managed media production, production design, and key parts of event flow to create a seamless and high-impact brand experience.\n\nFrom stage visuals and reveal timing to live atmosphere and guest engagement, every element was crafted to reflect Chery's premium and future-forward identity. This project highlights our ability to execute complex launch events with strong storytelling and clean production.",
+    width: undefined,
+    height: undefined,
+    src: "",
+    date: "January 30, 2026",
+  },
+  {
+    images: [
+      { src: "/blog/blog3/aircambodia-thumbnail.jpg", width: 800, height: 800 },
+      { src: "/blog/blog3/aircambodia-cover.jpg", width: 800, height: 800 },
+    ],
+    caption: "Editorial Design for Air Cambodia",
+    hashtags: "#CREATIVE",
+    description: "Magazine Design | Official In-Flight Publication",
+    longDescription:
+      "ORIGINS partnered with Air Cambodia to design and produce a premium in-flight magazine that blends editorial storytelling with refined visual design. We developed a clean layout system, carefully structured typography, and polished image placement to ensure strong readability and brand consistency.\n\nFrom concept to print-ready production, the project focused on delivering a high-quality passenger reading experience while extending Air Cambodia's brand identity across every page.",
+    width: undefined,
+    height: undefined,
+    src: "",
+    date: "February 18, 2025",
+  },
+  {
+    images: [
       { src: "/work/juvie/DSC02233.jpg", width: 800, height: 800 },
       { src: "/work/juvie/DSC02316.jpg", width: 800, height: 800 },
       { src: "/work/juvie/DSC02305.jpg", width: 800, height: 800 },
