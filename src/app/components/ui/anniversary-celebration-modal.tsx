@@ -61,6 +61,8 @@ const boomPoppers: BoomPopper[] = Array.from({ length: 40 }, (_, index) => ({
 
 export default function AnniversaryCelebrationModal() {
   const [isOpen, setIsOpen] = useState(true);
+  const telegramGiftLink =
+    "https://t.me/originskh?text=Happy%201st%20Anniversary%20Origins%21%20I%20want%20to%20send%20a%20gift%20%F0%9F%8E%81";
 
   useEffect(() => {
     // Always show on fresh load/reload.
@@ -227,7 +229,7 @@ export default function AnniversaryCelebrationModal() {
                   CLOSE
                 </button>
                 <a
-                  href="https://t.me/originskh"
+                  href={telegramGiftLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full bg-[linear-gradient(120deg,#0f766e_0%,#14b8a6_55%,#f59e0b_100%)] px-6 py-2.5 text-sm font-semibold tracking-[0.12em] text-white shadow-[0_14px_30px_-18px_rgba(15,23,42,0.65)] transition hover:scale-[1.02] md:text-base"
