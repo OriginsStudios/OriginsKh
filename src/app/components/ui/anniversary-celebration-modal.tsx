@@ -62,7 +62,7 @@ const boomPoppers: BoomPopper[] = Array.from({ length: 40 }, (_, index) => ({
 export default function AnniversaryCelebrationModal() {
   const [isOpen, setIsOpen] = useState(true);
   const telegramGiftLink =
-    "https://t.me/originskh?text=Happy%201st%20Anniversary%20Origins%21%20I%20want%20to%20send%20a%20gift%20%F0%9F%8E%81";
+    "https://t.me/originskh?text=Happy%201st%20Anniversary%20Originskh%21%20I%20want%20to%20send%20a%20gift%20%F0%9F%8E%81";
 
   useEffect(() => {
     // Always show on fresh load/reload.
