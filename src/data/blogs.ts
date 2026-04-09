@@ -573,4 +573,340 @@ export const blogs: Blog[] = [
       },
     ],
   },
+  {
+    id: "khmer-new-year-chery-tiggo-2-pro-max",
+    title: "Khmer New Year with Chery Tiggo 2 Pro Max",
+    summary:
+      "A festive Khmer New Year concept film featuring the Chery Tiggo 2 Pro Max, blending holiday energy, culture, and modern lifestyle visuals.",
+    date: "April 9, 2026",
+    image: "/blog/blog5/blog5n1.png",
+    category: "Concept",
+    authorId: "Origins Studios",
+    tableOfContents: [
+      { id: "concept", title: "Concept", href: "#concept" },
+      { id: "festival-mood", title: "Festival Mood", href: "#festival-mood" },
+      { id: "vehicle-focus", title: "Vehicle Focus", href: "#vehicle-focus" },
+      { id: "wrap-up", title: "Wrap Up", href: "#wrap-up" },
+    ],
+    content: [
+      {
+        type: "video",
+        src: "/blog/blog5/blog5n1.mp4",
+        caption:
+          "blog5n1.mp4: Khmer New Year concept featuring the Chery Tiggo 2 Pro Max.",
+      },
+      { type: "heading", level: 2, content: "Concept", id: "concept" },
+      {
+        type: "text",
+        content:
+          "This video celebrates Khmer New Year through a fresh automotive story built around the Chery Tiggo 2 Pro Max. The goal is to connect festive emotion with a modern lifestyle drive.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Festival Mood",
+        id: "festival-mood",
+      },
+      {
+        type: "grid",
+        columns: 3,
+        items: [
+          {
+            title: "Holiday Energy",
+            content:
+              "Visual rhythm inspired by Khmer New Year celebration moments.",
+            icon: "1",
+          },
+          {
+            title: "Cultural Tone",
+            content:
+              "Color and motion choices designed to feel festive and familiar.",
+            icon: "2",
+          },
+          {
+            title: "Lifestyle Feel",
+            content:
+              "A joyful road-story direction that keeps the brand approachable.",
+            icon: "3",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Vehicle Focus",
+        id: "vehicle-focus",
+      },
+      {
+        type: "text",
+        content:
+          "The Tiggo 2 Pro Max remains the hero throughout the piece, with framing that highlights its style while fitting naturally into the Khmer New Year narrative.",
+      },
+      {
+        type: "callout",
+        title: "Creative Intent",
+        content:
+          "Celebrate Khmer New Year while positioning Chery Tiggo 2 Pro Max as a fun and confident holiday ride.",
+        variant: "success",
+      },
+      { type: "heading", level: 2, content: "Wrap Up", id: "wrap-up" },
+      {
+        type: "cta",
+        title: "Need a Festival Campaign Video?",
+        content:
+          "ORIGINS can turn seasonal moments into strong automotive brand stories.",
+        buttons: [
+          { text: "Start a Project", href: "/contact", variant: "primary" },
+          { text: "See Our Work", href: "/portfolio", variant: "secondary" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "moto-vs-chery-tiggo-2-pro-max-comparison",
+    title: "Moto vs Chery Tiggo 2 Pro Max",
+    summary:
+      "A comparison-style concept that contrasts moto life with the Chery Tiggo 2 Pro Max to highlight comfort, space, and daily practicality.",
+    date: "April 8, 2026",
+    image: "/blog/blog5/blog5n2.png",
+    category: "Concept",
+    authorId: "Origins Studios",
+    tableOfContents: [
+      { id: "overview", title: "Overview", href: "#overview" },
+      { id: "comparison-points", title: "Comparison Points", href: "#comparison-points" },
+      { id: "story-flow", title: "Story Flow", href: "#story-flow" },
+      { id: "takeaway", title: "Takeaway", href: "#takeaway" },
+    ],
+    content: [
+      {
+        type: "video",
+        src: "/blog/blog5/blog5n2.mp4",
+        caption:
+          "blog5n2.mp4: Comparing moto lifestyle with Chery Tiggo 2 Pro Max.",
+      },
+      { type: "heading", level: 2, content: "Overview", id: "overview" },
+      {
+        type: "text",
+        content:
+          "This cut uses a direct comparison format between moto usage and the Tiggo 2 Pro Max experience. The narrative is built for audiences deciding between two different ways of moving through daily life.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Comparison Points",
+        id: "comparison-points",
+      },
+      {
+        type: "list",
+        items: [
+          {
+            title: "Comfort",
+            content:
+              "Shows the difference between open-air riding and enclosed cabin convenience.",
+          },
+          {
+            title: "Practical Space",
+            content:
+              "Highlights storage, passenger flexibility, and everyday usability.",
+          },
+          {
+            title: "Weather Readiness",
+            content:
+              "Reinforces the value of protection and comfort in changing conditions.",
+          },
+        ],
+      },
+      { type: "heading", level: 2, content: "Story Flow", id: "story-flow" },
+      {
+        type: "text",
+        content:
+          "The edit alternates between moto and car moments to keep the comparison clear and easy to digest, then lands on the Tiggo 2 Pro Max as the practical step-up choice.",
+      },
+      { type: "heading", level: 2, content: "Takeaway", id: "takeaway" },
+      {
+        type: "callout",
+        title: "Main Message",
+        content:
+          "From quick errands to longer city days, Tiggo 2 Pro Max offers a broader comfort and utility range than moto-only movement.",
+        variant: "info",
+      },
+      {
+        type: "cta",
+        title: "Need Comparison-Style Campaign Content?",
+        content:
+          "ORIGINS can build clear side-by-side narratives that make product advantages easy to understand.",
+        buttons: [
+          { text: "Contact Us", href: "/contact", variant: "primary" },
+          { text: "View Portfolio", href: "/portfolio", variant: "secondary" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "stop-oil-start-icaur-v23",
+    title: "Stop Oil, Start iCAUR V23",
+    summary:
+      "A forward-looking EV message centered on the iCAUR V23, encouraging a shift from fuel dependence to a cleaner electric-driving mindset.",
+    date: "April 7, 2026",
+    image: "/blog/blog5/blog5n3.png",
+    category: "Concept",
+    authorId: "Origins Studios",
+    tableOfContents: [
+      { id: "concept", title: "Concept", href: "#concept" },
+      { id: "ev-shift", title: "EV Shift", href: "#ev-shift" },
+      { id: "v23-positioning", title: "V23 Positioning", href: "#v23-positioning" },
+      { id: "campaign-message", title: "Campaign Message", href: "#campaign-message" },
+    ],
+    content: [
+      {
+        type: "video",
+        src: "/blog/blog5/blog5n3.mp4",
+        caption:
+          "blog5n3.mp4: Stop oil, start iCAUR V23 concept campaign.",
+      },
+      { type: "heading", level: 2, content: "Concept", id: "concept" },
+      {
+        type: "text",
+        content:
+          "This video is built around a simple and direct line: stop oil, start iCAUR V23. The creative direction frames EV adoption as a practical lifestyle upgrade, not just a trend.",
+      },
+      { type: "heading", level: 2, content: "EV Shift", id: "ev-shift" },
+      {
+        type: "grid",
+        columns: 3,
+        items: [
+          {
+            title: "Less Fuel Dependence",
+            content:
+              "The narrative contrasts fuel habits with a cleaner electric routine.",
+            icon: "1",
+          },
+          {
+            title: "Future-Ready Identity",
+            content:
+              "Visual language positions EV driving as modern and intentional.",
+            icon: "2",
+          },
+          {
+            title: "Daily Practicality",
+            content:
+              "The story keeps focus on realistic everyday use, not abstract claims.",
+            icon: "3",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "V23 Positioning",
+        id: "v23-positioning",
+      },
+      {
+        type: "text",
+        content:
+          "iCAUR V23 is presented as the center of that transition: bold design, modern attitude, and a clear break from conventional oil-based driving habits.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Campaign Message",
+        id: "campaign-message",
+      },
+      {
+        type: "quote",
+        content: "Stop oil. Start electric. Start iCAUR V23.",
+        className: "text-center text-2xl font-semibold",
+      },
+      {
+        type: "cta",
+        title: "Launching an EV Message Campaign?",
+        content:
+          "ORIGINS can produce story-led automotive content that makes EV adoption feel clear and relevant.",
+        buttons: [
+          { text: "Start Now", href: "/contact", variant: "primary" },
+          { text: "See Projects", href: "/portfolio", variant: "secondary" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "go-out-alone-chill-icaur-v23",
+    title: "Go Out Alone and Chill with iCAUR V23",
+    summary:
+      "A solo-drive lifestyle concept showing how iCAUR V23 supports calm, independent city escapes and personal recharge moments.",
+    date: "April 6, 2026",
+    image: "/blog/blog5/blog5n4.png",
+    category: "Concept",
+    authorId: "Origins Studios",
+    tableOfContents: [
+      { id: "overview", title: "Overview", href: "#overview" },
+      { id: "solo-vibe", title: "Solo Vibe", href: "#solo-vibe" },
+      { id: "why-v23", title: "Why V23", href: "#why-v23" },
+      { id: "final-thought", title: "Final Thought", href: "#final-thought" },
+    ],
+    content: [
+      {
+        type: "video",
+        src: "/blog/blog5/blog5n4.mp4",
+        caption:
+          "blog5n4.mp4: Go out alone and chill with iCAUR V23.",
+      },
+      { type: "heading", level: 2, content: "Overview", id: "overview" },
+      {
+        type: "text",
+        content:
+          "This final cut follows a solo-drive mood built around quiet confidence and personal space. It frames the car as a companion for independent city escapes.",
+      },
+      { type: "heading", level: 2, content: "Solo Vibe", id: "solo-vibe" },
+      {
+        type: "text",
+        content:
+          "The pacing is intentionally relaxed, with visual transitions that emphasize chill moments, clean routes, and the freedom of going out alone on your own schedule.",
+      },
+      { type: "heading", level: 2, content: "Why V23", id: "why-v23" },
+      {
+        type: "list",
+        items: [
+          {
+            title: "Personal Comfort",
+            content:
+              "Supports an easy, calm driving experience for solo routines.",
+          },
+          {
+            title: "Urban Style",
+            content:
+              "Fits modern city visuals with a distinct and contemporary look.",
+          },
+          {
+            title: "Independent Mobility",
+            content:
+              "Positions V23 as a practical choice for self-directed lifestyles.",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Final Thought",
+        id: "final-thought",
+      },
+      {
+        type: "callout",
+        title: "Lifestyle Message",
+        content:
+          "Go out alone, chill, and enjoy the city with iCAUR V23 as your personal everyday ride.",
+        variant: "success",
+      },
+      {
+        type: "cta",
+        title: "Need Lifestyle-Driven Auto Content?",
+        content:
+          "ORIGINS can craft mood-based car stories that connect with real daily behavior.",
+        buttons: [
+          { text: "Talk to Us", href: "/contact", variant: "primary" },
+          { text: "Browse Work", href: "/portfolio", variant: "secondary" },
+        ],
+      },
+    ],
+  },
 ];
