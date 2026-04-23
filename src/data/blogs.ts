@@ -593,7 +593,7 @@ export const blogs: Blog[] = [
         type: "video",
         src: "/blog/blog5/blog5n1.mp4",
         caption:
-          "blog5n1.mp4: Khmer New Year concept featuring the Chery Tiggo 2 Pro Max.",
+          "Khmer New Year concept featuring the Chery Tiggo 2 Pro Max.",
       },
       { type: "heading", level: 2, content: "Concept", id: "concept" },
       {
@@ -682,7 +682,7 @@ export const blogs: Blog[] = [
         type: "video",
         src: "/blog/blog5/blog5n2.mp4",
         caption:
-          "blog5n2.mp4: Comparing moto lifestyle with Chery Tiggo 2 Pro Max.",
+          "Comparing moto lifestyle with Chery Tiggo 2 Pro Max.",
       },
       { type: "heading", level: 2, content: "Overview", id: "overview" },
       {
@@ -762,7 +762,7 @@ export const blogs: Blog[] = [
         type: "video",
         src: "/blog/blog5/blog5n3.mp4",
         caption:
-          "blog5n3.mp4: Stop oil, start iCAUR V23 concept campaign.",
+          "Stop oil, start iCAUR V23 concept campaign.",
       },
       { type: "heading", level: 2, content: "Concept", id: "concept" },
       {
@@ -849,7 +849,7 @@ export const blogs: Blog[] = [
         type: "video",
         src: "/blog/blog5/blog5n4.mp4",
         caption:
-          "blog5n4.mp4: Go out alone and chill with iCAUR V23.",
+          "Go out alone and chill with iCAUR V23.",
       },
       { type: "heading", level: 2, content: "Overview", id: "overview" },
       {
