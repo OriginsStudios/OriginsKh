@@ -59,6 +59,15 @@ export const TEAM_MEMBERS: TeamMember[] = [
     expertise: [],
     joinDate: "",
   },
+    {
+    id: "Oeung lycheng",
+    name: "Oeung lycheng",
+    position: "Marketing & Client Relations Executive",
+    image: "/Team/lychengpic.jpg",
+    description: "",
+    expertise: [],
+    joinDate: "",
+  },
   {
     id: "Srean Kimhong",
     name: "Srean Kimhong",
